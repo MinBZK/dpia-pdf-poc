@@ -1,0 +1,34 @@
+[project]
+name = "dpia-pdf-poc"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.1.8",
+    "pdfrw>=0.4",
+    "reportlab>=4.2.5",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.4",
+]
+
+# Ruff settings: https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["dpia-pdf-poc"]
+
+[tool.ruff.format]
+line-ending = "lf"
+
+[tool.ruff.lint]
+select = ["I", "SIM", "B", "UP", "F", "E", "S", "C90", "DTZ", "LOG", "PIE", "PT", "ERA", "W", "C", "TRY", "RUF", "ANN"]
+fixable = ["ALL"]
+task-tags = ["TODO"]
+ignore = ["TRY003", "ANN101"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 8
