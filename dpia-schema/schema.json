@@ -1,0 +1,265 @@
+{
+    "$id": "http://example.com/schemas/schema_v1.2.0.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "type": "string",
+        "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+        "const": "1.2.0"
+      },
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "urn": {
+        "type": "string",
+        "pattern": "^urn:nl:aivt:tr:[a-z]+:[0-9]+\\.[0-9]+"
+      },
+      "language": {
+        "type": "string",
+        "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+      },
+      "owners": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "organization": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "role": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "organization",
+            "name",
+            "email",
+            "role"
+          ]
+        }
+      },
+      "date": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string"
+      },
+      "tasks": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string"
+            },
+            "urn": {
+              "type": "string",
+              "pattern": "^urn:nl:aivt:tr:[a-z]+:[0-9]+\\.[0-9]+:[0-9A-Za-z\\.]+$"
+            },
+            "labels": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ]
+              }
+            },
+            "type": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "open_question",
+                  "closed_question",
+                  "sign_task",
+                  "upload_document",
+                  "statement",
+                  "requirement",
+                  "measure",
+                  "table_input"
+                ]
+              }
+            },
+            "table_template": {
+              "type": "object",
+              "properties": {
+                "headers": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": ["text", "select", "date"]
+                      },
+                      "options": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": ["id", "label", "type"]
+                  }
+                },
+                "min_rows": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "max_rows": {
+                  "type": "integer"
+                }
+              },
+              "required": ["headers"]
+            },
+            "suggested_roles": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Aanbestedingsjurist",
+                  "Aanbieder",
+                  "Archiefdeskundige",
+                  "Behoeftesteller",
+                  "Communicatieadviseur",
+                  "Contractbeheerder",
+                  "Data engineer",
+                  "Data scientist",
+                  "Domeinspecialist",
+                  "Ethicus",
+                  "Gebruiker",
+                  "Gebruiksverantwoordelijke",
+                  "Gemandateerd verantwoordelijke(n)",
+                  "Informatie analist",
+                  "Informatiebeheerder",
+                  "Inkoopadviseur",
+                  "Jurist",
+                  "Opdrachtgever",
+                  "Opdrachtnemer",
+                  "Privacy-officer",
+                  "Proceseigenaar",
+                  "Projectleider",
+                  "Security officer"
+                ]
+              }
+            },
+            "lifecycle": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Probleemanalyse",
+                  "Ontwerp",
+                  "Dataverkenning en datapreparatie",
+                  "Ontwikkelen",
+                  "Verificatie en validatie",
+                  "Implementatie",
+                  "Monitoring en beheer",
+                  "Uitfaseren"
+                ]
+              }
+            },
+            "links": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "urn": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "required_status": {
+              "type": "boolean"
+            },
+            "template": {
+              "type": "object",
+              "properties": {
+                "authors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "const": "$AUTHOR.NAME"
+                      },
+                      "email": {
+                        "type": "string",
+                        "const": "$AUTHOR.EMAIL"
+                      },
+                      "role": {
+                        "type": "string",
+                        "const": "$AUTHOR.ROLE"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "email",
+                      "role"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "urn",
+            "labels",
+            "type",
+            "suggested_roles",
+            "lifecycle",
+            "links",
+            "template"
+          ]
+        }
+      }
+    },
+    "required": [
+      "systemcard_path",
+      "schema_version",
+      "name",
+      "description",
+      "urn",
+      "language",
+      "owners",
+      "date",
+      "url"
+    ]
+  }
