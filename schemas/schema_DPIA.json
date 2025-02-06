@@ -2,7 +2,41 @@
     "$id": "http://example.com/schemas/schema_v1.2.0.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
+    "definitions": {
+      "glossary_term": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the term"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name of the term"
+          },
+          "definition": {
+            "type": "string",
+            "description": "Complete definition of the term"
+          },
+          "related_terms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "IDs of related terms"
+            }
+          },
+          "category": {
+            "type": "string",
+            "description": "DPIA section category"
+          }
+        },
+        "required": ["id", "name", "definition", "category"]
+      }
+    },
     "properties": {
+      "systemcard_path": {
+        "type": "string"
+      },
       "schema_version": {
         "type": "string",
         "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
@@ -53,6 +87,24 @@
       },
       "url": {
         "type": "string"
+      },
+      "glossary": {
+        "type": "object",
+        "properties": {
+          "terms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/glossary_term"
+            }
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["terms"]
       },
       "tasks": {
         "type": "array",
@@ -126,6 +178,21 @@
                         "items": {
                           "type": "string"
                         }
+                      },
+                      "glossary_references": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "term_id": {
+                              "type": "string"
+                            },
+                            "context": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["term_id"]
+                        }
                       }
                     },
                     "required": ["id", "label", "type"]
@@ -140,6 +207,22 @@
                 }
               },
               "required": ["headers"]
+            },
+            "glossary_references": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "term_id": {
+                    "type": "string"
+                  },
+                  "context": {
+                    "type": "string",
+                    "description": "How the term is used in this question"
+                  }
+                },
+                "required": ["term_id"]
+              }
             },
             "suggested_roles": {
               "type": "array",
@@ -260,6 +343,8 @@
       "language",
       "owners",
       "date",
-      "url"
+      "url",
+      "glossary",
+      "tasks"
     ]
   }

@@ -1,0 +1,183 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/schemas/begrippenkader_v1.0.0.json",
+    "title": "Begrippenkader",
+    "description": "Schema for the DPIA glossary terms and their relationships",
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "type": "string",
+        "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+        "const": "1.0.0"
+      },
+      "categories": {
+        "type": "array",
+        "description": "List of all possible categories for terms",
+        "items": {
+          "type": "string",
+          "enum": [
+            "DPIA - 00. Algemeen",
+            "DPIA - 01. Voorstel",
+            "DPIA - 02. Persoonsgegevens",
+            "DPIA - 03. Gegevensverwerkingen",
+            "DPIA - 04. Technieken en methoden",
+            "DPIA - 05. Verwerkingsdoeleinden",
+            "DPIA - 06. Betrokken partijen",
+            "DPIA - 07. Belangen",
+            "DPIA - 08. Verwerkingslocaties",
+            "DPIA - 09. Juridisch en beleidsmatig kader",
+            "DPIA - 10. Bewaartermijnen",
+            "DPIA - 11. Rechtsgronden",
+            "DPIA - 12. Bijzondere persoonsgegevens",
+            "DPIA - 13. Doelbinding",
+            "DPIA - 14. Noodzaak en evenredigheid",
+            "DPIA - 15. Rechten van de betrokkene",
+            "DPIA - 16. Risico's voor betrokkenen",
+            "DPIA - 17. Maatregelen",
+            "Pre-scan DPIA - A. Inleiding/algemeen",
+            "Pre-scan DPIA - B. Gegevensverwerkingen",
+            "Pre-scan DPIA - C. Internationale doorgiften",
+            "Pre-scan DPIA - D. Lijst AP",
+            "Pre-scan DPIA - E. Lijst EDPB",
+            "Pre-scan DPIA - F. Basisregistraties",
+            "Pre-scan DPIA - G. Algoritmes/AI",
+            "Pre-scan DPIA - J. Kinderrechten"
+          ]
+        },
+        "uniqueItems": true
+      },
+      "terms": {
+        "type": "array",
+        "description": "List of all glossary terms",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier for the term",
+              "pattern": "^[a-z_][a-z0-9_]*$"
+            },
+            "name": {
+              "type": "string",
+              "description": "Display name of the term"
+            },
+            "definition": {
+              "type": "string",
+              "description": "Complete definition of the term"
+            },
+            "category": {
+              "$ref": "#/properties/categories/items"
+            },
+            "related_terms": {
+              "type": "array",
+              "description": "References to other related terms by their IDs",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z_][a-z0-9_]*$"
+              },
+              "uniqueItems": true
+            },
+            "references": {
+              "type": "array",
+              "description": "External references or sources",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": ["law", "regulation", "policy", "standard", "other"]
+                  },
+                  "reference": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": ["type", "reference"]
+              }
+            },
+            "examples": {
+              "type": "array",
+              "description": "Examples of term usage",
+              "items": {
+                "type": "string"
+              }
+            },
+            "validation_rules": {
+              "type": "array",
+              "description": "Rules for validating term usage",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "rule_type": {
+                    "type": "string",
+                    "enum": ["format", "range", "pattern", "enumeration"]
+                  },
+                  "rule_value": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": ["rule_type", "rule_value"]
+              }
+            }
+          },
+          "required": ["id", "name", "definition", "category"],
+          "additionalProperties": false
+        }
+      },
+      "term_relationships": {
+        "type": "object",
+        "description": "Defines relationship types between terms",
+        "properties": {
+          "relationship_types": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["is_a", "part_of", "related_to", "opposite_of"]
+                },
+                "source_term": {
+                  "type": "string",
+                  "pattern": "^[a-z_][a-z0-9_]*$"
+                },
+                "target_term": {
+                  "type": "string",
+                  "pattern": "^[a-z_][a-z0-9_]*$"
+                }
+              },
+              "required": ["type", "source_term", "target_term"]
+            }
+          }
+        }
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+          },
+          "last_updated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "maintainer": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+          }
+        },
+        "required": ["version", "last_updated", "language"]
+      }
+    },
+    "required": ["schema_version", "categories", "terms", "metadata"],
+    "additionalProperties": false
+  }
