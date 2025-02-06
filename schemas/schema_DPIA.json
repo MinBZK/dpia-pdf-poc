@@ -34,9 +34,6 @@
       }
     },
     "properties": {
-      "systemcard_path": {
-        "type": "string"
-      },
       "schema_version": {
         "type": "string",
         "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
@@ -335,7 +332,6 @@
       }
     },
     "required": [
-      "systemcard_path",
       "schema_version",
       "name",
       "description",
