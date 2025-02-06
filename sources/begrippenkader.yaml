@@ -1,0 +1,93 @@
+schema_version: "1.0.0"
+name: "Begrippenkader"
+urn: "urn:nl:aivt:tr:bk:1.0"
+language: "nl"
+owners:
+  - organization: "Ministerie van BZK"
+    name: "CIO Rijk"
+    email: "privacy-ciorijk@minbzk.nl"
+    role: "Privacy Officer"
+terms:
+  - id: "advies_fg"
+    name: "Advies FG"
+    definition: "Een beschrijving van wat de functionaris voor gegevensbescherming van een verwerkingsverantwoordelijke die de DPIA opstelt heeft geadviseerd, en wat met dat advies is gedaan."
+    related_terms:
+      - "functionaris_voor_gegevensbescherming"
+      - "verwerkingsverantwoordelijke"
+      - "dpia"
+    category: "DPIA - 00. Algemeen"
+
+  - id: "afdeling"
+    name: "Afdeling"
+    definition: "Een organisatorische eenheid als onderdeel van de afdelingshiërarchie van een organisatie."
+    related_terms:
+      - "organisatorische_eenheid"
+    category: "DPIA - 00. Algemeen"
+
+  - id: "document"
+    name: "Document"
+    definition: "Een informatieobject dat eenvoudig kan worden gedeeld met andere partijen, en (ook) voor mensen leesbare tekst bevat."
+    related_terms:
+      - "informatieobject"
+    category: "DPIA - 00. Algemeen"
+
+  - id: "dpia"
+    name: "DPIA"
+    definition: "Een instrument om van een organisatorische activiteit, waarbij persoonsgegevens worden verwerkt, de risico's voor betrokkenen in kaart te brengen en te beoordelen in hoeverre de huidige maatregelen voldoen en welke aanvullende maatregelen genomen moeten worden."
+    related_terms:
+      - "organisatorische_activiteit"
+      - "persoonsgegevens"
+      - "risicos_voor_betrokkenen"
+      - "maatregelen"
+    category: "DPIA - 00. Algemeen"
+
+  - id: "persoonsgegeven"
+    name: "Persoonsgegeven"
+    definition: "Een gegeven over een geïdentificeerde natuurlijke persoon of identificeerbare natuurlijke persoon."
+    related_terms:
+      - "geidentificeerde_natuurlijke_persoon"
+      - "identificeerbare_natuurlijke_persoon"
+    category: "DPIA - 02. Persoonsgegevens"
+
+  - id: "bijzonder_persoonsgegeven"
+    name: "Bijzonder persoonsgegeven"
+    definition: "Een persoonsgegeven dat in principe verboden is om te verwerken, volgend uit artikel 9, AVG."
+    related_terms:
+      - "persoonsgegeven"
+    category: "DPIA - 12. Bijzondere persoonsgegevens"
+
+  - id: "gevoelig_persoonsgegeven"
+    name: "Gevoelig persoonsgegeven"
+    definition: "Een persoonsgegeven dat niet expliciet in de AVG is benoemd als aparte categorie, maar dat wel een grotere impact heeft op iemands privacy dan een gewoon persoonsgegeven."
+    related_terms:
+      - "persoonsgegeven"
+      - "gewoon_persoonsgegeven"
+    category: "DPIA - 02. Persoonsgegevens"
+
+term_references:
+  task_mapping:
+    - task_urn: "urn:nl:aivt:tr:dpia:3.0:personal_data"
+      terms:
+        - "persoonsgegeven"
+        - "bijzonder_persoonsgegeven"
+        - "gevoelig_persoonsgegeven"
+        - "gewoon_persoonsgegeven"
+
+    - task_urn: "urn:nl:aivt:tr:dpia:3.0:data_processing"
+      terms:
+        - "gegevensverwerking"
+        - "persoonsgegeven"
+        - "betrokkene"
+
+    - task_urn: "urn:nl:aivt:tr:dpia:3.0:risks"
+      terms:
+        - "risico_voor_betrokkenen"
+        - "impact"
+        - "kans"
+        - "risiconiveau"
+
+metadata:
+  version: "1.0.0"
+  last_updated: "2025-02-06T12:00:00Z"
+  maintainer: "CIO Rijk"
+  language: "nl"

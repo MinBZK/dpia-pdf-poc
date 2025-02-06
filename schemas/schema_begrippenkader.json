@@ -1,0 +1,132 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/schemas/begrippenkader_v1.0.0.json",
+    "title": "Begrippenkader",
+    "description": "Begrippenkader",
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "type": "string",
+        "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+        "const": "1.0.0"
+      },
+      "name": {
+        "type": "string"
+      },
+      "urn": {
+        "type": "string"
+      },
+      "language": {
+        "type": "string",
+        "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+      },
+      "owners": {
+        "type": "array",
+        "description": "List of owners of the terms",
+        "items": {
+          "type": "object",
+          "properties": {
+            "organization": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "role": {
+              "type": "string"
+            }
+          },
+          "required": ["organization", "name", "email", "role"]
+        }
+      },
+      "terms": {
+        "type": "array",
+        "description": "List of all glossary terms",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier for the term",
+              "pattern": "^[a-z_][a-z0-9_]*$"
+            },
+            "name": {
+              "type": "string",
+              "description": "Display name of the term"
+            },
+            "definition": {
+              "type": "string",
+              "description": "Complete definition of the term"
+            },
+            "category": {
+              "type": "string",
+              "description": "Category of the term"
+            },
+            "related_terms": {
+              "type": "array",
+              "description": "References to other related terms by their IDs",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z_][a-z0-9_]*$"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": ["id", "name", "definition", "category"],
+          "additionalProperties": false
+        }
+      },
+      "term_references": {
+        "type": "object",
+        "description": "Defines task mappings for terms",
+        "properties": {
+          "task_mapping": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "task_urn": {
+                  "type": "string"
+                },
+                "terms": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": ["task_urn", "terms"]
+            }
+          }
+        }
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+          },
+          "last_updated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "maintainer": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+          }
+        },
+        "required": ["version", "last_updated", "language"]
+      }
+    },
+    "required": ["schema_version", "name", "urn", "language", "terms", "metadata"],
+    "additionalProperties": false
+  }
+  
