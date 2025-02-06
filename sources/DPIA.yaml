@@ -1,823 +1,717 @@
-{
-  "schema_version": "0.1",
-  "name": "DPIA Rapportagemodel Rijksdienst",
-  "description": "Data Protection Impact Assessment template following Dutch government model version 3.0",
-  "urn": "urn:nl:aivt:tr:dpia:3.0",
-  "language": "nl",
-  "owners": [
-    {
-      "organization": "Ministerie van BZK",
-      "name": "CIO Rijk",
-      "email": "privacy-ciorijk@minbzk.nl",
-      "role": "Privacy Officer"
-    }
-  ],
-  "date": "2023-07-25",
-  "url": "https://www.rijksoverheid.nl/dpia",
-  "glossary": {
-    "terms": [
-      {
-        "id": "advies_fg",
-        "name": "Advies FG",
-        "definition": "Een beschrijving van wat de functionaris voor gegevensbescherming van een verwerkingsverantwoordelijke die de DPIA opstelt heeft geadviseerd, en wat met dat advies is gedaan.",
-        "related_terms": ["functionaris_voor_gegevensbescherming", "verwerkingsverantwoordelijke", "dpia"],
-        "category": "DPIA - 00. Algemeen"
-      },
-      {
-        "id": "afdeling",
-        "name": "Afdeling",
-        "definition": "Een organisatorische eenheid als onderdeel van de afdelingshiërarchie van een organisatie.",
-        "related_terms": ["organisatorische_eenheid"],
-        "category": "DPIA - 00. Algemeen"
-      },
-      {
-        "id": "dpia",
-        "name": "DPIA",
-        "definition": "Een instrument om van een organisatorische activiteit, waarbij persoonsgegevens worden verwerkt, de risico's voor betrokkenen in kaart te brengen en te beoordelen in hoeverre de huidige maatregelen voldoen en welke aanvullende maatregelen genomen moeten worden.",
-        "related_terms": ["organisatorische_activiteit", "persoonsgegevens", "risicos_voor_betrokkenen", "maatregelen"],
-        "category": "DPIA - 00. Algemeen"
-      }
-    ]
-  },
-  "tasks": [
-    {
-      "question": "Beschrijf het voorstel waar de DPIA op toeziet op hoofdlijnen en benoem hoe het voorstel tot stand is gekomen en wat de beweegredenen zijn achter de totstandkoming van het voorstel.",
-      "urn": "urn:nl:aivt:tr:dpia:1.0:voorstel",
-      "type": ["open_question"],
-      "suggested_roles": ["Projectleider", "Opdrachtgever", "Behoeftesteller"],
-      "lifecycle": ["Probleemanalyse"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Beschrijf alle persoonsgegevens die worden verwerkt. Classificeer deze persoonsgegevens naar: gewoon, gevoelig, bijzonder, strafrechtelijk en wettelijk identificatienummer en geef aan wat de bron is van deze persoonsgegevens.",
-      "urn": "urn:nl:aivt:tr:dpia:2.0:persoonsgegevens",
-      "type": ["table_input"],
-      "glossary_references": [
-        {
-          "term_id": "persoonsgegeven",
-          "context": "main_concept"
-        },
-        {
-          "term_id": "bijzonder_persoonsgegeven",
-          "context": "classification"
-        },
-        {
-          "term_id": "gevoelig_persoonsgegeven",
-          "context": "classification"
-        }
-      ],
-      "table_template": {
-        "headers": [
-          {
-            "id": "categorie_betrokkene",
-            "label": "Categorie betrokkene",
-            "type": "text"
-          },
-          {
-            "id": "categorie_persoonsgegeven",
-            "label": "Categorie persoonsgegeven",
-            "type": "text"
-          },
-          {
-            "id": "persoonsgegeven",
-            "label": "Persoonsgegevens",
-            "type": "text"
-          },
-          {
-            "id": "type_persoonsgegeven",
-            "label": "Type persoonsgegeven",
-            "type": "select",
-            "options": [
-              "gewoon",
-              "gevoelig",
-              "bijzonder",
-              "strafrechtelijk",
-              "identificatie-nummer"
-            ]
-          },
-          {
-            "id": "bron",
-            "label": "Bron",
-            "type": "select",
-            "options": [
-              "rechtstreeks bij betrokkene",
-              "via betrokken partij"
-            ]
-          },
-          {
-            "id": "oorspronkelijk_verwerkingsdoeleinde",
-            "label": "Oorspronkelijk verwerkingsdoeleinde",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Data engineer", "Informatie analist"],
-      "lifecycle": ["Dataverkenning en datapreparatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Geef alle gegevensverwerkingen weer en geef aan welke persoonsgegevens van welke categorieën betrokkenen worden verwerkt per gegevensverwerking.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:gegevensverwerkingen",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "gegevensverwerking",
-            "label": "Gegevensverwerking",
-            "type": "text"
-          },
-          {
-            "id": "categorieen_persoonsgegevens",
-            "label": "Categorieën betrokkenen & persoonsgegevens",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Data engineer"],
-      "lifecycle": ["Dataverkenning en datapreparatie", "Ontwikkelen"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Beschrijf op welke wijze en met gebruikmaking van welke (technische) middelen en methoden de persoonsgegevens worden verwerkt. Benoem, in het bijzonder, of sprake is van (semi-) geautomatiseerde besluitvorming, profilering, een cloudoplossing, kunstmatige intelligentie en algoritmen of big data-verwerkingen.",
-      "urn": "urn:nl:aivt:tr:dpia:4.0:technieken",
-      "type": ["open_question"],
-      "suggested_roles": ["Data engineer", "Data scientist", "Security officer"],
-      "lifecycle": ["Ontwikkelen", "Implementatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Beschrijf de doeleinden van alle gegevensverwerkingen.",
-      "urn": "urn:nl:aivt:tr:dpia:5.0:verwerkingsdoeleinden",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "gegevensverwerking",
-            "label": "Gegevensverwerking",
-            "type": "text"
-          },
-          {
-            "id": "verwerkingsdoeleinde",
-            "label": "Verwerkingsdoeleinde",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Jurist", "Proceseigenaar"],
-      "lifecycle": ["Probleemanalyse", "Ontwerp"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Benoem alle partijen die betrokken zijn en deel deze in per gegevensverwerking.",
-      "urn": "urn:nl:aivt:tr:dpia:6.0:betrokken_partijen",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "naam_partij",
-            "label": "Naam partij",
-            "type": "text"
-          },
-          {
-            "id": "rol_partij",
-            "label": "Rol partij",
-            "type": "select",
-            "options": [
-              "verwerkingsverantwoordelijke",
-              "gezamenlijke verwerkingsverantwoordelijke",
-              "verwerker",
-              "sub-verwerker",
-              "verstrekker",
-              "ontvanger",
-              "betrokkene",
-              "derde"
-            ]
-          },
-          {
-            "id": "functies_afdelingen",
-            "label": "Functies/afdelingen",
-            "type": "text"
-          },
-          {
-            "id": "persoonsgegevens",
-            "label": "Categorieën betrokkenen & persoonsgegevens",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Projectleider", "Contractbeheerder"],
-      "lifecycle": ["Ontwerp", "Implementatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Beschrijf alle belangen die de betrokken partijen hebben bij de gegevensverwerkingen.",
-      "urn": "urn:nl:aivt:tr:dpia:7.0:belangen",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "betrokken_partij",
-            "label": "Betrokken Partij",
-            "type": "text"
-          },
-          {
-            "id": "belangen",
-            "label": "Belangen, uitkomst consultatie betrokkene",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Jurist", "Ethicus"],
-      "lifecycle": ["Probleemanalyse", "Ontwerp"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Benoem in welke landen de gegevensverwerkingen plaatsvinden. Beschrijf het doorgiftemechanisme dat van toepassing is wanneer verwerkingslocaties zich buiten de Europese Economische Ruimte bevinden.",
-      "urn": "urn:nl:aivt:tr:dpia:8.0:verwerkingslocaties",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "gegevensverwerkingen",
-            "label": "Gegevensverwerkingen",
-            "type": "text"
-          },
-          {
-            "id": "verwerkingslocaties",
-            "label": "Verwerkingslocaties",
-            "type": "text"
-          },
-          {
-            "id": "doorgiftemechanisme",
-            "label": "Doorgiftemechanisme",
-            "type": "select",
-            "options": [
-              "Adequaatheidsbesluit",
-              "Binding Corporate Rules (BCR)",
-              "Standaard contractsbepalingen (SCC)",
-              "Artikel 49 AVG uitzondering",
-              "Niet van toepassing (binnen EER)"
-            ]
-          },
-          {
-            "id": "maatregelen",
-            "label": "Maatregelen",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Jurist", "Security officer"],
-      "lifecycle": ["Ontwerp", "Implementatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Benoem alle wet- en regelgeving en beleid met mogelijke gevolgen voor de gegevensverwerkingen.",
-      "urn": "urn:nl:aivt:tr:dpia:9.0:juridisch_kader",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "gegevensverwerkingen",
-            "label": "Gegevensverwerkingen",
-            "type": "text"
-          },
-          {
-            "id": "juridisch_kader",
-            "label": "Juridisch en/of beleidsmatig kader",
-            "type": "text"
-          },
-          {
-            "id": "wetsartikelen",
-            "label": "Wetsartikelen",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Jurist", "Privacy-officer"],
-      "lifecycle": ["Probleemanalyse", "Ontwerp"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Bepaal de bewaartermijnen van de persoonsgegevens aan de hand van de gegevensverwerkingen en de verwerkingsdoeleinden.",
-      "urn": "urn:nl:aivt:tr:dpia:10.0:bewaartermijnen",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "gegevensverwerking",
-            "label": "Gegevensverwerking",
-            "type": "text"
-          },
-          {
-            "id": "verwerkingsdoeleinde",
-            "label": "Verwerkingsdoeleinde",
-            "type": "text"
-          },
-          {
-            "id": "categorie_persoonsgegeven",
-            "label": "Categorie Persoonsgegevens",
-            "type": "text"
-          },
-          {
-            "id": "bewaartermijn",
-            "label": "Bewaartermijn/archiveringsperiode",
-            "type": "text"
-          },
-          {
-            "id": "motivatie",
-            "label": "Motivatie bewaartermijn",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Archiefdeskundige", "Informatiebeheerder"],
-      "lifecycle": ["Ontwerp", "Implementatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Bepaal op welke rechtsgronden de gegevensverwerkingen worden gebaseerd.",
-      "urn": "urn:nl:aivt:tr:dpia:11.0:rechtsgrond",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "gegevensverwerking",
-            "label": "Gegevensverwerking",
-            "type": "text"
-          },
-          {
-            "id": "rechtsgrond",
-            "label": "Rechtsgrond",
-            "type": "select",
-            "options": [
-              "Toestemming",
-              "Noodzakelijk voor de uitvoering van de overeenkomst",
-              "Noodzakelijk om te voldoen aan een wettelijke verplichting",
-              "Noodzakelijk om de vitale belangen te beschermen",
-              "Noodzakelijk voor de vervulling van een taak van algemeen belang",
-              "Noodzakelijk voor de behartiging van een gerechtvaardigd belang"
-            ]
-          },
-          {
-            "id": "toelichting",
-            "label": "Toelichting op de rechtsgrond",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Jurist", "Privacy-officer"],
-      "lifecycle": ["Probleemanalyse", "Ontwerp"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Het verwerken van bijzondere of strafrechtelijke persoonsgegevens is in principe verboden. Beoordeel of een van de wettelijke uitzonderingen op het verwerkingsverbod van toepassing is.",
-      "urn": "urn:nl:aivt:tr:dpia:12.0:bijzondere_gegevens",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "gegevensverwerking",
-            "label": "Gegevensverwerking",
-            "type": "text"
-          },
-          {
-            "id": "categorie",
-            "label": "Categorie betrokkenen & persoonsgegevens",
-            "type": "text"
-          },
-          {
-            "id": "type_bijzonder",
-            "label": "Type bijzonder persoonsgegeven",
-            "type": "select",
-            "options": [
-              "Ras of etnische afkomst",
-              "Politieke opvattingen",
-              "Religieuze of levensbeschouwelijke overtuigingen",
-              "Lidmaatschap van een vakbond",
-              "Genetische gegevens",
-              "Biometrische gegevens",
-              "Gezondheidsgegevens",
-              "Seksuele gerichtheid",
-              "Strafrechtelijke gegevens",
-              "Nationaal identificatienummer"
-            ]
-          },
-          {
-            "id": "uitzonderingsgrond",
-            "label": "Uitzonderingsgrond",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Jurist"],
-      "lifecycle": ["Ontwerp", "Implementatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Als de persoonsgegevens voor een ander doeleinde worden verwerkt dan het doeleinde waarvoor de persoonsgegevens oorspronkelijk zijn verzameld, beoordeel of deze verdere verwerking verenigbaar is.",
-      "urn": "urn:nl:aivt:tr:dpia:13.0:doelbinding",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "gegevensverwerking",
-            "label": "Gegevensverwerking",
-            "type": "text"
-          },
-          {
-            "id": "persoonsgegevens",
-            "label": "Categorieën betrokkenen & persoonsgegevens",
-            "type": "text"
-          },
-          {
-            "id": "doeleinde",
-            "label": "Doeleinde",
-            "type": "text"
-          },
-          {
-            "id": "oorspronkelijk_doeleinde",
-            "label": "Oorspronkelijk doeleinde",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Jurist"],
-      "lifecycle": ["Ontwerp", "Implementatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Beoordeel of de voorgenomen gegevensverwerkingen noodzakelijk en evenredig zijn voor het verwezenlijken van de verwerkingsdoeleinden.",
-      "urn": "urn:nl:aivt:tr:dpia:14.0:noodzaak_evenredigheid",
-      "type": ["open_question"],
-      "suggested_roles": ["Privacy-officer", "Jurist", "Ethicus"],
-      "lifecycle": ["Ontwerp"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Beschrijf de procedure waarmee invulling wordt gegeven aan de rechten van de betrokkene.",
-      "urn": "urn:nl:aivt:tr:dpia:15.0:rechten_betrokkenen",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "recht",
-            "label": "Rechten van de betrokkene",
-            "type": "select",
-            "options": [
-              "Recht van inzage",
-              "Recht op rectificatie en aanvulling",
-              "Recht op vergetelheid",
-              "Recht op beperking van de verwerking",
-              "Recht op dataportabiliteit",
-              "Recht niet onderworpen te worden aan geautomatiseerde besluitvorming",
-              "Recht om bezwaar te maken",
-              "Recht op duidelijke informatie"
-            ]
-          },
-          {
-            "id": "procedure",
-            "label": "Procedure ter uitvoering",
-            "type": "select",
-            "options": ["ja", "nee", "nvt"]
-          },
-          {
-            "id": "beperking",
-            "label": "Beperking op grond van wettelijke uitzondering",
-            "type": "select",
-            "options": ["ja", "nvt"]
-          },
-          {
-            "id": "toelichting",
-            "label": "Beperking toelichting",
-            "type": "text"
-          }
-        ],
-        "min_rows": 8
-      },
-      "suggested_roles": ["Privacy-officer", "Jurist"],
-      "lifecycle": ["Ontwerp", "Implementatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Beschrijf en beoordeel de risico's van de gegevensverwerkingen voor de rechten en vrijheden van betrokkenen.",
-      "urn": "urn:nl:aivt:tr:dpia:16.0:risicos",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "beschrijving_risico",
-            "label": "Beschrijving risico",
-            "type": "text"
-          },
-          {
-            "id": "oorsprong",
-            "label": "Oorsprong",
-            "type": "text"
-          },
-          {
-            "id": "kans",
-            "label": "Kans (en motivatie)",
-            "type": "select",
-            "options": ["laag", "midden", "hoog"],
-            "glossary_references": [
-              {
-                "term_id": "kans",
-                "context": "risk_component"
-              }
-            ]
-          },
-          {
-            "id": "impact",
-            "label": "Impact (en motivatie)",
-            "type": "select",
-            "options": ["laag", "midden", "hoog"],
-            "glossary_references": [
-              {
-                "term_id": "impact",
-                "context": "risk_component"
-              }
-            ]
-          },
-          {
-            "id": "risico_inschatting",
-            "label": "Risico-inschatting (en motivatie)",
-            "type": "select",
-            "options": ["laag", "midden", "hoog"]
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Privacy-officer", "Security officer", "Risico manager"],
-      "lifecycle": ["Verificatie en validatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Beoordeel welke technische, organisatorische en juridische maatregelen in redelijkheid kunnen worden getroffen om de hiervoor beschreven risico's te voorkomen of te verminderen.",
-      "urn": "urn:nl:aivt:tr:dpia:17.0:maatregelen",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "risico",
-            "label": "Risico",
-            "type": "text"
-          },
-          {
-            "id": "oorsprong",
-            "label": "Oorsprong",
-            "type": "text"
-          },
-          {
-            "id": "maatregelen",
-            "label": "Maatregelen",
-            "type": "text"
-          },
-          {
-            "id": "resterend_risico",
-            "label": "Resterend risico en risico-inschatting",
-            "type": "select",
-            "options": ["laag", "midden", "hoog"]
-          },
-          {
-            "id": "beheerder",
-            "label": "Beheerder van maatregelen",
-            "type": "text"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": [
-        "Privacy-officer",
-        "Security officer",
-        "Risico manager",
-        "Implementatie manager"
-      ],
-      "lifecycle": ["Verificatie en validatie", "Implementatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    },
-    {
-      "question": "Ondertekening van de DPIA door de verwerkingsverantwoordelijke(n).",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:ondertekening",
-      "type": ["table_input"],
-      "table_template": {
-        "headers": [
-          {
-            "id": "organisatie",
-            "label": "Organisatie, directie, afdeling verwerkingsverantwoordelijke(n)",
-            "type": "text"
-          },
-          {
-            "id": "naam",
-            "label": "Naam verwerkingsverantwoordelijke(n)",
-            "type": "text"
-          },
-          {
-            "id": "functie",
-            "label": "Functie verwerkingsverantwoordelijke(n)",
-            "type": "text"
-          },
-          {
-            "id": "datum",
-            "label": "Datum ondertekening",
-            "type": "date"
-          }
-        ],
-        "min_rows": 1
-      },
-      "suggested_roles": ["Gemandateerd verantwoordelijke(n)"],
-      "lifecycle": ["Verificatie en validatie"],
-      "links": [],
-      "required_status": true,
-      "template": {
-        "authors": [
-          {
-            "name": "$AUTHOR.NAME",
-            "email": "$AUTHOR.EMAIL",
-            "role": "$AUTHOR.ROLE"
-          }
-        ]
-      }
-    }
-  ]
-}
+schema_version: 1.0.0
+name: DPIA Rapportagemodel Rijksdienst
+description: >-
+  Data Protection Impact Assessment template following Dutch government model
+  version 3.0
+urn: 'urn:nl:aivt:tr:dpia:3.0'
+language: nl
+owners:
+  - organization: Ministerie van BZK
+    name: CIO Rijk
+    email: privacy-ciorijk@minbzk.nl
+    role: Privacy Officer
+date: '2023-07-25'
+url: 'https://www.rijksoverheid.nl/dpia'
+glossary:
+  terms:
+    - id: advies_fg
+      name: Advies FG
+      definition: >-
+        Een beschrijving van wat de functionaris voor gegevensbescherming van
+        een verwerkingsverantwoordelijke die de DPIA opstelt heeft geadviseerd,
+        en wat met dat advies is gedaan.
+      related_terms:
+        - functionaris_voor_gegevensbescherming
+        - verwerkingsverantwoordelijke
+        - dpia
+      category: DPIA - 00. Algemeen
+    - id: afdeling
+      name: Afdeling
+      definition: >-
+        Een organisatorische eenheid als onderdeel van de afdelingshiërarchie
+        van een organisatie.
+      related_terms:
+        - organisatorische_eenheid
+      category: DPIA - 00. Algemeen
+    - id: dpia
+      name: DPIA
+      definition: >-
+        Een instrument om van een organisatorische activiteit, waarbij
+        persoonsgegevens worden verwerkt, de risico's voor betrokkenen in kaart
+        te brengen en te beoordelen in hoeverre de huidige maatregelen voldoen
+        en welke aanvullende maatregelen genomen moeten worden.
+      related_terms:
+        - organisatorische_activiteit
+        - persoonsgegevens
+        - risicos_voor_betrokkenen
+        - maatregelen
+      category: DPIA - 00. Algemeen
+tasks:
+  - question: >-
+      Beschrijf het voorstel waar de DPIA op toeziet op hoofdlijnen en benoem
+      hoe het voorstel tot stand is gekomen en wat de beweegredenen zijn achter
+      de totstandkoming van het voorstel.
+    urn: 'urn:nl:aivt:tr:dpia:1.0:voorstel'
+    type:
+      - open_question
+    suggested_roles:
+      - Projectleider
+      - Opdrachtgever
+      - Behoeftesteller
+    lifecycle:
+      - Probleemanalyse
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Beschrijf alle persoonsgegevens die worden verwerkt. Classificeer deze
+      persoonsgegevens naar: gewoon, gevoelig, bijzonder, strafrechtelijk en
+      wettelijk identificatienummer en geef aan wat de bron is van deze
+      persoonsgegevens.
+    urn: 'urn:nl:aivt:tr:dpia:2.0:persoonsgegevens'
+    type:
+      - table_input
+    glossary_references:
+      - term_id: persoonsgegeven
+        context: main_concept
+      - term_id: bijzonder_persoonsgegeven
+        context: classification
+      - term_id: gevoelig_persoonsgegeven
+        context: classification
+    table_template:
+      headers:
+        - id: categorie_betrokkene
+          label: Categorie betrokkene
+          type: text
+          glossary_references:
+            - term_id: betrokkene
+              context: category
+        - id: categorie_persoonsgegeven
+          label: Categorie persoonsgegeven
+          type: text
+          glossary_references:
+            - term_id: persoonsgegeven
+              context: category
+        - id: persoonsgegeven
+          label: Persoonsgegevens
+          type: text
+        - id: type_persoonsgegeven
+          label: Type persoonsgegeven
+          type: select
+          options:
+            - gewoon
+            - gevoelig
+            - bijzonder
+            - strafrechtelijk
+            - identificatie-nummer
+        - id: bron
+          label: Bron
+          type: select
+          options:
+            - rechtstreeks bij betrokkene
+            - via betrokken partij
+        - id: oorspronkelijk_verwerkingsdoeleinde
+          label: Oorspronkelijk verwerkingsdoeleinde
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Data engineer
+      - Informatie analist
+    lifecycle:
+      - Dataverkenning en datapreparatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Geef alle gegevensverwerkingen weer en geef aan welke persoonsgegevens van
+      welke categorieën betrokkenen worden verwerkt per gegevensverwerking.
+    urn: 'urn:nl:aivt:tr:dpia:3.0:gegevensverwerkingen'
+    glossary_references:
+      - term_id: gegevensverwerking
+        context: main_concept
+      - term_id: persoonsgegeven
+        context: processed_data
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: gegevensverwerking
+          label: Gegevensverwerking
+          type: text
+          glossary_references:
+            - term_id: gegevensverwerking
+              context: process_description
+        - id: categorieen_persoonsgegevens
+          label: Categorieën betrokkenen & persoonsgegevens
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Data engineer
+    lifecycle:
+      - Dataverkenning en datapreparatie
+      - Ontwikkelen
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Beschrijf op welke wijze en met gebruikmaking van welke (technische)
+      middelen en methoden de persoonsgegevens worden verwerkt. Benoem, in het
+      bijzonder, of sprake is van (semi-) geautomatiseerde besluitvorming,
+      profilering, een cloudoplossing, kunstmatige intelligentie en algoritmen
+      of big data-verwerkingen.
+    urn: 'urn:nl:aivt:tr:dpia:4.0:technieken'
+    type:
+      - open_question
+    suggested_roles:
+      - Data engineer
+      - Data scientist
+      - Security officer
+    lifecycle:
+      - Ontwikkelen
+      - Implementatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: Beschrijf de doeleinden van alle gegevensverwerkingen.
+    urn: 'urn:nl:aivt:tr:dpia:5.0:verwerkingsdoeleinden'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: gegevensverwerking
+          label: Gegevensverwerking
+          type: text
+        - id: verwerkingsdoeleinde
+          label: Verwerkingsdoeleinde
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Jurist
+      - Proceseigenaar
+    lifecycle:
+      - Probleemanalyse
+      - Ontwerp
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Benoem alle partijen die betrokken zijn en deel deze in per
+      gegevensverwerking.
+    urn: 'urn:nl:aivt:tr:dpia:6.0:betrokkenPartijen'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: naam_partij
+          label: Naam partij
+          type: text
+        - id: rol_partij
+          label: Rol partij
+          type: select
+          options:
+            - verwerkingsverantwoordelijke
+            - gezamenlijke verwerkingsverantwoordelijke
+            - verwerker
+            - sub-verwerker
+            - verstrekker
+            - ontvanger
+            - betrokkene
+            - derde
+        - id: functies_afdelingen
+          label: Functies/afdelingen
+          type: text
+        - id: persoonsgegevens
+          label: Categorieën betrokkenen & persoonsgegevens
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Projectleider
+      - Contractbeheerder
+    lifecycle:
+      - Ontwerp
+      - Implementatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Beschrijf alle belangen die de betrokken partijen hebben bij de
+      gegevensverwerkingen.
+    urn: 'urn:nl:aivt:tr:dpia:7.0:belangen'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: betrokken_partij
+          label: Betrokken Partij
+          type: text
+        - id: belangen
+          label: 'Belangen, uitkomst consultatie betrokkene'
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Jurist
+      - Ethicus
+    lifecycle:
+      - Probleemanalyse
+      - Ontwerp
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Benoem in welke landen de gegevensverwerkingen plaatsvinden. Beschrijf het
+      doorgiftemechanisme dat van toepassing is wanneer verwerkingslocaties zich
+      buiten de Europese Economische Ruimte bevinden.
+    urn: 'urn:nl:aivt:tr:dpia:8.0:verwerkingslocaties'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: gegevensverwerkingen
+          label: Gegevensverwerkingen
+          type: text
+        - id: verwerkingslocaties
+          label: Verwerkingslocaties
+          type: text
+        - id: doorgiftemechanisme
+          label: Doorgiftemechanisme
+          type: select
+          options:
+            - Adequaatheidsbesluit
+            - Binding Corporate Rules (BCR)
+            - Standaard contractsbepalingen (SCC)
+            - Artikel 49 AVG uitzondering
+            - Niet van toepassing (binnen EER)
+        - id: maatregelen
+          label: Maatregelen
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Jurist
+      - Security officer
+    lifecycle:
+      - Ontwerp
+      - Implementatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Benoem alle wet- en regelgeving en beleid met mogelijke gevolgen voor de
+      gegevensverwerkingen.
+    urn: 'urn:nl:aivt:tr:dpia:9.0:juridischKader'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: gegevensverwerkingen
+          label: Gegevensverwerkingen
+          type: text
+        - id: juridisch_kader
+          label: Juridisch en/of beleidsmatig kader
+          type: text
+        - id: wetsartikelen
+          label: Wetsartikelen
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Jurist
+      - Privacy-officer
+    lifecycle:
+      - Probleemanalyse
+      - Ontwerp
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Bepaal de bewaartermijnen van de persoonsgegevens aan de hand van de
+      gegevensverwerkingen en de verwerkingsdoeleinden.
+    urn: 'urn:nl:aivt:tr:dpia:10.0:bewaartermijnen'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: gegevensverwerking
+          label: Gegevensverwerking
+          type: text
+        - id: verwerkingsdoeleinde
+          label: Verwerkingsdoeleinde
+          type: text
+        - id: categorie_persoonsgegeven
+          label: Categorie Persoonsgegevens
+          type: text
+        - id: bewaartermijn
+          label: Bewaartermijn/archiveringsperiode
+          type: text
+        - id: motivatie
+          label: Motivatie bewaartermijn
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Archiefdeskundige
+      - Informatiebeheerder
+    lifecycle:
+      - Ontwerp
+      - Implementatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: Bepaal op welke rechtsgronden de gegevensverwerkingen worden gebaseerd.
+    urn: 'urn:nl:aivt:tr:dpia:11.0:rechtsgrond'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: gegevensverwerking
+          label: Gegevensverwerking
+          type: text
+        - id: rechtsgrond
+          label: Rechtsgrond
+          type: select
+          options:
+            - Toestemming
+            - Noodzakelijk voor de uitvoering van de overeenkomst
+            - Noodzakelijk om te voldoen aan een wettelijke verplichting
+            - Noodzakelijk om de vitale belangen te beschermen
+            - Noodzakelijk voor de vervulling van een taak van algemeen belang
+            - Noodzakelijk voor de behartiging van een gerechtvaardigd belang
+        - id: toelichting
+          label: Toelichting op de rechtsgrond
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Jurist
+      - Privacy-officer
+    lifecycle:
+      - Probleemanalyse
+      - Ontwerp
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Het verwerken van bijzondere of strafrechtelijke persoonsgegevens is in
+      principe verboden. Beoordeel of een van de wettelijke uitzonderingen op
+      het verwerkingsverbod van toepassing is.
+    urn: 'urn:nl:aivt:tr:dpia:12.0:bijzondereGegevens'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: gegevensverwerking
+          label: Gegevensverwerking
+          type: text
+        - id: categorie
+          label: Categorie betrokkenen & persoonsgegevens
+          type: text
+        - id: type_bijzonder
+          label: Type bijzonder persoonsgegeven
+          type: select
+          options:
+            - Ras of etnische afkomst
+            - Politieke opvattingen
+            - Religieuze of levensbeschouwelijke overtuigingen
+            - Lidmaatschap van een vakbond
+            - Genetische gegevens
+            - Biometrische gegevens
+            - Gezondheidsgegevens
+            - Seksuele gerichtheid
+            - Strafrechtelijke gegevens
+            - Nationaal identificatienummer
+        - id: uitzonderingsgrond
+          label: Uitzonderingsgrond
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Jurist
+    lifecycle:
+      - Ontwerp
+      - Implementatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Als de persoonsgegevens voor een ander doeleinde worden verwerkt dan het
+      doeleinde waarvoor de persoonsgegevens oorspronkelijk zijn verzameld,
+      beoordeel of deze verdere verwerking verenigbaar is.
+    urn: 'urn:nl:aivt:tr:dpia:13.0:doelbinding'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: gegevensverwerking
+          label: Gegevensverwerking
+          type: text
+        - id: persoonsgegevens
+          label: Categorieën betrokkenen & persoonsgegevens
+          type: text
+        - id: doeleinde
+          label: Doeleinde
+          type: text
+        - id: oorspronkelijk_doeleinde
+          label: Oorspronkelijk doeleinde
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Jurist
+    lifecycle:
+      - Ontwerp
+      - Implementatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Beoordeel of de voorgenomen gegevensverwerkingen noodzakelijk en evenredig
+      zijn voor het verwezenlijken van de verwerkingsdoeleinden.
+    urn: 'urn:nl:aivt:tr:dpia:14.0:noodzaakEvenredigheid'
+    type:
+      - open_question
+    suggested_roles:
+      - Privacy-officer
+      - Jurist
+      - Ethicus
+    lifecycle:
+      - Ontwerp
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Beschrijf de procedure waarmee invulling wordt gegeven aan de rechten van
+      de betrokkene.
+    urn: 'urn:nl:aivt:tr:dpia:15.0:rechtenBetrokkenen'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: recht
+          label: Rechten van de betrokkene
+          type: select
+          options:
+            - Recht van inzage
+            - Recht op rectificatie en aanvulling
+            - Recht op vergetelheid
+            - Recht op beperking van de verwerking
+            - Recht op dataportabiliteit
+            - >-
+              Recht niet onderworpen te worden aan geautomatiseerde
+              besluitvorming
+            - Recht om bezwaar te maken
+            - Recht op duidelijke informatie
+        - id: procedure
+          label: Procedure ter uitvoering
+          type: select
+          options:
+            - ja
+            - nee
+            - nvt
+        - id: beperking
+          label: Beperking op grond van wettelijke uitzondering
+          type: select
+          options:
+            - ja
+            - nvt
+        - id: toelichting
+          label: Beperking toelichting
+          type: text
+      min_rows: 8
+    suggested_roles:
+      - Privacy-officer
+      - Jurist
+    lifecycle:
+      - Ontwerp
+      - Implementatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Beschrijf en beoordeel de risico's van de gegevensverwerkingen voor de
+      rechten en vrijheden van betrokkenen.
+    urn: 'urn:nl:aivt:tr:dpia:16.0:risicos'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: beschrijving_risico
+          label: Beschrijving risico
+          type: text
+        - id: oorsprong
+          label: Oorsprong
+          type: text
+        - id: kans
+          label: Kans (en motivatie)
+          type: select
+          options:
+            - laag
+            - midden
+            - hoog
+          glossary_references:
+            - term_id: kans
+              context: risk_component
+        - id: impact
+          label: Impact (en motivatie)
+          type: select
+          options:
+            - laag
+            - midden
+            - hoog
+          glossary_references:
+            - term_id: impact
+              context: risk_component
+        - id: risico_inschatting
+          label: Risico-inschatting (en motivatie)
+          type: select
+          options:
+            - laag
+            - midden
+            - hoog
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Security officer
+    lifecycle:
+      - Verificatie en validatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: >-
+      Beoordeel welke technische, organisatorische en juridische maatregelen in
+      redelijkheid kunnen worden getroffen om de hiervoor beschreven risico's te
+      voorkomen of te verminderen.
+    urn: 'urn:nl:aivt:tr:dpia:17.0:maatregelen'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: risico
+          label: Risico
+          type: text
+        - id: oorsprong
+          label: Oorsprong
+          type: text
+        - id: maatregelen
+          label: Maatregelen
+          type: text
+        - id: resterend_risico
+          label: Resterend risico en risico-inschatting
+          type: select
+          options:
+            - laag
+            - midden
+            - hoog
+        - id: beheerder
+          label: Beheerder van maatregelen
+          type: text
+      min_rows: 1
+    suggested_roles:
+      - Privacy-officer
+      - Security officer
+    lifecycle:
+      - Verificatie en validatie
+      - Implementatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
+  - question: Ondertekening van de DPIA door de verwerkingsverantwoordelijke(n).
+    urn: 'urn:nl:aivt:tr:dpia:3.0:ondertekening'
+    type:
+      - table_input
+    table_template:
+      headers:
+        - id: organisatie
+          label: 'Organisatie, directie, afdeling verwerkingsverantwoordelijke(n)'
+          type: text
+        - id: naam
+          label: Naam verwerkingsverantwoordelijke(n)
+          type: text
+        - id: functie
+          label: Functie verwerkingsverantwoordelijke(n)
+          type: text
+        - id: datum
+          label: Datum ondertekening
+          type: date
+      min_rows: 1
+    suggested_roles:
+      - Gemandateerd verantwoordelijke(n)
+    lifecycle:
+      - Verificatie en validatie
+    links: []
+    required_status: true
+    template:
+      authors:
+        - name: $AUTHOR.NAME
+          email: $AUTHOR.EMAIL
+          role: $AUTHOR.ROLE
