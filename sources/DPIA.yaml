@@ -134,17 +134,14 @@ tasks:
       - term_id: persoonsgegeven
         context: processed_data
     type:
-      - table_input
-    table_template:
-      headers:
+      - subquestion_group
+    subquestions:
         - id: gegevensverwerking
-          label: Gegevensverwerking
           type: text
           glossary_references:
             - term_id: gegevensverwerking
               context: process_description
         - id: categorieen_persoonsgegevens
-          label: Categorieën betrokkenen & persoonsgegevens
           type: text
       min_rows: 1
     links: []
@@ -177,10 +174,8 @@ tasks:
     table_template:
       headers:
         - id: gegevensverwerking
-          label: Gegevensverwerking
           type: text
         - id: verwerkingsdoeleinde
-          label: Verwerkingsdoeleinde
           type: text
       min_rows: 1
     links: []
@@ -199,10 +194,8 @@ tasks:
     table_template:
       headers:
         - id: naam_partij
-          label: Naam partij
           type: text
         - id: rol_partij
-          label: Rol partij
           type: select
           options:
             - verwerkingsverantwoordelijke
@@ -214,10 +207,8 @@ tasks:
             - betrokkene
             - derde
         - id: functies_afdelingen
-          label: Functies/afdelingen
           type: text
-        - id: persoonsgegevens
-          label: Categorieën betrokkenen & persoonsgegevens
+        - id: categorieen_betrokkenen_en_persoonsgegevens
           type: text
       min_rows: 1
     links: []
@@ -236,10 +227,8 @@ tasks:
     table_template:
       headers:
         - id: betrokken_partij
-          label: Betrokken Partij
           type: text
-        - id: belangen
-          label: 'Belangen, uitkomst consultatie betrokkene'
+        - id: belangen_uitkomst_consultatie_betrokkkene
           type: text
       min_rows: 1
     links: []
@@ -259,13 +248,10 @@ tasks:
     table_template:
       headers:
         - id: gegevensverwerkingen
-          label: Gegevensverwerkingen
           type: text
         - id: verwerkingslocaties
-          label: Verwerkingslocaties
           type: text
         - id: doorgiftemechanisme
-          label: Doorgiftemechanisme
           type: select
           options:
             - Adequaatheidsbesluit
@@ -274,7 +260,6 @@ tasks:
             - Artikel 49 AVG uitzondering
             - Niet van toepassing (binnen EER)
         - id: maatregelen
-          label: Maatregelen
           type: text
       min_rows: 1
     links: []
@@ -293,13 +278,10 @@ tasks:
     table_template:
       headers:
         - id: gegevensverwerkingen
-          label: Gegevensverwerkingen
           type: text
-        - id: juridisch_kader
-          label: Juridisch en/of beleidsmatig kader
+        - id: juridisch_en_beleidsmatig_kader
           type: text
         - id: wetsartikelen
-          label: Wetsartikelen
           type: text
       min_rows: 1
     links: []
@@ -318,19 +300,14 @@ tasks:
     table_template:
       headers:
         - id: gegevensverwerking
-          label: Gegevensverwerking
           type: text
         - id: verwerkingsdoeleinde
-          label: Verwerkingsdoeleinde
           type: text
         - id: categorie_persoonsgegeven
-          label: Categorie Persoonsgegevens
           type: text
         - id: bewaartermijn
-          label: Bewaartermijn/archiveringsperiode
           type: text
         - id: motivatie
-          label: Motivatie bewaartermijn
           type: text
       min_rows: 1
     links: []
@@ -347,10 +324,8 @@ tasks:
     table_template:
       headers:
         - id: gegevensverwerking
-          label: Gegevensverwerking
           type: text
         - id: rechtsgrond
-          label: Rechtsgrond
           type: select
           options:
             - Toestemming
@@ -359,8 +334,7 @@ tasks:
             - Noodzakelijk om de vitale belangen te beschermen
             - Noodzakelijk voor de vervulling van een taak van algemeen belang
             - Noodzakelijk voor de behartiging van een gerechtvaardigd belang
-        - id: toelichting
-          label: Toelichting op de rechtsgrond
+        - id: toelichting_rechtsgrond
           type: text
       min_rows: 1
     links: []
@@ -378,15 +352,11 @@ tasks:
     type:
       - table_input
     table_template:
-      headers:
         - id: gegevensverwerking
-          label: Gegevensverwerking
           type: text
-        - id: categorie
-          label: Categorie betrokkenen & persoonsgegevens
+        - id: categorieen_betrokkenen_en_persoonsgegevens
           type: text
-        - id: type_bijzonder
-          label: Type bijzonder persoonsgegeven
+        - id: type_bijzonder_persoonsgegeven
           type: select
           options:
             - Ras of etnische afkomst
@@ -400,7 +370,6 @@ tasks:
             - Strafrechtelijke gegevens
             - Nationaal identificatienummer
         - id: uitzonderingsgrond
-          label: Uitzonderingsgrond
           type: text
       min_rows: 1
     links: []
@@ -420,16 +389,13 @@ tasks:
     table_template:
       headers:
         - id: gegevensverwerking
-          label: Gegevensverwerking
+
           type: text
-        - id: persoonsgegevens
-          label: Categorieën betrokkenen & persoonsgegevens
+        - id: categorieen_betrokkenen_en_persoonsgegevenspersoonsgegevens
           type: text
         - id: doeleinde
-          label: Doeleinde
           type: text
         - id: oorspronkelijk_doeleinde
-          label: Oorspronkelijk doeleinde
           type: text
       min_rows: 1
     links: []
@@ -460,8 +426,7 @@ tasks:
       - table_input
     table_template:
       headers:
-        - id: recht
-          label: Rechten van de betrokkene
+        - id: rechten_van_betrokkkene
           type: select
           options:
             - Recht van inzage
@@ -474,21 +439,18 @@ tasks:
               besluitvorming
             - Recht om bezwaar te maken
             - Recht op duidelijke informatie
-        - id: procedure
-          label: Procedure ter uitvoering
+        - id: procedure_ter_uitvoering
           type: select
           options:
             - ja
             - nee
             - nvt
-        - id: beperking
-          label: Beperking op grond van wettelijke uitzondering
+        - id: beperking_op_grond_van_wettelijke_uitzondering
           type: select
           options:
             - ja
             - nvt
-        - id: toelichting
-          label: Beperking toelichting
+        - id: beperking_toelichting
           type: text
       min_rows: 8
     links: []
@@ -507,13 +469,10 @@ tasks:
     table_template:
       headers:
         - id: beschrijving_risico
-          label: Beschrijving risico
           type: text
         - id: oorsprong
-          label: Oorsprong
           type: text
-        - id: kans
-          label: Kans (en motivatie)
+        - id: kans_en_motivatie
           type: select
           options:
             - laag
@@ -522,8 +481,7 @@ tasks:
           glossary_references:
             - term_id: kans
               context: risk_component
-        - id: impact
-          label: Impact (en motivatie)
+        - id: impact_en_motivatie
           type: select
           options:
             - laag
@@ -532,8 +490,7 @@ tasks:
           glossary_references:
             - term_id: impact
               context: risk_component
-        - id: risico_inschatting
-          label: Risico-inschatting (en motivatie)
+        - id: risico_inschatting_en_motivatie
           type: select
           options:
             - laag
@@ -557,23 +514,18 @@ tasks:
     table_template:
       headers:
         - id: risico
-          label: Risico
           type: text
         - id: oorsprong
-          label: Oorsprong
           type: text
         - id: maatregelen
-          label: Maatregelen
           type: text
-        - id: resterend_risico
-          label: Resterend risico en risico-inschatting
+        - id: resterend_risico_en_risico_inschatting
           type: select
           options:
             - laag
             - midden
             - hoog
-        - id: beheerder
-          label: Beheerder van maatregelen
+        - id: beheerder_van_maatregelen
           type: text
       min_rows: 1
     links: []
@@ -589,17 +541,13 @@ tasks:
       - table_input
     table_template:
       headers:
-        - id: organisatie
-          label: 'Organisatie, directie, afdeling verwerkingsverantwoordelijke(n)'
+        - id: organisatie_directie_afdeling_verwerkingsverantwoordelijken
           type: text
-        - id: naam
-          label: Naam verwerkingsverantwoordelijke(n)
+        - id: naam_verwerkingsverantwoordelijken
           type: text
-        - id: functie
-          label: Functie verwerkingsverantwoordelijke(n)
+        - id: functie_verwerkingsverantwoordelijken
           type: text
-        - id: datum
-          label: Datum ondertekening
+        - id: datum_ondertekening
           type: date
       min_rows: 1
     links: []
