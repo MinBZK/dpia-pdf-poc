@@ -14,6 +14,31 @@
   ],
   "date": "2023-07-25",
   "url": "https://www.rijksoverheid.nl/dpia",
+  "glossary": {
+    "terms": [
+      {
+        "id": "advies_fg",
+        "name": "Advies FG",
+        "definition": "Een beschrijving van wat de functionaris voor gegevensbescherming van een verwerkingsverantwoordelijke die de DPIA opstelt heeft geadviseerd, en wat met dat advies is gedaan.",
+        "related_terms": ["functionaris_voor_gegevensbescherming", "verwerkingsverantwoordelijke", "dpia"],
+        "category": "DPIA - 00. Algemeen"
+      },
+      {
+        "id": "afdeling",
+        "name": "Afdeling",
+        "definition": "Een organisatorische eenheid als onderdeel van de afdelingshiërarchie van een organisatie.",
+        "related_terms": ["organisatorische_eenheid"],
+        "category": "DPIA - 00. Algemeen"
+      },
+      {
+        "id": "dpia",
+        "name": "DPIA",
+        "definition": "Een instrument om van een organisatorische activiteit, waarbij persoonsgegevens worden verwerkt, de risico's voor betrokkenen in kaart te brengen en te beoordelen in hoeverre de huidige maatregelen voldoen en welke aanvullende maatregelen genomen moeten worden.",
+        "related_terms": ["organisatorische_activiteit", "persoonsgegevens", "risicos_voor_betrokkenen", "maatregelen"],
+        "category": "DPIA - 00. Algemeen"
+      }
+    ]
+  },
   "tasks": [
     {
       "question": "Beschrijf het voorstel waar de DPIA op toeziet op hoofdlijnen en benoem hoe het voorstel tot stand is gekomen en wat de beweegredenen zijn achter de totstandkoming van het voorstel.",
@@ -57,6 +82,20 @@
         }
       ],
       "type": ["table_input"],
+      "glossary_references": [
+        {
+          "term_id": "persoonsgegeven",
+          "context": "main_concept"
+        },
+        {
+          "term_id": "bijzonder_persoonsgegeven",
+          "context": "classification"
+        },
+        {
+          "term_id": "gevoelig_persoonsgegeven",
+          "context": "classification"
+        }
+      ],
       "table_template": {
         "headers": [
           {
@@ -296,7 +335,7 @@
     },
     {
       "question": "Beschrijf alle belangen die de betrokken partijen hebben bij de gegevensverwerkingen.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:belangen",
+      "urn": "urn:nl:aivt:tr:dpia:7.0:belangen",
       "labels": [
         {
           "key": "section",
@@ -339,7 +378,7 @@
     },
     {
       "question": "Benoem in welke landen de gegevensverwerkingen plaatsvinden. Beschrijf het doorgiftemechanisme dat van toepassing is wanneer verwerkingslocaties zich buiten de Europese Economische Ruimte bevinden.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:verwerkingslocaties",
+      "urn": "urn:nl:aivt:tr:dpia:8.0:verwerkingslocaties",
       "labels": [
         {
           "key": "section",
@@ -399,7 +438,7 @@
     },
     {
       "question": "Benoem alle wet- en regelgeving en beleid met mogelijke gevolgen voor de gegevensverwerkingen.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:juridisch_kader",
+      "urn": "urn:nl:aivt:tr:dpia:9.0:juridisch_kader",
       "labels": [
         {
           "key": "section",
@@ -447,7 +486,7 @@
     },
     {
       "question": "Bepaal de bewaartermijnen van de persoonsgegevens aan de hand van de gegevensverwerkingen en de verwerkingsdoeleinden.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:bewaartermijnen",
+      "urn": "urn:nl:aivt:tr:dpia:10.0:bewaartermijnen",
       "labels": [
         {
           "key": "section",
@@ -505,7 +544,7 @@
     },
     {
       "question": "Bepaal op welke rechtsgronden de gegevensverwerkingen worden gebaseerd.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:rechtsgrond",
+      "urn": "urn:nl:aivt:tr:dpia:11.0:rechtsgrond",
       "labels": [
         {
           "key": "section",
@@ -561,7 +600,7 @@
     },
     {
       "question": "Het verwerken van bijzondere of strafrechtelijke persoonsgegevens is in principe verboden. Beoordeel of een van de wettelijke uitzonderingen op het verwerkingsverbod van toepassing is.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:bijzondere_gegevens",
+      "urn": "urn:nl:aivt:tr:dpia:12.0:bijzondere_gegevens",
       "labels": [
         {
           "key": "section",
@@ -626,7 +665,7 @@
     },
     {
       "question": "Als de persoonsgegevens voor een ander doeleinde worden verwerkt dan het doeleinde waarvoor de persoonsgegevens oorspronkelijk zijn verzameld, beoordeel of deze verdere verwerking verenigbaar is.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:doelbinding",
+      "urn": "urn:nl:aivt:tr:dpia:13.0:doelbinding",
       "labels": [
         {
           "key": "section",
@@ -679,7 +718,7 @@
     },
     {
       "question": "Beoordeel of de voorgenomen gegevensverwerkingen noodzakelijk en evenredig zijn voor het verwezenlijken van de verwerkingsdoeleinden.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:noodzaak_evenredigheid",
+      "urn": "urn:nl:aivt:tr:dpia:14.0:noodzaak_evenredigheid",
       "labels": [
         {
           "key": "section",
@@ -707,7 +746,7 @@
     },
     {
       "question": "Beschrijf de procedure waarmee invulling wordt gegeven aan de rechten van de betrokkene.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:rechten_betrokkenen",
+      "urn": "urn:nl:aivt:tr:dpia:15.0:rechten_betrokkenen",
       "labels": [
         {
           "key": "section",
@@ -772,7 +811,7 @@
     },
     {
       "question": "Beschrijf en beoordeel de risico's van de gegevensverwerkingen voor de rechten en vrijheden van betrokkenen.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:risicos",
+      "urn": "urn:nl:aivt:tr:dpia:16.0:risicos",
       "labels": [
         {
           "key": "section",
@@ -833,7 +872,7 @@
     },
     {
       "question": "Beoordeel welke technische, organisatorische en juridische maatregelen in redelijkheid kunnen worden getroffen om de hiervoor beschreven risico's te voorkomen of te verminderen.",
-      "urn": "urn:nl:aivt:tr:dpia:3.0:maatregelen",
+      "urn": "urn:nl:aivt:tr:dpia:17.0:maatregelen",
       "labels": [
         {
           "key": "section",
