@@ -14,7 +14,8 @@ date: '2023-07-25'
 url: 'https://www.rijksoverheid.nl/dpia'
 glossary:
   terms:
-    - id: advies_fg
+    - question:
+          id: advies_fg
       name: Advies FG
       definition: >-
         Een beschrijving van wat de functionaris voor gegevensbescherming van
@@ -25,7 +26,8 @@ glossary:
         - verwerkingsverantwoordelijke
         - dpia
       category: DPIA - 00. Algemeen
-    - id: afdeling
+    - question:
+          id: afdeling
       name: Afdeling
       definition: >-
         Een organisatorische eenheid als onderdeel van de afdelingshiërarchie
@@ -33,7 +35,8 @@ glossary:
       related_terms:
         - organisatorische_eenheid
       category: DPIA - 00. Algemeen
-    - id: dpia
+    - question:
+          id: dpia
       name: DPIA
       definition: >-
         Een instrument om van een organisatorische activiteit, waarbij
@@ -136,14 +139,17 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - id: gegevensverwerking
+        - question:
+          id: gegevensverwerking
           type: text
           glossary_references:
             - term_id: gegevensverwerking
               context: process_description
-        - id: categorieen_persoonsgegevens
+          repeatable: true 
+        - question:
+          id: categorieen_persoonsgegevens
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -170,14 +176,16 @@ tasks:
   - question: Beschrijf de doeleinden van alle gegevensverwerkingen.
     urn: 'urn:nl:aivt:tr:dpia:5.0:verwerkingsdoeleinden'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: gegevensverwerking
+      - subquestion_group
+    subquestions:
+        - question:
+          id: gegevensverwerking
           type: text
-        - id: verwerkingsdoeleinde
+          repeatable: true 
+        - question:
+          id: verwerkingsdoeleinde
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -190,12 +198,14 @@ tasks:
       gegevensverwerking.
     urn: 'urn:nl:aivt:tr:dpia:6.0:betrokkenPartijen'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: naam_partij
+      - subquestion_group
+    subquestions:
+        - question:
+          id: naam_partij
           type: text
-        - id: rol_partij
+          repeatable: true 
+        - question:
+          id: rol_partij
           type: select
           options:
             - verwerkingsverantwoordelijke
@@ -206,11 +216,15 @@ tasks:
             - ontvanger
             - betrokkene
             - derde
-        - id: functies_afdelingen
+          repeatable: true 
+        - question:
+          id: functies_afdelingen
           type: text
-        - id: categorieen_betrokkenen_en_persoonsgegevens
+          repeatable: true 
+        - question:
+          id: categorieen_betrokkenen_en_persoonsgegevens
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -223,14 +237,16 @@ tasks:
       gegevensverwerkingen.
     urn: 'urn:nl:aivt:tr:dpia:7.0:belangen'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: betrokken_partij
+      - subquestion_group
+    subquestions:
+        - question:
+          id: betrokken_partij
           type: text
-        - id: belangen_uitkomst_consultatie_betrokkkene
+          repeatable: true 
+        - question:
+          id: belangen_uitkomst_consultatie_betrokkkene
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -244,14 +260,18 @@ tasks:
       buiten de Europese Economische Ruimte bevinden.
     urn: 'urn:nl:aivt:tr:dpia:8.0:verwerkingslocaties'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: gegevensverwerkingen
+      - subquestion_group
+    subquestions:
+        - question:
+          id: gegevensverwerkingen
           type: text
-        - id: verwerkingslocaties
+          repeatable: true 
+        - question:
+          id: verwerkingslocaties
           type: text
-        - id: doorgiftemechanisme
+          repeatable: true 
+        - question:
+          id: doorgiftemechanisme
           type: select
           options:
             - Adequaatheidsbesluit
@@ -259,9 +279,11 @@ tasks:
             - Standaard contractsbepalingen (SCC)
             - Artikel 49 AVG uitzondering
             - Niet van toepassing (binnen EER)
-        - id: maatregelen
+          repeatable: true 
+        - question:
+          id: maatregelen
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -274,16 +296,20 @@ tasks:
       gegevensverwerkingen.
     urn: 'urn:nl:aivt:tr:dpia:9.0:juridischKader'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: gegevensverwerkingen
+      - subquestion_group
+    subquestions:
+        - question:
+          id: gegevensverwerkingen
           type: text
-        - id: juridisch_en_beleidsmatig_kader
+          repeatable: true 
+        - question:
+          id: juridisch_en_beleidsmatig_kader
           type: text
-        - id: wetsartikelen
+          repeatable: true 
+        - question:
+          id: wetsartikelen
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -296,20 +322,28 @@ tasks:
       gegevensverwerkingen en de verwerkingsdoeleinden.
     urn: 'urn:nl:aivt:tr:dpia:10.0:bewaartermijnen'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: gegevensverwerking
+      - subquestion_group
+    subquestions:
+        - question:
+          id: gegevensverwerking
           type: text
-        - id: verwerkingsdoeleinde
+          repeatable: true 
+        - question:
+          id: verwerkingsdoeleinde
           type: text
-        - id: categorie_persoonsgegeven
+          repeatable: true 
+        - question:
+          id: categorie_persoonsgegeven
           type: text
-        - id: bewaartermijn
+          repeatable: true 
+        - question:
+          id: bewaartermijn
           type: text
-        - id: motivatie
+          repeatable: true 
+        - question:
+          id: motivatie
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -320,12 +354,14 @@ tasks:
   - question: Bepaal op welke rechtsgronden de gegevensverwerkingen worden gebaseerd.
     urn: 'urn:nl:aivt:tr:dpia:11.0:rechtsgrond'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: gegevensverwerking
+      - subquestion_group
+    subquestions:
+        - question:
+          id: gegevensverwerking
           type: text
-        - id: rechtsgrond
+          repeatable: true 
+        - question:
+          id: rechtsgrond
           type: select
           options:
             - Toestemming
@@ -334,9 +370,11 @@ tasks:
             - Noodzakelijk om de vitale belangen te beschermen
             - Noodzakelijk voor de vervulling van een taak van algemeen belang
             - Noodzakelijk voor de behartiging van een gerechtvaardigd belang
-        - id: toelichting_rechtsgrond
+          repeatable: true 
+        - question:
+          id: toelichting_rechtsgrond
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -350,13 +388,18 @@ tasks:
       het verwerkingsverbod van toepassing is.
     urn: 'urn:nl:aivt:tr:dpia:12.0:bijzondereGegevens'
     type:
-      - table_input
-    table_template:
-        - id: gegevensverwerking
+      - subquestion_group
+    subquestions:
+        - question:
+          id: gegevensverwerking
           type: text
-        - id: categorieen_betrokkenen_en_persoonsgegevens
+          repeatable: true 
+        - question:
+          id: categorieen_betrokkenen_en_persoonsgegevens
           type: text
-        - id: type_bijzonder_persoonsgegeven
+          repeatable: true 
+        - question:
+          id: type_bijzonder_persoonsgegeven
           type: select
           options:
             - Ras of etnische afkomst
@@ -369,9 +412,11 @@ tasks:
             - Seksuele gerichtheid
             - Strafrechtelijke gegevens
             - Nationaal identificatienummer
-        - id: uitzonderingsgrond
+          repeatable: true 
+        - question:
+          id: uitzonderingsgrond
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -385,19 +430,24 @@ tasks:
       beoordeel of deze verdere verwerking verenigbaar is.
     urn: 'urn:nl:aivt:tr:dpia:13.0:doelbinding'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: gegevensverwerking
-
+      - subquestion_group
+    subquestions:
+        - question:
+          id: gegevensverwerking
           type: text
-        - id: categorieen_betrokkenen_en_persoonsgegevenspersoonsgegevens
+          repeatable: true 
+        - question:
+          id: categorieen_betrokkenen_en_persoonsgegevenspersoonsgegevens
           type: text
-        - id: doeleinde
+          repeatable: true 
+        - question:
+          id: doeleinde
           type: text
-        - id: oorspronkelijk_doeleinde
+          repeatable: true 
+        - question:
+          id: oorspronkelijk_doeleinde
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -423,10 +473,10 @@ tasks:
       de betrokkene.
     urn: 'urn:nl:aivt:tr:dpia:15.0:rechtenBetrokkenen'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: rechten_van_betrokkkene
+      - subquestion_group
+    subquestions:
+        - question:
+          id: rechten_van_betrokkkene
           type: select
           options:
             - Recht van inzage
@@ -439,20 +489,26 @@ tasks:
               besluitvorming
             - Recht om bezwaar te maken
             - Recht op duidelijke informatie
-        - id: procedure_ter_uitvoering
+          repeatable: true 
+        - question:
+          id: procedure_ter_uitvoering
           type: select
           options:
             - ja
             - nee
             - nvt
-        - id: beperking_op_grond_van_wettelijke_uitzondering
+          repeatable: true 
+        - question:
+          id: beperking_op_grond_van_wettelijke_uitzondering
           type: select
           options:
             - ja
             - nvt
-        - id: beperking_toelichting
+          repeatable: true 
+        - question:
+          id: beperking_toelichting
           type: text
-      min_rows: 8
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -465,14 +521,18 @@ tasks:
       rechten en vrijheden van betrokkenen.
     urn: 'urn:nl:aivt:tr:dpia:16.0:risicos'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: beschrijving_risico
+      - subquestion_group
+    subquestions:
+        - question:
+          id: beschrijving_risico
           type: text
-        - id: oorsprong
+          repeatable: true 
+        - question:
+          id: oorsprong
           type: text
-        - id: kans_en_motivatie
+          repeatable: true 
+        - question:
+          id: kans_en_motivatie
           type: select
           options:
             - laag
@@ -481,7 +541,9 @@ tasks:
           glossary_references:
             - term_id: kans
               context: risk_component
-        - id: impact_en_motivatie
+          repeatable: true 
+        - question:
+          id: impact_en_motivatie
           type: select
           options:
             - laag
@@ -490,13 +552,15 @@ tasks:
           glossary_references:
             - term_id: impact
               context: risk_component
-        - id: risico_inschatting_en_motivatie
+          repeatable: true 
+        - question:
+          id: risico_inschatting_en_motivatie
           type: select
           options:
             - laag
             - midden
             - hoog
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -510,24 +574,32 @@ tasks:
       voorkomen of te verminderen.
     urn: 'urn:nl:aivt:tr:dpia:17.0:maatregelen'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: risico
+      - subquestion_group
+    subquestions:
+        - question:
+          id: risico
           type: text
-        - id: oorsprong
+          repeatable: true 
+        - question:
+          id: oorsprong
           type: text
-        - id: maatregelen
+          repeatable: true 
+        - question:
+          id: maatregelen
           type: text
-        - id: resterend_risico_en_risico_inschatting
+          repeatable: true 
+        - question:
+          id: resterend_risico_en_risico_inschatting
           type: select
           options:
             - laag
             - midden
             - hoog
-        - id: beheerder_van_maatregelen
+          repeatable: true 
+        - question:
+          id: beheerder_van_maatregelen
           type: text
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -538,18 +610,24 @@ tasks:
   - question: Ondertekening van de DPIA door de verwerkingsverantwoordelijke(n).
     urn: 'urn:nl:aivt:tr:dpia:3.0:ondertekening'
     type:
-      - table_input
-    table_template:
-      headers:
-        - id: organisatie_directie_afdeling_verwerkingsverantwoordelijken
+      - subquestion_group
+    subquestions:
+        - question:
+          id: organisatie_directie_afdeling_verwerkingsverantwoordelijken
           type: text
-        - id: naam_verwerkingsverantwoordelijken
+          repeatable: true 
+        - question:
+          id: naam_verwerkingsverantwoordelijken
           type: text
-        - id: functie_verwerkingsverantwoordelijken
+          repeatable: true 
+        - question:
+          id: functie_verwerkingsverantwoordelijken
           type: text
-        - id: datum_ondertekening
+          repeatable: true 
+        - question:
+          id: datum_ondertekening
           type: date
-      min_rows: 1
+          repeatable: true 
     links: []
     required_status: true
     template:
