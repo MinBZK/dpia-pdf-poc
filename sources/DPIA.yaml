@@ -54,12 +54,6 @@ tasks:
     urn: 'urn:nl:aivt:tr:dpia:1.0:voorstel'
     type:
       - open_question
-    suggested_roles:
-      - Projectleider
-      - Opdrachtgever
-      - Behoeftesteller
-    lifecycle:
-      - Probleemanalyse
     links: []
     required_status: true
     template:
@@ -74,7 +68,8 @@ tasks:
       persoonsgegevens.
     urn: 'urn:nl:aivt:tr:dpia:2.0:persoonsgegevens'
     type:
-      - table_input
+      - subquestion_group
+      - open_question
     glossary_references:
       - term_id: persoonsgegeven
         context: main_concept
@@ -82,23 +77,25 @@ tasks:
         context: classification
       - term_id: gevoelig_persoonsgegeven
         context: classification
-    table_template:
-      headers:
-        - id: categorie_betrokkene
-          label: Categorie betrokkene
+    subquestions:
+        - question: Wat is de categorie betrokkene?
+          id: categorie_betrokkene
           type: text
           glossary_references:
             - term_id: betrokkene
               context: category
-        - id: categorie_persoonsgegeven
-          label: Categorie persoonsgegeven
+          repeatable: true 
+        - question: Wat is de categorie persoonsgegevens?
+          id: categorie_persoonsgegeven
           type: text
           glossary_references:
             - term_id: persoonsgegeven
               context: category
+
         - id: persoonsgegeven
           label: Persoonsgegevens
           type: text
+          repeatable: true 
         - id: type_persoonsgegeven
           label: Type persoonsgegeven
           type: select
@@ -108,22 +105,18 @@ tasks:
             - bijzonder
             - strafrechtelijk
             - identificatie-nummer
+          repeatable: true 
         - id: bron
           label: Bron
           type: select
           options:
             - rechtstreeks bij betrokkene
             - via betrokken partij
+          repeatable: true 
         - id: oorspronkelijk_verwerkingsdoeleinde
           label: Oorspronkelijk verwerkingsdoeleinde
           type: text
-      min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Data engineer
-      - Informatie analist
-    lifecycle:
-      - Dataverkenning en datapreparatie
+          repeatable: true 
     links: []
     required_status: true
     template:
@@ -154,12 +147,6 @@ tasks:
           label: Categorieën betrokkenen & persoonsgegevens
           type: text
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Data engineer
-    lifecycle:
-      - Dataverkenning en datapreparatie
-      - Ontwikkelen
     links: []
     required_status: true
     template:
@@ -176,13 +163,6 @@ tasks:
     urn: 'urn:nl:aivt:tr:dpia:4.0:technieken'
     type:
       - open_question
-    suggested_roles:
-      - Data engineer
-      - Data scientist
-      - Security officer
-    lifecycle:
-      - Ontwikkelen
-      - Implementatie
     links: []
     required_status: true
     template:
@@ -203,13 +183,6 @@ tasks:
           label: Verwerkingsdoeleinde
           type: text
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Jurist
-      - Proceseigenaar
-    lifecycle:
-      - Probleemanalyse
-      - Ontwerp
     links: []
     required_status: true
     template:
@@ -247,13 +220,6 @@ tasks:
           label: Categorieën betrokkenen & persoonsgegevens
           type: text
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Projectleider
-      - Contractbeheerder
-    lifecycle:
-      - Ontwerp
-      - Implementatie
     links: []
     required_status: true
     template:
@@ -276,13 +242,6 @@ tasks:
           label: 'Belangen, uitkomst consultatie betrokkene'
           type: text
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Jurist
-      - Ethicus
-    lifecycle:
-      - Probleemanalyse
-      - Ontwerp
     links: []
     required_status: true
     template:
@@ -318,13 +277,6 @@ tasks:
           label: Maatregelen
           type: text
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Jurist
-      - Security officer
-    lifecycle:
-      - Ontwerp
-      - Implementatie
     links: []
     required_status: true
     template:
@@ -350,12 +302,6 @@ tasks:
           label: Wetsartikelen
           type: text
       min_rows: 1
-    suggested_roles:
-      - Jurist
-      - Privacy-officer
-    lifecycle:
-      - Probleemanalyse
-      - Ontwerp
     links: []
     required_status: true
     template:
@@ -387,13 +333,6 @@ tasks:
           label: Motivatie bewaartermijn
           type: text
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Archiefdeskundige
-      - Informatiebeheerder
-    lifecycle:
-      - Ontwerp
-      - Implementatie
     links: []
     required_status: true
     template:
@@ -424,12 +363,6 @@ tasks:
           label: Toelichting op de rechtsgrond
           type: text
       min_rows: 1
-    suggested_roles:
-      - Jurist
-      - Privacy-officer
-    lifecycle:
-      - Probleemanalyse
-      - Ontwerp
     links: []
     required_status: true
     template:
@@ -470,12 +403,6 @@ tasks:
           label: Uitzonderingsgrond
           type: text
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Jurist
-    lifecycle:
-      - Ontwerp
-      - Implementatie
     links: []
     required_status: true
     template:
@@ -505,12 +432,6 @@ tasks:
           label: Oorspronkelijk doeleinde
           type: text
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Jurist
-    lifecycle:
-      - Ontwerp
-      - Implementatie
     links: []
     required_status: true
     template:
@@ -524,12 +445,6 @@ tasks:
     urn: 'urn:nl:aivt:tr:dpia:14.0:noodzaakEvenredigheid'
     type:
       - open_question
-    suggested_roles:
-      - Privacy-officer
-      - Jurist
-      - Ethicus
-    lifecycle:
-      - Ontwerp
     links: []
     required_status: true
     template:
@@ -576,12 +491,6 @@ tasks:
           label: Beperking toelichting
           type: text
       min_rows: 8
-    suggested_roles:
-      - Privacy-officer
-      - Jurist
-    lifecycle:
-      - Ontwerp
-      - Implementatie
     links: []
     required_status: true
     template:
@@ -631,11 +540,6 @@ tasks:
             - midden
             - hoog
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Security officer
-    lifecycle:
-      - Verificatie en validatie
     links: []
     required_status: true
     template:
@@ -672,12 +576,6 @@ tasks:
           label: Beheerder van maatregelen
           type: text
       min_rows: 1
-    suggested_roles:
-      - Privacy-officer
-      - Security officer
-    lifecycle:
-      - Verificatie en validatie
-      - Implementatie
     links: []
     required_status: true
     template:
@@ -704,10 +602,6 @@ tasks:
           label: Datum ondertekening
           type: date
       min_rows: 1
-    suggested_roles:
-      - Gemandateerd verantwoordelijke(n)
-    lifecycle:
-      - Verificatie en validatie
     links: []
     required_status: true
     template:
