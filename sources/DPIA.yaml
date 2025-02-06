@@ -43,16 +43,6 @@
     {
       "question": "Beschrijf het voorstel waar de DPIA op toeziet op hoofdlijnen en benoem hoe het voorstel tot stand is gekomen en wat de beweegredenen zijn achter de totstandkoming van het voorstel.",
       "urn": "urn:nl:aivt:tr:dpia:1.0:voorstel",
-      "labels": [
-        {
-          "key": "section",
-          "value": "1"
-        },
-        {
-          "key": "title",
-          "value": "Voorstel"
-        }
-      ],
       "type": ["open_question"],
       "suggested_roles": ["Projectleider", "Opdrachtgever", "Behoeftesteller"],
       "lifecycle": ["Probleemanalyse"],
@@ -71,16 +61,6 @@
     {
       "question": "Beschrijf alle persoonsgegevens die worden verwerkt. Classificeer deze persoonsgegevens naar: gewoon, gevoelig, bijzonder, strafrechtelijk en wettelijk identificatienummer en geef aan wat de bron is van deze persoonsgegevens.",
       "urn": "urn:nl:aivt:tr:dpia:2.0:persoonsgegevens",
-      "labels": [
-        {
-          "key": "section",
-          "value": "2"
-        },
-        {
-          "key": "title",
-          "value": "Persoonsgegevens"
-        }
-      ],
       "type": ["table_input"],
       "glossary_references": [
         {
@@ -159,16 +139,6 @@
     {
       "question": "Geef alle gegevensverwerkingen weer en geef aan welke persoonsgegevens van welke categorieën betrokkenen worden verwerkt per gegevensverwerking.",
       "urn": "urn:nl:aivt:tr:dpia:3.0:gegevensverwerkingen",
-      "labels": [
-        {
-          "key": "section",
-          "value": "3"
-        },
-        {
-          "key": "title",
-          "value": "Gegevensverwerkingen"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -202,16 +172,6 @@
     {
       "question": "Beschrijf op welke wijze en met gebruikmaking van welke (technische) middelen en methoden de persoonsgegevens worden verwerkt. Benoem, in het bijzonder, of sprake is van (semi-) geautomatiseerde besluitvorming, profilering, een cloudoplossing, kunstmatige intelligentie en algoritmen of big data-verwerkingen.",
       "urn": "urn:nl:aivt:tr:dpia:4.0:technieken",
-      "labels": [
-        {
-          "key": "section", 
-          "value": "4"
-        },
-        {
-          "key": "title",
-          "value": "Technieken en methoden"
-        }
-      ],
       "type": ["open_question"],
       "suggested_roles": ["Data engineer", "Data scientist", "Security officer"],
       "lifecycle": ["Ontwikkelen", "Implementatie"],
@@ -230,16 +190,6 @@
     {
       "question": "Beschrijf de doeleinden van alle gegevensverwerkingen.",
       "urn": "urn:nl:aivt:tr:dpia:5.0:verwerkingsdoeleinden",
-      "labels": [
-        {
-          "key": "section",
-          "value": "5"
-        },
-        {
-          "key": "title",
-          "value": "Verwerkingsdoeleinden"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -273,16 +223,6 @@
     {
       "question": "Benoem alle partijen die betrokken zijn en deel deze in per gegevensverwerking.",
       "urn": "urn:nl:aivt:tr:dpia:6.0:betrokken_partijen",
-      "labels": [
-        {
-          "key": "section",
-          "value": "6"
-        },
-        {
-          "key": "title",
-          "value": "Betrokken partijen"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -336,16 +276,6 @@
     {
       "question": "Beschrijf alle belangen die de betrokken partijen hebben bij de gegevensverwerkingen.",
       "urn": "urn:nl:aivt:tr:dpia:7.0:belangen",
-      "labels": [
-        {
-          "key": "section",
-          "value": "7"
-        },
-        {
-          "key": "title",
-          "value": "Belangen bij de gegevensverwerkingen"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -379,16 +309,6 @@
     {
       "question": "Benoem in welke landen de gegevensverwerkingen plaatsvinden. Beschrijf het doorgiftemechanisme dat van toepassing is wanneer verwerkingslocaties zich buiten de Europese Economische Ruimte bevinden.",
       "urn": "urn:nl:aivt:tr:dpia:8.0:verwerkingslocaties",
-      "labels": [
-        {
-          "key": "section",
-          "value": "8"
-        },
-        {
-          "key": "title",
-          "value": "Verwerkingslocaties"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -439,16 +359,6 @@
     {
       "question": "Benoem alle wet- en regelgeving en beleid met mogelijke gevolgen voor de gegevensverwerkingen.",
       "urn": "urn:nl:aivt:tr:dpia:9.0:juridisch_kader",
-      "labels": [
-        {
-          "key": "section",
-          "value": "9"
-        },
-        {
-          "key": "title",
-          "value": "Juridisch en beleidsmatig kader"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -487,16 +397,6 @@
     {
       "question": "Bepaal de bewaartermijnen van de persoonsgegevens aan de hand van de gegevensverwerkingen en de verwerkingsdoeleinden.",
       "urn": "urn:nl:aivt:tr:dpia:10.0:bewaartermijnen",
-      "labels": [
-        {
-          "key": "section",
-          "value": "10"
-        },
-        {
-          "key": "title",
-          "value": "Bewaartermijnen"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -545,16 +445,6 @@
     {
       "question": "Bepaal op welke rechtsgronden de gegevensverwerkingen worden gebaseerd.",
       "urn": "urn:nl:aivt:tr:dpia:11.0:rechtsgrond",
-      "labels": [
-        {
-          "key": "section",
-          "value": "11"
-        },
-        {
-          "key": "title",
-          "value": "Rechtsgrond"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -601,16 +491,6 @@
     {
       "question": "Het verwerken van bijzondere of strafrechtelijke persoonsgegevens is in principe verboden. Beoordeel of een van de wettelijke uitzonderingen op het verwerkingsverbod van toepassing is.",
       "urn": "urn:nl:aivt:tr:dpia:12.0:bijzondere_gegevens",
-      "labels": [
-        {
-          "key": "section",
-          "value": "12"
-        },
-        {
-          "key": "title",
-          "value": "Bijzondere persoonsgegevens"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -666,16 +546,6 @@
     {
       "question": "Als de persoonsgegevens voor een ander doeleinde worden verwerkt dan het doeleinde waarvoor de persoonsgegevens oorspronkelijk zijn verzameld, beoordeel of deze verdere verwerking verenigbaar is.",
       "urn": "urn:nl:aivt:tr:dpia:13.0:doelbinding",
-      "labels": [
-        {
-          "key": "section",
-          "value": "13"
-        },
-        {
-          "key": "title",
-          "value": "Doelbinding"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -719,16 +589,6 @@
     {
       "question": "Beoordeel of de voorgenomen gegevensverwerkingen noodzakelijk en evenredig zijn voor het verwezenlijken van de verwerkingsdoeleinden.",
       "urn": "urn:nl:aivt:tr:dpia:14.0:noodzaak_evenredigheid",
-      "labels": [
-        {
-          "key": "section",
-          "value": "14"
-        },
-        {
-          "key": "title",
-          "value": "Noodzaak en evenredigheid"
-        }
-      ],
       "type": ["open_question"],
       "suggested_roles": ["Privacy-officer", "Jurist", "Ethicus"],
       "lifecycle": ["Ontwerp"],
@@ -747,16 +607,6 @@
     {
       "question": "Beschrijf de procedure waarmee invulling wordt gegeven aan de rechten van de betrokkene.",
       "urn": "urn:nl:aivt:tr:dpia:15.0:rechten_betrokkenen",
-      "labels": [
-        {
-          "key": "section",
-          "value": "15"
-        },
-        {
-          "key": "title",
-          "value": "Rechten van de betrokkene"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -812,16 +662,6 @@
     {
       "question": "Beschrijf en beoordeel de risico's van de gegevensverwerkingen voor de rechten en vrijheden van betrokkenen.",
       "urn": "urn:nl:aivt:tr:dpia:16.0:risicos",
-      "labels": [
-        {
-          "key": "section",
-          "value": "16"
-        },
-        {
-          "key": "title",
-          "value": "Risico's voor betrokkenen"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -839,13 +679,25 @@
             "id": "kans",
             "label": "Kans (en motivatie)",
             "type": "select",
-            "options": ["laag", "midden", "hoog"]
+            "options": ["laag", "midden", "hoog"],
+            "glossary_references": [
+              {
+                "term_id": "kans",
+                "context": "risk_component"
+              }
+            ]
           },
           {
             "id": "impact",
             "label": "Impact (en motivatie)",
             "type": "select",
-            "options": ["laag", "midden", "hoog"]
+            "options": ["laag", "midden", "hoog"],
+            "glossary_references": [
+              {
+                "term_id": "impact",
+                "context": "risk_component"
+              }
+            ]
           },
           {
             "id": "risico_inschatting",
@@ -873,16 +725,6 @@
     {
       "question": "Beoordeel welke technische, organisatorische en juridische maatregelen in redelijkheid kunnen worden getroffen om de hiervoor beschreven risico's te voorkomen of te verminderen.",
       "urn": "urn:nl:aivt:tr:dpia:17.0:maatregelen",
-      "labels": [
-        {
-          "key": "section",
-          "value": "17"
-        },
-        {
-          "key": "title",
-          "value": "Maatregelen"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [
@@ -937,16 +779,6 @@
     {
       "question": "Ondertekening van de DPIA door de verwerkingsverantwoordelijke(n).",
       "urn": "urn:nl:aivt:tr:dpia:3.0:ondertekening",
-      "labels": [
-        {
-          "key": "section",
-          "value": "18"
-        },
-        {
-          "key": "title",
-          "value": "Ondertekening"
-        }
-      ],
       "type": ["table_input"],
       "table_template": {
         "headers": [

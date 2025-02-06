@@ -321,7 +321,6 @@
           },
           "required": [
             "urn",
-            "labels",
             "type",
             "suggested_roles",
             "lifecycle",
