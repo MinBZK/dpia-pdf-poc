@@ -91,13 +91,13 @@ tasks:
           glossary_references:
             - term_id: persoonsgegeven
               context: category
-
-        - id: persoonsgegeven
-          label: Persoonsgegevens
+          repeatable: true
+        - question: Wat is de persoonsgegeven?
+          id: persoonsgegeven
           type: text
           repeatable: true 
-        - id: type_persoonsgegeven
-          label: Type persoonsgegeven
+        - question: Wat is het type persoonsgegeven?
+          id: type_persoonsgegeven
           type: select
           options:
             - gewoon
@@ -106,15 +106,15 @@ tasks:
             - strafrechtelijk
             - identificatie-nummer
           repeatable: true 
-        - id: bron
-          label: Bron
+        - question: Wat is de bron? 
+          id: bron
           type: select
           options:
             - rechtstreeks bij betrokkene
             - via betrokken partij
           repeatable: true 
-        - id: oorspronkelijk_verwerkingsdoeleinde
-          label: Oorspronkelijk verwerkingsdoeleinde
+        - question: Wat is het oorspronkelijke verwerkingsdoeleinde?
+          id: oorspronkelijk_verwerkingsdoeleinde
           type: text
           repeatable: true 
     links: []
