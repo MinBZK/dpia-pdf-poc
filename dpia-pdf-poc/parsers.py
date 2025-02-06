@@ -44,7 +44,7 @@ class FormParser:
         )
 
     @classmethod
-    def parse_form_definition(cls, form_definitions: Iterable[dict[str, Any]]) -> list[FormComponent]:  # noqa
+    def parse_form_definition(cls, form_definitions: Iterable[dict[str, Any]]) -> list[FormComponent]:
         """Parse the complete form definition"""
         return [
             cls.parse_component(component)
@@ -91,7 +91,7 @@ class StepParser:
         )
 
     @classmethod
-    def parse_form_definition(cls, form_steps: Iterable[dict[str, Any]]) -> list[Step]:  # noqa
+    def parse_form_definition(cls, form_steps: Iterable[dict[str, Any]]) -> list[Step]:
         """Parse the complete form definition"""
 
         return [
