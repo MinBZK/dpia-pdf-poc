@@ -110,6 +110,9 @@
           "question": {
             "type": "string"
           },
+          "explanation": {
+            "type": "string"
+          },
           "urn": {
             "type": "string",
             "pattern": "^urn:nl:aivt:tr:[a-z]+:[0-9]+\\.[0-9]+:[0-9A-Za-z\\.]+$"
@@ -144,7 +147,7 @@
                 "statement",
                 "requirement",
                 "measure",
-                "table_input"
+                "subquestion_group"
               ]
             }
           },
@@ -154,6 +157,9 @@
               "type": "object",
               "properties": {
                 "question": {
+                  "type": "string"
+                },
+                "explanation": {
                   "type": "string"
                 },
                 "id": {
@@ -170,8 +176,7 @@
                   }
                 },
                 "repeatable": {
-                  "type": "boolean",
-                  "const": true
+                  "type": "boolean"
                 },
                 "glossary_references": {
                   "type": "array",
@@ -189,7 +194,7 @@
                   }
                 }
               },
-              "required": ["question", "id", "type"]
+              "required": ["question", "id", "type", "repeatable"]
             }
           },
           "glossary_references": {

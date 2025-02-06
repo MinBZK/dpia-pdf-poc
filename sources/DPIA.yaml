@@ -14,8 +14,7 @@ date: '2023-07-25'
 url: 'https://www.rijksoverheid.nl/dpia'
 glossary:
   terms:
-    - question:
-          id: advies_fg
+    - id: advies_fg
       name: Advies FG
       definition: >-
         Een beschrijving van wat de functionaris voor gegevensbescherming van
@@ -26,8 +25,7 @@ glossary:
         - verwerkingsverantwoordelijke
         - dpia
       category: DPIA - 00. Algemeen
-    - question:
-          id: afdeling
+    - id: afdeling
       name: Afdeling
       definition: >-
         Een organisatorische eenheid als onderdeel van de afdelingshiërarchie
@@ -35,8 +33,7 @@ glossary:
       related_terms:
         - organisatorische_eenheid
       category: DPIA - 00. Algemeen
-    - question:
-          id: dpia
+    - id: dpia
       name: DPIA
       definition: >-
         Een instrument om van een organisatorische activiteit, waarbij
@@ -139,17 +136,17 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
-          id: gegevensverwerking
-          type: text
-          glossary_references:
-            - term_id: gegevensverwerking
-              context: process_description
-          repeatable: true 
-        - question:
-          id: categorieen_persoonsgegevens
-          type: text
-          repeatable: true 
+      - question: Wat is de gegevensverwerking?
+        id: gegevensverwerking
+        type: text
+        glossary_references:
+          - term_id: gegevensverwerking
+            context: process_description
+        repeatable: true 
+      - question: Wat is de categorie persoonsgegeven?
+        id: categorieen_persoonsgegevens
+        type: text
+        repeatable: true 
     links: []
     required_status: true
     template:
@@ -178,14 +175,14 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
-          id: gegevensverwerking
-          type: text
-          repeatable: true 
-        - question:
-          id: verwerkingsdoeleinde
-          type: text
-          repeatable: true 
+      - question: Wat is de gegevensverwerking?
+        id: gegevensverwerking
+        type: text
+        repeatable: true 
+      - question: Wat is het verwerkingsdoeleinde?
+        id: verwerkingsdoeleinde
+        type: text
+        repeatable: true 
     links: []
     required_status: true
     template:
@@ -200,11 +197,11 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is de naam van de partij? 
           id: naam_partij
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de rol van de paritj? 
           id: rol_partij
           type: select
           options:
@@ -217,11 +214,11 @@ tasks:
             - betrokkene
             - derde
           repeatable: true 
-        - question:
+        - question: Wat zijn de functies/afdelingen?
           id: functies_afdelingen
           type: text
           repeatable: true 
-        - question:
+        - question: Wat zijn de categorieen betrokkenen & persoonsgegevens?
           id: categorieen_betrokkenen_en_persoonsgegevens
           type: text
           repeatable: true 
@@ -239,11 +236,11 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is de betrokken partij?
           id: betrokken_partij
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is het belang, uitkomst consultatie betrokkene?
           id: belangen_uitkomst_consultatie_betrokkkene
           type: text
           repeatable: true 
@@ -262,15 +259,15 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is de gegevensverwerking?
           id: gegevensverwerkingen
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de verwerkingslocatie?
           id: verwerkingslocaties
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is het doorgiftemechanisme?
           id: doorgiftemechanisme
           type: select
           options:
@@ -280,7 +277,7 @@ tasks:
             - Artikel 49 AVG uitzondering
             - Niet van toepassing (binnen EER)
           repeatable: true 
-        - question:
+        - question: Wat zijn de maatregelen?
           id: maatregelen
           type: text
           repeatable: true 
@@ -298,15 +295,15 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is de gegevensverwerking?
           id: gegevensverwerkingen
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is het juridisch en/of beleidsmatig kader?
           id: juridisch_en_beleidsmatig_kader
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is het wetsartikel?
           id: wetsartikelen
           type: text
           repeatable: true 
@@ -324,24 +321,24 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is de gegevensverwerking? 
           id: gegevensverwerking
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is het verwerkingsdoeleinde?
           id: verwerkingsdoeleinde
           type: text
           repeatable: true 
-        - question:
-          id: categorie_persoonsgegeven
+        - question: Wat is de categorie betrokkene & persoonsgegevens?
+          id: categorieen_betrokkenen_en_persoonsgegevens
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is het bewaartermijn/archiveringsperiode??
           id: bewaartermijn
           type: text
           repeatable: true 
-        - question:
-          id: motivatie
+        - question: Wat is de motivatie voor de bewaartermijn? 
+          id: motivatie_bewaartermijn
           type: text
           repeatable: true 
     links: []
@@ -356,11 +353,11 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is de gegevensverwerking?
           id: gegevensverwerking
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de rechsgrond? 
           id: rechtsgrond
           type: select
           options:
@@ -371,7 +368,7 @@ tasks:
             - Noodzakelijk voor de vervulling van een taak van algemeen belang
             - Noodzakelijk voor de behartiging van een gerechtvaardigd belang
           repeatable: true 
-        - question:
+        - question: Wat is de toelichting op de rechtsgrond? 
           id: toelichting_rechtsgrond
           type: text
           repeatable: true 
@@ -390,15 +387,15 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is de gegevensverwerking? 
           id: gegevensverwerking
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de categorie betrokkene & persoonsgegevens? 
           id: categorieen_betrokkenen_en_persoonsgegevens
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is het type bijzonder persoonsgegevens? 
           id: type_bijzonder_persoonsgegeven
           type: select
           options:
@@ -413,8 +410,12 @@ tasks:
             - Strafrechtelijke gegevens
             - Nationaal identificatienummer
           repeatable: true 
-        - question:
+        - question: Wat is de uitzonderingsgrond? 
           id: uitzonderingsgrond
+          type: text
+          repeatable: true 
+        - question: Wat is de doorbrekingsgrond? 
+          id: doorbrekingsgrond
           type: text
           repeatable: true 
     links: []
@@ -432,19 +433,19 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is de gegevensverwerking? 
           id: gegevensverwerking
           type: text
           repeatable: true 
-        - question:
-          id: categorieen_betrokkenen_en_persoonsgegevenspersoonsgegevens
+        - question: Wat is de categorie betrokkene & persoonsgegevens?
+          id: categorieen_betrokkenen_en_persoonsgegevens
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is het doeleinde? 
           id: doeleinde
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is het oorspronkelijke doeleinde? 
           id: oorspronkelijk_doeleinde
           type: text
           repeatable: true 
@@ -458,9 +459,22 @@ tasks:
   - question: >-
       Beoordeel of de voorgenomen gegevensverwerkingen noodzakelijk en evenredig
       zijn voor het verwezenlijken van de verwerkingsdoeleinden.
+    explanation: >-
+      Ga hierbij in ieder geval in op:
+      Subsidiariteit (en daarmee ook noodzaak): kunnen de verwerkingsdoeleinden in redelijkheid niet op een andere, voor de betrokkenen minder nadelige wijze, worden verwezenlijkt?
+      Proportionaliteit (ook wel evenredigheid): staat de inbreuk op de persoonlijke levenssfeer en de bescherming van de persoonsgegevens van de betrokkenen in evenredige verhouding tot de verwerkingsdoeleinden?
     urn: 'urn:nl:aivt:tr:dpia:14.0:noodzaakEvenredigheid'
     type:
-      - open_question
+      - subquestion_group
+    subquestions:
+        - question: Wat is de beoordeling van de subsidiariteit? 
+          id: subsidiariteit
+          type: text
+          repeatable: true
+        - question: Wat is de beoordeling van de proportionaliteit? 
+          id: proportionaliteit
+          type: text
+          repeatable: true
     links: []
     required_status: true
     template:
@@ -475,7 +489,7 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is het recht van de betrokkene?
           id: rechten_van_betrokkkene
           type: select
           options:
@@ -490,7 +504,7 @@ tasks:
             - Recht om bezwaar te maken
             - Recht op duidelijke informatie
           repeatable: true 
-        - question:
+        - question: Wat is de procedure ter uitvoering? 
           id: procedure_ter_uitvoering
           type: select
           options:
@@ -498,14 +512,14 @@ tasks:
             - nee
             - nvt
           repeatable: true 
-        - question:
+        - question: Wat is de beperking op grond van wettelijke uitzondering? 
           id: beperking_op_grond_van_wettelijke_uitzondering
           type: select
           options:
             - ja
             - nvt
           repeatable: true 
-        - question:
+        - question: Wat is de toelichting van de beperking? 
           id: beperking_toelichting
           type: text
           repeatable: true 
@@ -523,15 +537,15 @@ tasks:
     type:
       - subquestion_group
     subquestions:
-        - question:
+        - question: Wat is de beschrijving van het risico? 
           id: beschrijving_risico
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de oorsprong? 
           id: oorsprong
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de kans (en motivatie)?
           id: kans_en_motivatie
           type: select
           options:
@@ -542,7 +556,7 @@ tasks:
             - term_id: kans
               context: risk_component
           repeatable: true 
-        - question:
+        - question: Wat is de impact (en motivatie)?
           id: impact_en_motivatie
           type: select
           options:
@@ -553,8 +567,8 @@ tasks:
             - term_id: impact
               context: risk_component
           repeatable: true 
-        - question:
-          id: risico_inschatting_en_motivatie
+        - question: Wat is de risicoinschatting (en motivatie)?
+          id: risicoinschatting_en_motivatie
           type: select
           options:
             - laag
@@ -572,31 +586,35 @@ tasks:
       Beoordeel welke technische, organisatorische en juridische maatregelen in
       redelijkheid kunnen worden getroffen om de hiervoor beschreven risico's te
       voorkomen of te verminderen.
+    explanation: >-
+      Beschrijf ook de resterende risico’s die nog aanwezig zijn na de uitvoering en/of implementatie van de geïdentificeerde maatregelen. Geef per resterend risico aan wat het niveau is van dit risico. 
+      Geef tot slot een conclusie over de restrisico’s. Zijn deze acceptabel? En is er een voorafgaande raadpleging bij de Autoriteit Persoonsgegevens nodig? 
     urn: 'urn:nl:aivt:tr:dpia:17.0:maatregelen'
     type:
       - subquestion_group
+      - open_question
     subquestions:
-        - question:
+        - question: Wat is het risico?
           id: risico
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de oorsprong?
           id: oorsprong
           type: text
           repeatable: true 
-        - question:
+        - question: Wat zijn de maatregelen? 
           id: maatregelen
           type: text
           repeatable: true 
-        - question:
-          id: resterend_risico_en_risico_inschatting
+        - question: Wat is het resterend risico en de risicoinschatting? 
+          id: resterend_risico_en_risicoinschatting
           type: select
           options:
             - laag
             - midden
             - hoog
           repeatable: true 
-        - question:
+        - question: Wat/wie is de beheerder van de maatregelen?
           id: beheerder_van_maatregelen
           type: text
           repeatable: true 
@@ -611,20 +629,21 @@ tasks:
     urn: 'urn:nl:aivt:tr:dpia:3.0:ondertekening'
     type:
       - subquestion_group
+      - sign_task
     subquestions:
-        - question:
+        - question: Wat is de organisatie, directie, afdeling verwerkingsverantwoordelijke(n)?
           id: organisatie_directie_afdeling_verwerkingsverantwoordelijken
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de naam van de verwerkingsverantwoordelijke(n)? 
           id: naam_verwerkingsverantwoordelijken
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de functie van de verwerkingsverantwoordelijke(n)? 
           id: functie_verwerkingsverantwoordelijken
           type: text
           repeatable: true 
-        - question:
+        - question: Wat is de datum van de ondertekening/ 
           id: datum_ondertekening
           type: date
           repeatable: true 
