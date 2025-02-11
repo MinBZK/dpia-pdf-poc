@@ -3,7 +3,7 @@ name: DPIA Rapportagemodel Rijksdienst
 description: >-
   Data Protection Impact Assessment template following Dutch government model
   version 3.0
-urn: 'urn:nl:aivt:tr:dpia:3.0'
+urn: 'urn:nl:dpia:3.0:3.0'
 language: nl
 owners:
   - organization: Ministerie van BZK
@@ -12,198 +12,189 @@ owners:
     role: Privacy Officer
 date: '2023-07-25'
 url: 'https://www.rijksoverheid.nl/dpia'
-glossary:
-  terms:
-    - id: advies_fg
-      name: Advies FG
-      definition: >-
-        Een beschrijving van wat de functionaris voor gegevensbescherming van
-        een verwerkingsverantwoordelijke die de DPIA opstelt heeft geadviseerd,
-        en wat met dat advies is gedaan.
-      related_terms:
-        - functionaris_voor_gegevensbescherming
-        - verwerkingsverantwoordelijke
-        - dpia
-      category: DPIA - 00. Algemeen
-    - id: afdeling
-      name: Afdeling
-      definition: >-
-        Een organisatorische eenheid als onderdeel van de afdelingshiërarchie
-        van een organisatie.
-      related_terms:
-        - organisatorische_eenheid
-      category: DPIA - 00. Algemeen
-    - id: dpia
-      name: DPIA
-      definition: >-
-        Een instrument om van een organisatorische activiteit, waarbij
-        persoonsgegevens worden verwerkt, de risico's voor betrokkenen in kaart
-        te brengen en te beoordelen in hoeverre de huidige maatregelen voldoen
-        en welke aanvullende maatregelen genomen moeten worden.
-      related_terms:
-        - organisatorische_activiteit
-        - persoonsgegevens
-        - risicos_voor_betrokkenen
-        - maatregelen
-      category: DPIA - 00. Algemeen
 tasks:
-  - question: >-
+  - task: >-
       Beschrijf het voorstel waar de DPIA op toeziet op hoofdlijnen en benoem
       hoe het voorstel tot stand is gekomen en wat de beweegredenen zijn achter
       de totstandkoming van het voorstel.
-    urn: 'urn:nl:aivt:tr:dpia:1.0:voorstel'
+    urn: urn:nl:dpia:3.0:1.0
+    glossary_references:
+        - voorstel
     type:
-      - open_question
+        - open_text
     links: []
-    required_status: true
+    repeatable: false
     template:
       authors:
         - name: $AUTHOR.NAME
           email: $AUTHOR.EMAIL
           role: $AUTHOR.ROLE
-  - question: >-
-      Beschrijf alle persoonsgegevens die worden verwerkt. Classificeer deze
-      persoonsgegevens naar: gewoon, gevoelig, bijzonder, strafrechtelijk en
-      wettelijk identificatienummer en geef aan wat de bron is van deze
-      persoonsgegevens.
-    urn: 'urn:nl:aivt:tr:dpia:2.0:persoonsgegevens'
+  - task: >-
+        Beschrijf alle persoonsgegevens die worden verwerkt. Classificeer deze
+        persoonsgegevens naar: gewoon, gevoelig, bijzonder, strafrechtelijk en
+        wettelijk identificatienummer en geef aan wat de bron is van deze
+        persoonsgegevens.
+    urn: urn:nl:dpia:3.0:2.0
     type:
-      - subquestion_group
-      - open_question
+        - task_group
     glossary_references:
-      - term_id: persoonsgegeven
-        context: main_concept
-      - term_id: bijzonder_persoonsgegeven
-        context: classification
-      - term_id: gevoelig_persoonsgegeven
-        context: classification
-    subquestions:
-        - question: Wat is de categorie betrokkene?
-          id: categorie_betrokkene
-          type: text
+        - persoonsgegeven
+        - bijzonder_persoonsgegeven
+        - gevoelig_persoonsgegeven
+    tasks:
+        - task: Categorie betrokkene
+          urn: urn:nl:dpia:3.0:2.0:1.0
+          type: 
+            - open_text
           glossary_references:
-            - term_id: betrokkene
-              context: category
-          repeatable: true 
-        - question: Wat is de categorie persoonsgegevens?
-          id: categorie_persoonsgegeven
-          type: text
-          glossary_references:
-            - term_id: persoonsgegeven
-              context: category
+            - categorie_betrokkene
           repeatable: true
-        - question: Wat is de persoonsgegeven?
-          id: persoonsgegeven
-          type: text
-          repeatable: true 
-        - question: Wat is het type persoonsgegeven?
-          id: type_persoonsgegeven
-          type: select
+        - task: Categorie persoonsgegevens
+          urn: urn:nl:dpia:3.0:2.0:2.0
+          type: 
+            - open_text
+          glossary_references:
+            - categorie_persoonsgegevens
+          repeatable: true
+        - task: Persoonsgegeven
+          urn: urn:nl:dpia:3.0:2.0:3.0
+          type: 
+            - open_text
+          repeatable: true
+        - task: Type persoonsgegeven
+          urn: urn:nl:dpia:3.0:2.0:4.0
+          type: 
+            - select_option
           options:
             - gewoon
             - gevoelig
             - bijzonder
             - strafrechtelijk
             - identificatie-nummer
-          repeatable: true 
-        - question: Wat is de bron? 
-          id: bron
-          type: select
+          repeatable: true
+        - task: Bron
+          urn: urn:nl:dpia:3.0:2.0:5.0
+          type: 
+            - select_option
           options:
             - rechtstreeks bij betrokkene
             - via betrokken partij
-          repeatable: true 
-        - question: Wat is het oorspronkelijke verwerkingsdoeleinde?
-          id: oorspronkelijk_verwerkingsdoeleinde
-          type: text
-          repeatable: true 
+          repeatable: true
+        - task: Oorspronkelijke verwerkingsdoeleinde
+          urn: urn:nl:dpia:3.0:2.0:6.0
+          type: 
+            - open_text
+          repeatable: true
     links: []
-    required_status: true
+    repeatable: true
     template:
       authors:
         - name: $AUTHOR.NAME
           email: $AUTHOR.EMAIL
           role: $AUTHOR.ROLE
-  - question: >-
-      Geef alle gegevensverwerkingen weer en geef aan welke persoonsgegevens van
-      welke categorieën betrokkenen worden verwerkt per gegevensverwerking.
-    urn: 'urn:nl:aivt:tr:dpia:3.0:gegevensverwerkingen'
+
+  - task: >-
+        Geef alle gegevensverwerkingen weer en geef aan welke persoonsgegevens van
+        welke categorieën betrokkenen worden verwerkt per gegevensverwerking.
+    urn: urn:nl:dpia:3.0:3.0
     glossary_references:
-      - term_id: gegevensverwerking
-        context: main_concept
-      - term_id: persoonsgegeven
-        context: processed_data
+        - gegevensverwerking
+        - persoonsgegeven
     type:
-      - subquestion_group
-    subquestions:
-      - question: Wat is de gegevensverwerking?
-        id: gegevensverwerking
-        type: text
-        glossary_references:
-          - term_id: gegevensverwerking
-            context: process_description
-        repeatable: true 
-      - question: Wat is de categorie persoonsgegeven?
-        id: categorieen_persoonsgegevens
-        type: text
-        repeatable: true 
+        - task_group
+    tasks:
+        - task: Gegevensverwerking
+          urn: urn:nl:dpia:3.0:3.0:1.0
+          type: 
+            - open_text
+          glossary_references:
+            - gegevensverwerking
+          repeatable: true
+        - task: Categorie persoonsgegeven
+          urn: urn:nl:dpia:3.0:3.0:2.0
+          type: 
+            - open_text
+          glossary_references:
+            - categorie_gegevensverwerking
+          repeatable: true
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
       authors:
         - name: $AUTHOR.NAME
           email: $AUTHOR.EMAIL
           role: $AUTHOR.ROLE
-  - question: >-
+  - task: >-
       Beschrijf op welke wijze en met gebruikmaking van welke (technische)
       middelen en methoden de persoonsgegevens worden verwerkt. Benoem, in het
       bijzonder, of sprake is van (semi-) geautomatiseerde besluitvorming,
       profilering, een cloudoplossing, kunstmatige intelligentie en algoritmen
       of big data-verwerkingen.
-    urn: 'urn:nl:aivt:tr:dpia:4.0:technieken'
+    urn: urn:nl:dpia:3.0:4.0
+    glossary_references:
+    - technieken
     type:
-      - open_question
+      - open_text
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
       authors:
         - name: $AUTHOR.NAME
           email: $AUTHOR.EMAIL
           role: $AUTHOR.ROLE
-  - question: Beschrijf de doeleinden van alle gegevensverwerkingen.
-    urn: 'urn:nl:aivt:tr:dpia:5.0:verwerkingsdoeleinden'
+  - task: Beschrijf de doeleinden van alle gegevensverwerkingen.
+    urn: urn:nl:dpia:3.0:5.0
+    glossary_references:
+        - verwerkingsdoeleinden
     type:
-      - subquestion_group
-    subquestions:
-      - question: Wat is de gegevensverwerking?
-        id: gegevensverwerking
-        type: text
-        repeatable: true 
-      - question: Wat is het verwerkingsdoeleinde?
-        id: verwerkingsdoeleinde
-        type: text
-        repeatable: true 
+        - task_group
+    tasks:
+        - task: Gegevensverwerking
+          urn: urn:nl:dpia:3.0:5.0:1.0
+          glossary_references:
+            - gegevensverwerking
+          type: 
+            - open_text
+          repeatable: true
+        - task: Verwerkingsdoeleinde
+          urn: urn:nl:dpia:3.0:5.0:2.0
+          glossary_references:
+            - verwerkingsdoeleinde
+          type: 
+            - open_text
+          repeatable: true
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
       authors:
         - name: $AUTHOR.NAME
           email: $AUTHOR.EMAIL
           role: $AUTHOR.ROLE
-  - question: >-
+  - task: >-
       Benoem alle partijen die betrokken zijn en deel deze in per
       gegevensverwerking.
-    urn: 'urn:nl:aivt:tr:dpia:6.0:betrokkenPartijen'
+    urn: urn:nl:dpia:3.0:6.0
+    glossary_references:
+      - betrokken_partij
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de naam van de partij? 
-          id: naam_partij
-          type: text
+      - task_group
+    tasks:
+        - task: Naam van de partij
+          urn: urn:nl:dpia:3.0:6.0:1.0
+          glossary_references:
+            - naam_partij
+          type: 
+            - open_text
           repeatable: true 
-        - question: Wat is de rol van de paritj? 
-          id: rol_partij
-          type: select
+        - task: Rol van de partij
+          urn: urn:nl:dpia:3.0:6.0:2.0
+          glossary_references:
+            - rol_partij
+          type: 
+            - select_option
           options:
             - verwerkingsverantwoordelijke
             - gezamenlijke verwerkingsverantwoordelijke
@@ -214,62 +205,87 @@ tasks:
             - betrokkene
             - derde
           repeatable: true 
-        - question: Wat zijn de functies/afdelingen?
-          id: functies_afdelingen
-          type: text
+        - task: Functies/afdelingen
+          urn: urn:nl:dpia:3.0:6.0:3.0
+          glossary_references:
+            - functies_afdelingen
+          type: 
+            - open_text
           repeatable: true 
-        - question: Wat zijn de categorieen betrokkenen & persoonsgegevens?
-          id: categorieen_betrokkenen_en_persoonsgegevens
-          type: text
+        - task: Categorieen betrokkenen & persoonsgegevens
+          urn: urn:nl:dpia:3.0:6.0:4.0
+          glossary_references: 
+            - categorie_betrokkenen_en_persoonsgegevens
+          type: 
+            - open_text
           repeatable: true 
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
       authors:
         - name: $AUTHOR.NAME
           email: $AUTHOR.EMAIL
           role: $AUTHOR.ROLE
-  - question: >-
+  - task: >-
       Beschrijf alle belangen die de betrokken partijen hebben bij de
       gegevensverwerkingen.
-    urn: 'urn:nl:aivt:tr:dpia:7.0:belangen'
+    urn: urn:nl:dpia:3.0:7.0
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de betrokken partij?
-          id: betrokken_partij
-          type: text
+      - task_group
+    tasks:
+        - task: Betrokken partij
+          urn: urn:nl:dpia:3.0:7.0:1.0
+          glossary_references:
+            - betrokken_partij
+          type: 
+            - open_text
           repeatable: true 
-        - question: Wat is het belang, uitkomst consultatie betrokkene?
-          id: belangen_uitkomst_consultatie_betrokkkene
-          type: text
+        - task: Belang, uitkomst consultatie betrokkene
+          urn: urn:nl:dpia:3.0:7.0:2.0
+          glossary_references:
+           - belangen_uitkomst_consultatie_betrokkkene
+          type: 
+            - open_text
           repeatable: true 
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
       authors:
         - name: $AUTHOR.NAME
           email: $AUTHOR.EMAIL
           role: $AUTHOR.ROLE
-  - question: >-
+  - task: >-
       Benoem in welke landen de gegevensverwerkingen plaatsvinden. Beschrijf het
       doorgiftemechanisme dat van toepassing is wanneer verwerkingslocaties zich
       buiten de Europese Economische Ruimte bevinden.
-    urn: 'urn:nl:aivt:tr:dpia:8.0:verwerkingslocaties'
+    urn: urn:nl:dpia:3.0:8.0
+    glossary_references:
+      - verwerkingslocaties
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de gegevensverwerking?
-          id: gegevensverwerkingen
-          type: text
+      - task_group
+    tasks:
+        - task: Gegevensverwerking
+          urn: urn:nl:dpia:3.0:8.0:1.0
+          glossary_references:
+            - gegevensverwerking
+          type: 
+            - open_text
           repeatable: true 
-        - question: Wat is de verwerkingslocatie?
-          id: verwerkingslocaties
-          type: text
+        - task: Verwerkingslocatie
+          urn: urn:nl:dpia:3.0:8.0:2.0
+          glossary_references:
+            - verwerkingslocatie
+          type: 
+            - open_text
           repeatable: true 
-        - question: Wat is het doorgiftemechanisme?
-          id: doorgiftemechanisme
-          type: select
+        - task: Doorgiftemechanisme
+          urn: urn:nl:dpia:3.0:8.0:3.0
+          glossary_references:
+            - doorgiftemechanisme
+          type: 
+            - select_option
           options:
             - Adequaatheidsbesluit
             - Binding Corporate Rules (BCR)
@@ -277,89 +293,126 @@ tasks:
             - Artikel 49 AVG uitzondering
             - Niet van toepassing (binnen EER)
           repeatable: true 
-        - question: Wat zijn de maatregelen?
-          id: maatregelen
-          type: text
+        - task: Maatregelen
+          urn: urn:nl:dpia:3.0:8.0:3.0
+          glossary_references:
+            - maatregelen
+          type: 
+            - open_text
           repeatable: true 
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
       authors:
         - name: $AUTHOR.NAME
           email: $AUTHOR.EMAIL
           role: $AUTHOR.ROLE
-  - question: >-
+  - task: >-
       Benoem alle wet- en regelgeving en beleid met mogelijke gevolgen voor de
       gegevensverwerkingen.
-    urn: 'urn:nl:aivt:tr:dpia:9.0:juridischKader'
+    urn: urn:nl:dpia:3.0:9.0
+    glossary_references:
+        - juridisch_en_beleidsmatigkader
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de gegevensverwerking?
-          id: gegevensverwerkingen
-          type: text
+      - task_group
+    tasks:
+        - task: Gegevensverwerking
+          urn: urn:nl:dpia:3.0:9.0:1.0
+          glossary_references:
+            - gegevensverwerking
+          type: 
+            - open_text
           repeatable: true 
-        - question: Wat is het juridisch en/of beleidsmatig kader?
-          id: juridisch_en_beleidsmatig_kader
-          type: text
+        - task: Juridisch en/of beleidsmatig kader
+          urn: urn:nl:dpia:3.0:9.0:2.0
+          glossary_references:
+            - juridisch_en_beleidsmatigkader
+          type: 
+            - open_text
           repeatable: true 
-        - question: Wat is het wetsartikel?
-          id: wetsartikelen
-          type: text
+        - task: Wetsartikelen
+          urn: urn:nl:dpia:3.0:9.0:3.0
+          glossary_references:
+            - wetsartikelen
+          type: 
+            - open_text
           repeatable: true 
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
       authors:
         - name: $AUTHOR.NAME
           email: $AUTHOR.EMAIL
           role: $AUTHOR.ROLE
-  - question: >-
+  - task: >-
       Bepaal de bewaartermijnen van de persoonsgegevens aan de hand van de
       gegevensverwerkingen en de verwerkingsdoeleinden.
-    urn: 'urn:nl:aivt:tr:dpia:10.0:bewaartermijnen'
+    urn: urn:nl:dpia:3.0:10.0
+    glossary_references:
+      - bewaartermijn
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de gegevensverwerking? 
-          id: gegevensverwerking
-          type: text
-          repeatable: true 
-        - question: Wat is het verwerkingsdoeleinde?
-          id: verwerkingsdoeleinde
-          type: text
-          repeatable: true 
-        - question: Wat is de categorie betrokkene & persoonsgegevens?
-          id: categorieen_betrokkenen_en_persoonsgegevens
-          type: text
-          repeatable: true 
-        - question: Wat is het bewaartermijn/archiveringsperiode??
-          id: bewaartermijn
-          type: text
-          repeatable: true 
-        - question: Wat is de motivatie voor de bewaartermijn? 
-          id: motivatie_bewaartermijn
-          type: text
-          repeatable: true 
+        - task_group
+    tasks:
+        - task: Gegevensverwerking
+          urn: urn:nl:dpia:3.0:10.0:1.0
+          glossary_references:
+            - gegevensverwerking
+          type: 
+            - open_text
+          repeatable: true
+        - task: Verwerkingsdoeleinde
+          urn: urn:nl:dpia:3.0:10.0:2.0
+          glossary_references:
+            - verwerkinsdoeleinde
+          type: 
+            - open_text
+          repeatable: true
+        - task: Categorie betrokkene & persoonsgegevens
+          urn: urn:nl:dpia:3.0:10.0:3.0
+          glossary_references:
+            - categorieen_betrokkenen_en_persoonsgegevens
+          type: 
+            - open_text
+          repeatable: true
+        - task: Bewaartermijn/archiveringsperiode
+          urn: urn:nl:dpia:3.0:10.0:4.0
+          type: 
+            - open_text
+          repeatable: true
+        - task: Motivatie voor de bewaartermijn
+          urn: urn:nl:dpia:3.0:10.0:5.0
+          type: 
+            - open_text
+          repeatable: true
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
-      authors:
-        - name: $AUTHOR.NAME
-          email: $AUTHOR.EMAIL
-          role: $AUTHOR.ROLE
-  - question: Bepaal op welke rechtsgronden de gegevensverwerkingen worden gebaseerd.
-    urn: 'urn:nl:aivt:tr:dpia:11.0:rechtsgrond'
+        authors:
+            - name: $AUTHOR.NAME
+              email: $AUTHOR.EMAIL
+              role: $AUTHOR.ROLE
+
+  - task: Bepaal op welke rechtsgronden de gegevensverwerkingen worden gebaseerd.
+    urn: urn:nl:dpia:3.0:11.0
+    glossary_references:
+        - rechtsgrond
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de gegevensverwerking?
-          id: gegevensverwerking
-          type: text
-          repeatable: true 
-        - question: Wat is de rechsgrond? 
-          id: rechtsgrond
-          type: select
+        - task_group
+    tasks:
+        - task: gegevensverwerking
+          urn: urn:nl:dpia:3.0:11.0:1.0
+          glossary_references:
+            - gegevensverwerking
+          type: 
+            - open_text
+          repeatable: true
+        - task: rechtsgrond 
+          urn: urn:nl:dpia:3.0:11.0:2.0
+          type: 
+            - select_option
           options:
             - Toestemming
             - Noodzakelijk voor de uitvoering van de overeenkomst
@@ -367,37 +420,49 @@ tasks:
             - Noodzakelijk om de vitale belangen te beschermen
             - Noodzakelijk voor de vervulling van een taak van algemeen belang
             - Noodzakelijk voor de behartiging van een gerechtvaardigd belang
-          repeatable: true 
-        - question: Wat is de toelichting op de rechtsgrond? 
-          id: toelichting_rechtsgrond
-          type: text
-          repeatable: true 
+          repeatable: true
+        - task: toelichting op de rechtsgrond 
+          urn: urn:nl:dpia:3.0:11.0:3.0
+          type: 
+            - open_text
+          repeatable: true
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
-      authors:
-        - name: $AUTHOR.NAME
-          email: $AUTHOR.EMAIL
-          role: $AUTHOR.ROLE
-  - question: >-
+        authors:
+            - name: $AUTHOR.NAME
+              email: $AUTHOR.EMAIL
+              role: $AUTHOR.ROLE
+
+  - task: >-
       Het verwerken van bijzondere of strafrechtelijke persoonsgegevens is in
       principe verboden. Beoordeel of een van de wettelijke uitzonderingen op
       het verwerkingsverbod van toepassing is.
-    urn: 'urn:nl:aivt:tr:dpia:12.0:bijzondereGegevens'
+    urn: urn:nl:dpia:3.0:12.0
+    glossary_references:
+        - bijzondere_gegevens
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de gegevensverwerking? 
-          id: gegevensverwerking
-          type: text
-          repeatable: true 
-        - question: Wat is de categorie betrokkene & persoonsgegevens? 
-          id: categorieen_betrokkenen_en_persoonsgegevens
-          type: text
-          repeatable: true 
-        - question: Wat is het type bijzonder persoonsgegevens? 
-          id: type_bijzonder_persoonsgegeven
-          type: select
+        - task_group
+    tasks:
+        - task: gegevensverwerking 
+          urn: urn:nl:dpia:3.0:12.0:1.0
+          glossary_references:
+            - gegevensverwerking
+          type: 
+            - open_text
+          repeatable: true
+        - task: categorie betrokkene & persoonsgegevens 
+          urn: urn:nl:dpia:3.0:12.0:2.0
+          glossary_references:
+            - categorieen_betrokkenen_en_persoonsgegevens
+          type: 
+            - open_text
+          repeatable: true
+        - task: type bijzonder persoonsgegevens 
+          urn: urn:nl:dpia:3.0:12.0:3.0
+          type: 
+            - select_option
           options:
             - Ras of etnische afkomst
             - Politieke opvattingen
@@ -409,89 +474,113 @@ tasks:
             - Seksuele gerichtheid
             - Strafrechtelijke gegevens
             - Nationaal identificatienummer
-          repeatable: true 
-        - question: Wat is de uitzonderingsgrond? 
-          id: uitzonderingsgrond
-          type: text
-          repeatable: true 
-        - question: Wat is de doorbrekingsgrond? 
-          id: doorbrekingsgrond
-          type: text
-          repeatable: true 
+          repeatable: true
+        - task: uitzonderingsgrond 
+          urn: urn:nl:dpia:3.0:12.0:4.0
+          type: 
+            - open_text
+          repeatable: true
+        - task: doorbrekingsgrond 
+          urn: urn:nl:dpia:3.0:12.0:5.0
+          type: 
+            - open_text
+          repeatable: true
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
-      authors:
-        - name: $AUTHOR.NAME
-          email: $AUTHOR.EMAIL
-          role: $AUTHOR.ROLE
-  - question: >-
+        authors:
+            - name: $AUTHOR.NAME
+              email: $AUTHOR.EMAIL
+              role: $AUTHOR.ROLE
+
+  - task: >-
       Als de persoonsgegevens voor een ander doeleinde worden verwerkt dan het
       doeleinde waarvoor de persoonsgegevens oorspronkelijk zijn verzameld,
       beoordeel of deze verdere verwerking verenigbaar is.
-    urn: 'urn:nl:aivt:tr:dpia:13.0:doelbinding'
+    urn: urn:nl:dpia:3.0:13.0
+    glossary_references:
+        - doelbinding
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de gegevensverwerking? 
-          id: gegevensverwerking
-          type: text
-          repeatable: true 
-        - question: Wat is de categorie betrokkene & persoonsgegevens?
-          id: categorieen_betrokkenen_en_persoonsgegevens
-          type: text
-          repeatable: true 
-        - question: Wat is het doeleinde? 
-          id: doeleinde
-          type: text
-          repeatable: true 
-        - question: Wat is het oorspronkelijke doeleinde? 
-          id: oorspronkelijk_doeleinde
-          type: text
-          repeatable: true 
+        - task_group
+    tasks:
+        - task: gegevensverwerking 
+          urn: urn:nl:dpia:3.0:13.0:1.0
+          glossary_references:
+            - gegevensverwerking
+          type: 
+            - open_text
+          repeatable: true
+        - task: categorie betrokkene & persoonsgegevens
+          urn: urn:nl:dpia:3.0:13.0:2.0
+          glossary_references:
+            - categorieen_betrokkenen_en_persoonsgegevens
+          type: 
+            - open_text
+          repeatable: true
+        - task: doeleinde 
+          urn: urn:nl:dpia:3.0:13.0:3.0
+          type: 
+            - open_text
+          repeatable: true
+        - task: oorspronkelijke doeleinde 
+          urn: urn:nl:dpia:3.0:13.0:4.0
+          type: 
+            - open_text
+          repeatable: true
     links: []
-    required_status: true
+    
+    repeatable: true
     template:
-      authors:
-        - name: $AUTHOR.NAME
-          email: $AUTHOR.EMAIL
-          role: $AUTHOR.ROLE
-  - question: >-
+        authors:
+            - name: $AUTHOR.NAME
+              email: $AUTHOR.EMAIL
+              role: $AUTHOR.ROLE
+
+  - task: >-
       Beoordeel of de voorgenomen gegevensverwerkingen noodzakelijk en evenredig
       zijn voor het verwezenlijken van de verwerkingsdoeleinden.
     explanation: >-
-      Ga hierbij in ieder geval in op:
-      Subsidiariteit (en daarmee ook noodzaak): kunnen de verwerkingsdoeleinden in redelijkheid niet op een andere, voor de betrokkenen minder nadelige wijze, worden verwezenlijkt?
-      Proportionaliteit (ook wel evenredigheid): staat de inbreuk op de persoonlijke levenssfeer en de bescherming van de persoonsgegevens van de betrokkenen in evenredige verhouding tot de verwerkingsdoeleinden?
-    urn: 'urn:nl:aivt:tr:dpia:14.0:noodzaakEvenredigheid'
+        Ga hierbij in ieder geval in op:
+        Subsidiariteit (en daarmee ook noodzaak): kunnen de verwerkingsdoeleinden in redelijkheid niet op een andere, voor de betrokkenen minder nadelige wijze, worden verwezenlijkt
+        Proportionaliteit (ook wel evenredigheid): staat de inbreuk op de persoonlijke levenssfeer en de bescherming van de persoonsgegevens van de betrokkenen in evenredige verhouding tot de verwerkingsdoeleinden
+    urn: urn:nl:dpia:3.0:14.0
+    glossary_references:
+        - noodzaak_evenredigheid
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de beoordeling van de subsidiariteit? 
-          id: subsidiariteit
-          type: text
+        - task_group
+    tasks:
+        - task: beoordeling van de subsidiariteit 
+          urn: urn:nl:dpia:3.0:14.0:1.0
+          type: 
+            - open_text
           repeatable: true
-        - question: Wat is de beoordeling van de proportionaliteit? 
-          id: proportionaliteit
-          type: text
+        - task: beoordeling van de proportionaliteit 
+          urn: urn:nl:dpia:3.0:14.0:2.0
+          type: 
+            - open_text
           repeatable: true
     links: []
-    required_status: true
+    repeatable: true
     template:
-      authors:
-        - name: $AUTHOR.NAME
-          email: $AUTHOR.EMAIL
-          role: $AUTHOR.ROLE
-  - question: >-
+        authors:
+            - name: $AUTHOR.NAME
+              email: $AUTHOR.EMAIL
+              role: $AUTHOR.ROLE
+
+  - task: >-
       Beschrijf de procedure waarmee invulling wordt gegeven aan de rechten van
       de betrokkene.
-    urn: 'urn:nl:aivt:tr:dpia:15.0:rechtenBetrokkenen'
+    urn: urn:nl:dpia:3.0:15.0
+    glossary_references:
+        - rechten_betrokkenen
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is het recht van de betrokkene?
-          id: rechten_van_betrokkkene
-          type: select
+        - task_group
+    tasks:
+        - task: recht van de betrokkene
+          urn: urn:nl:dpia:3.0:15.0:1.0
+          type: 
+            - select_option
           options:
             - Recht van inzage
             - Recht op rectificatie en aanvulling
@@ -503,154 +592,170 @@ tasks:
               besluitvorming
             - Recht om bezwaar te maken
             - Recht op duidelijke informatie
-          repeatable: true 
-        - question: Wat is de procedure ter uitvoering? 
-          id: procedure_ter_uitvoering
-          type: select
+          repeatable: true
+        - task: procedure ter uitvoering 
+          urn: urn:nl:dpia:3.0:15.0:2.0
+          type: 
+            - select_option
           options:
             - ja
             - nee
             - nvt
-          repeatable: true 
-        - question: Wat is de beperking op grond van wettelijke uitzondering? 
-          id: beperking_op_grond_van_wettelijke_uitzondering
-          type: select
+          repeatable: true
+        - task: beperking op grond van wettelijke uitzondering 
+          urn: urn:nl:dpia:3.0:15.0:3.0
+          type: 
+            - select_option
           options:
             - ja
             - nvt
-          repeatable: true 
-        - question: Wat is de toelichting van de beperking? 
-          id: beperking_toelichting
-          type: text
-          repeatable: true 
+          repeatable: true
+        - task: toelichting van de beperking 
+          urn: urn:nl:dpia:3.0:15.0:4.0
+          type: 
+            - open_text
+          
+          repeatable: true
     links: []
-    required_status: true
+    repeatable: true
     template:
-      authors:
-        - name: $AUTHOR.NAME
-          email: $AUTHOR.EMAIL
-          role: $AUTHOR.ROLE
-  - question: >-
+        authors:
+            - name: $AUTHOR.NAME
+              email: $AUTHOR.EMAIL
+              role: $AUTHOR.ROLE
+  - task: >-
       Beschrijf en beoordeel de risico's van de gegevensverwerkingen voor de
       rechten en vrijheden van betrokkenen.
-    urn: 'urn:nl:aivt:tr:dpia:16.0:risicos'
+    urn: urn:nl:dpia:3.0:16.0
+    glossary_references:
+        - risicos
     type:
-      - subquestion_group
-    subquestions:
-        - question: Wat is de beschrijving van het risico? 
-          id: beschrijving_risico
-          type: text
-          repeatable: true 
-        - question: Wat is de oorsprong? 
-          id: oorsprong
-          type: text
-          repeatable: true 
-        - question: Wat is de kans (en motivatie)?
-          id: kans_en_motivatie
-          type: select
+        - task_group
+    tasks:
+        - task: beschrijving van het risico 
+          urn: urn:nl:dpia:3.0:16.0:1.0
+          type: 
+            - open_text
+          repeatable: true
+        - task: oorsprong 
+          urn: urn:nl:dpia:3.0:16.0:2.0
+          type: 
+            - open_text
+          repeatable: true
+        - task: kans (en motivatie)
+          urn: urn:nl:dpia:3.0:16.0:3.0
+          type: 
+            - select_option
           options:
             - laag
             - midden
             - hoog
           glossary_references:
-            - term_id: kans
-              context: risk_component
-          repeatable: true 
-        - question: Wat is de impact (en motivatie)?
-          id: impact_en_motivatie
-          type: select
+            - kans
+          repeatable: true
+        - task: impact (en motivatie)
+          urn: urn:nl:dpia:3.0:16.0:4.0
+          type: 
+            - select_option
           options:
             - laag
             - midden
             - hoog
           glossary_references:
-            - term_id: impact
-              context: risk_component
-          repeatable: true 
-        - question: Wat is de risicoinschatting (en motivatie)?
-          id: risicoinschatting_en_motivatie
-          type: select
+            - impact
+          repeatable: true
+        - task: risicoinschatting (en motivatie)
+          urn: urn:nl:dpia:3.0:16.0:5.0
+          type: 
+            - select_option
           options:
             - laag
             - midden
             - hoog
-          repeatable: true 
+          repeatable: true
     links: []
-    required_status: true
+    repeatable: true
     template:
-      authors:
-        - name: $AUTHOR.NAME
-          email: $AUTHOR.EMAIL
-          role: $AUTHOR.ROLE
-  - question: >-
+        authors:
+            - name: $AUTHOR.NAME
+              email: $AUTHOR.EMAIL
+              role: $AUTHOR.ROLE
+  - task: >-
       Beoordeel welke technische, organisatorische en juridische maatregelen in
       redelijkheid kunnen worden getroffen om de hiervoor beschreven risico's te
       voorkomen of te verminderen.
     explanation: >-
-      Beschrijf ook de resterende risico’s die nog aanwezig zijn na de uitvoering en/of implementatie van de geïdentificeerde maatregelen. Geef per resterend risico aan wat het niveau is van dit risico. 
-      Geef tot slot een conclusie over de restrisico’s. Zijn deze acceptabel? En is er een voorafgaande raadpleging bij de Autoriteit Persoonsgegevens nodig? 
-    urn: 'urn:nl:aivt:tr:dpia:17.0:maatregelen'
+        Beschrijf ook de resterende risico's die nog aanwezig zijn na de uitvoering en/of implementatie van de geïdentificeerde maatregelen. Geef per resterend risico aan wat het niveau is van dit risico. 
+        Geef tot slot een conclusie over de restrisico's. Zijn deze acceptabel En is er een voorafgaande raadpleging bij de Autoriteit Persoonsgegevens nodig 
+    urn: urn:nl:dpia:3.0:17.0
+    glossary_references:
+        - maatregelen
     type:
-      - subquestion_group
-      - open_question
-    subquestions:
-        - question: Wat is het risico?
-          id: risico
-          type: text
-          repeatable: true 
-        - question: Wat is de oorsprong?
-          id: oorsprong
-          type: text
-          repeatable: true 
-        - question: Wat zijn de maatregelen? 
-          id: maatregelen
-          type: text
-          repeatable: true 
-        - question: Wat is het resterend risico en de risicoinschatting? 
-          id: resterend_risico_en_risicoinschatting
-          type: select
+        - task_group
+    tasks:
+        - task: Risico
+          urn: urn:nl:dpia:3.0:17.0:1.0
+          type: 
+            - open_text
+          repeatable: true
+        - task: Oorsprong
+          urn: urn:nl:dpia:3.0:17.0:2.0
+          type: 
+            - open_text
+          repeatable: true
+        - task: Maatregelen 
+          urn: urn:nl:dpia:3.0:17.0:3.0
+          type: 
+            - open_text
+          repeatable: true
+        - task: Resterend risico en de risicoinschatting 
+          urn: urn:nl:dpia:3.0:17.0:4.0
+          type: 
+            - select_option
           options:
             - laag
             - midden
             - hoog
-          repeatable: true 
-        - question: Wat/wie is de beheerder van de maatregelen?
-          id: beheerder_van_maatregelen
-          type: text
-          repeatable: true 
+          repeatable: true
+        - task: Beheerder van de maatregelen
+          urn: urn:nl:dpia:3.0:17.0:5.0
+          type: 
+            - open_text
+          repeatable: true
     links: []
-    required_status: true
+    repeatable: true
     template:
-      authors:
-        - name: $AUTHOR.NAME
-          email: $AUTHOR.EMAIL
-          role: $AUTHOR.ROLE
-  - question: Ondertekening van de DPIA door de verwerkingsverantwoordelijke(n).
-    urn: 'urn:nl:aivt:tr:dpia:3.0:ondertekening'
-    type:
-      - subquestion_group
-      - sign_task
-    subquestions:
-        - question: Wat is de organisatie, directie, afdeling verwerkingsverantwoordelijke(n)?
-          id: organisatie_directie_afdeling_verwerkingsverantwoordelijken
-          type: text
-          repeatable: true 
-        - question: Wat is de naam van de verwerkingsverantwoordelijke(n)? 
-          id: naam_verwerkingsverantwoordelijken
-          type: text
-          repeatable: true 
-        - question: Wat is de functie van de verwerkingsverantwoordelijke(n)? 
-          id: functie_verwerkingsverantwoordelijken
-          type: text
-          repeatable: true 
-        - question: Wat is de datum van de ondertekening/ 
-          id: datum_ondertekening
-          type: date
-          repeatable: true 
+        authors:
+            - name: $AUTHOR.NAME
+              email: $AUTHOR.EMAIL
+              role: $AUTHOR.ROLE
+
+  - task: Ondertekening van de DPIA door de verwerkingsverantwoordelijke(n).
+    urn: urn:nl:dpia:3.0:18.0
+    glossary_references:
+        - ondertekening
+    type: 
+      - task_group
+    tasks:
+        - task: organisatie, directie, afdeling verwerkingsverantwoordelijke(n)
+          urn: urn:nl:dpia:3.0:18.0:1.0
+          type: 
+            - open_text
+          repeatable: false
+        - task: naam van de verwerkingsverantwoordelijke(n) 
+          urn: urn:nl:dpia:3.0:18.0:2.0
+          type: 
+            - open_text
+          repeatable: false
+        - task: functie van de verwerkingsverantwoordelijke(n) 
+          urn: urn:nl:dpia:3.0:18.0:3.0
+          type: 
+            - open_text
+          repeatable: false
     links: []
-    required_status: true
+    repeatable: true
     template:
-      authors:
-        - name: $AUTHOR.NAME
-          email: $AUTHOR.EMAIL
-          role: $AUTHOR.ROLE
+        authors:
+            - name: $AUTHOR.NAME
+              email: $AUTHOR.EMAIL
+              role: $AUTHOR.ROLE
