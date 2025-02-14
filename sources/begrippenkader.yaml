@@ -1,90 +1,542 @@
 schema_version: "1.0.0"
 name: "Begrippenkader"
-urn: "urn:nl:aivt:tr:bk:1.0"
+urn: "urn:nl:aivt:tr:bk:1.0" 
 language: "nl"
 owners:
   - organization: "Ministerie van BZK"
     name: "CIO Rijk"
     email: "privacy-ciorijk@minbzk.nl"
     role: "Privacy Officer"
-terms:
+glossary:
   - id: "advies_fg"
     name: "Advies FG"
+    category: "00. Algemeen"
     definition: "Een beschrijving van wat de functionaris voor gegevensbescherming van een verwerkingsverantwoordelijke die de DPIA opstelt heeft geadviseerd, en wat met dat advies is gedaan."
-    related_terms:
-      - "functionaris_voor_gegevensbescherming"
-      - "verwerkingsverantwoordelijke"
-      - "dpia"
-    category: "DPIA - 00. Algemeen"
 
   - id: "afdeling"
-    name: "Afdeling"
+    name: "Afdeling" 
+    category: "00. Algemeen"
     definition: "Een organisatorische eenheid als onderdeel van de afdelingshiërarchie van een organisatie."
-    related_terms:
-      - "organisatorische_eenheid"
-    category: "DPIA - 00. Algemeen"
 
   - id: "document"
     name: "Document"
+    category: "00. Algemeen" 
     definition: "Een informatieobject dat eenvoudig kan worden gedeeld met andere partijen, en (ook) voor mensen leesbare tekst bevat."
-    related_terms:
-      - "informatieobject"
-    category: "DPIA - 00. Algemeen"
+
+  - id: "documentbeheerder"
+    name: "Documentbeheerder"
+    category: "00. Algemeen"
+    definition: "Een persoon in een functie die namens een verwerkingsverantwoordelijke die een DPIA opstelt verantwoordelijk is voor de opslag van dat DPIA document."
 
   - id: "dpia"
     name: "DPIA"
-    definition: "Een instrument om van een organisatorische activiteit, waarbij persoonsgegevens worden verwerkt, de risico's voor betrokkenen in kaart te brengen en te beoordelen in hoeverre de huidige maatregelen voldoen en welke aanvullende maatregelen genomen moeten worden."
-    related_terms:
-      - "organisatorische_activiteit"
-      - "persoonsgegevens"
-      - "risicos_voor_betrokkenen"
-      - "maatregelen"
-    category: "DPIA - 00. Algemeen"
+    category: "00. Algemeen"
+    definition: "Een instrument om van een organisatorische activiteit, waarbij persoonsgegevens worden verwerkt, de risico's voor betrokkenen in kaart te brengen en te beoordelen in hoeverre de huidige maatregelen voldoen en welke aanvullende maatregelen genomen moeten worden om de risico's voor betrokkenen zoveel mogelijk te mitigeren."
 
-  - id: "persoonsgegeven"
-    name: "Persoonsgegeven"
-    definition: "Een gegeven over een geïdentificeerde natuurlijke persoon of identificeerbare natuurlijke persoon."
-    related_terms:
-      - "geidentificeerde_natuurlijke_persoon"
-      - "identificeerbare_natuurlijke_persoon"
-    category: "DPIA - 02. Persoonsgegevens"
+  - id: "dpia_dossier"
+    name: "DPIA dossier"
+    category: "00. Algemeen"
+    definition: "Bevat documenten die betrekking hebben op het onderwerp van die DPIA."
 
-  - id: "bijzonder_persoonsgegeven"
-    name: "Bijzonder persoonsgegeven"
-    definition: "Een persoonsgegeven dat in principe verboden is om te verwerken, volgend uit artikel 9, AVG."
-    related_terms:
-      - "persoonsgegeven"
-    category: "DPIA - 12. Bijzondere persoonsgegevens"
+  - id: "dpia_inleiding"
+    name: "DPIA inleiding"
+    category: "00. Algemeen"
+    definition: "Een optionele openingstekst van een DPIA."
+
+  - id: "dpia_managementsamenvatting"
+    name: "DPIA managementsamenvatting"
+    category: "00. Algemeen"
+    definition: "Een samenvatting van een DPIA die de belangrijkste punten omvat, met name de geïdentificeerde risico's voor betrokkenen en (voorgenomen) maatregelen om de risico's voor betrokkenen te mitigeren."
+
+  - id: "dpia_onderwerp"
+    name: "DPIA onderwerp"
+    category: "00. Algemeen"
+    definition: "Een aspect dat expliciet wordt beschouwd binnen een DPIA."
+
+  - id: "dpia_opslaglocatie"
+    name: "DPIA opslaglocatie"
+    category: "00. Algemeen"
+    definition: "De locatie waar een documentbeheerder, namens een verwerkingsverantwoordelijke die een DPIA opstelt, dat DPIA document opslaat."
+
+  - id: "dpia_status"
+    name: "DPIA status"
+    category: "00. Algemeen"
+    definition: "Een aanduiding van de toestand waarin een DPIA zich bevindt."
+
+  - id: "dpia_status_akkoord"
+    name: "DPIA status: Akkoord"
+    category: "00. Algemeen"
+    definition: "Een DPIA status die aangeeft dat alle verwerkingsverantwoordelijken die de DPIA opstellen de DPIA akkoord hebben bevonden middels ondertekening."
+
+  - id: "dpia_status_niet_akkoord"
+    name: "DPIA status: Niet akkoord"
+    category: "00. Algemeen"
+    definition: "Een DPIA status die aangeeft dat niet alle verwerkingsverantwoordelijken die de DPIA opstellen de DPIA akkoord hebben bevonden middels ondertekening."
+
+  - id: "functie"
+    name: "Functie"
+    category: "00. Algemeen"
+    definition: "Een set van taken, bevoegdheden en verantwoordelijkheden, die gedefinieerd is in termen van het werk van de organisatorische eenheid van de betreffende persoon."
+
+  - id: "functionaris_gegevensbescherming"
+    name: "Functionaris voor gegevensbescherming"
+    category: "00. Algemeen"
+    definition: "Een functie die binnen een organisatie toezicht houdt op de toepassing en naleving van de privacywetgeving."
+
+  - id: "informatieobject"
+    name: "Informatieobject"
+    category: "00. Algemeen" 
+    definition: "Een op zichzelf staand geheel van gegevens met een eigen identiteit."
+
+  - id: "normenkader"
+    name: "Normenkader"
+    category: "00. Algemeen"
+    definition: "Een richtinggevende set van objecten en normen die beschrijven hoe je juiste beheersing op een onderwerp kan doen, en wat door een auditor getoetst kan worden."
+
+  - id: "organisatorische_eenheid"
+    name: "Organisatorische eenheid"
+    category: "00. Algemeen"
+    definition: "Een groep binnen een partij die is gevormd ter behartiging van een specifieke partij-doelstelling. Partijen die natuurlijke personen zijn hebben geen organisatorische eenheden."
+
+  - id: "partij"
+    name: "Partij"
+    category: "00. Algemeen"
+    definition: "Een natuurlijk persoon, een rechtspersoon of een overheidsorgaan."
+
+  - id: "versie"
+    name: "Versie"
+    category: "00. Algemeen"
+    definition: "Een afzonderlijk informatieobject uit een reeks die door opeenvolgende wijzigingen is ontstaan."
+
+  - id: "voorstel"
+    name: "Voorstel"
+    category: "01. Voorstel"
+    definition: "Een beschrijving van waar een DPIA over gaat, op hoofdlijnen, hoe het voorstel tot stand is gekomen en wat de beweegredenen zijn achter de totstandkoming van het voorstel."
+
+  - id: "bron_persoonsgegevens"
+    name: "Bron persoonsgegevens"
+    category: "02. Persoonsgegevens"
+    definition: "Een classificatie die aangeeft of een persoonsgegeven direct van de betrokkene komt, of via een betrokken partij."
+
+  - id: "rechtstreeks_bij_betrokkene"
+    name: "Rechtstreeks bij betrokkene"
+    category: "02. Persoonsgegevens"
+    definition: "Een aanduiding van bron persoonsgegevens die aangeeft dat een persoonsgegeven direct van de betrokkene komt."
+
+  - id: "via_betrokken_partij"
+    name: "Via betrokken partij"
+    category: "02. Persoonsgegevens"
+    definition: "Een aanduiding van bron persoonsgegevens die aangeeft dat een persoonsgegeven niet direct van de betrokkene komt, maar via een betrokken partij."
+
+  - id: "bron_tool_platform"
+    name: "Bron tool/platform"
+    category: "02. Persoonsgegevens"
+    definition: "Een tool of platform vanuit waar persoonsgegevens worden gedeeld."
+
+  - id: "categorie_betrokkenen"
+    name: "Categorie betrokkenen"
+    category: "02. Persoonsgegevens"
+    definition: "Een groepering van betrokkenen."
+
+  - id: "categorie_persoonsgegevens"
+    name: "Categorie persoonsgegevens"
+    category: "02. Persoonsgegevens"
+    definition: "Een groepering van persoonsgegevens."
+
+  - id: "classificatie"
+    name: "Classificatie"
+    category: "02. Persoonsgegevens"
+    definition: "Een indeling of groepering van objecten, gegevens of waarden in categorieën of klassen op basis van gedeelde kenmerken of criteria."
+
+  - id: "bevat_geen_persoonsgegevens"
+    name: "Bevat geen persoonsgegevens"
+    category: "02. Persoonsgegevens"
+    definition: "Een classificatie die aangeeft dat specifieke informatie geen persoonsgegevens bevat."
+
+  - id: "bevat_persoonsgegevens"
+    name: "Bevat persoonsgegevens"
+    category: "02. Persoonsgegevens"
+    definition: "Een classificatie die aangeeft dat specifieke informatie persoonsgegevens bevat."
+
+  - id: "dpia_onderwerp_persoonsgegevens"
+    name: "DPIA onderwerp: persoonsgegevens"
+    category: "02. Persoonsgegevens"
+    definition: "Een DPIA onderwerp dat de persoonsgegevens beschrijft waar de DPIA betrekking op heeft."
+
+  - id: "gegevenstype"
+    name: "Gegevenstype"
+    category: "02. Persoonsgegevens"
+    definition: "Een type van een verzameling gegevens met gelijke eigenschappen. Het beschrijft en normeert een eigenschap van klasse objecten in de werkelijkheid."
+
+  - id: "geidentificeerde_natuurlijke_persoon"
+    name: "Geïdentificeerde natuurlijke persoon"
+    category: "02. Persoonsgegevens"
+    definition: "Een identificeerbare natuurlijke persoon wiens identiteit al is vastgesteld."
 
   - id: "gevoelig_persoonsgegeven"
     name: "Gevoelig persoonsgegeven"
+    category: "02. Persoonsgegevens"
     definition: "Een persoonsgegeven dat niet expliciet in de AVG is benoemd als aparte categorie, maar dat wel een grotere impact heeft op iemands privacy dan een gewoon persoonsgegeven."
-    related_terms:
-      - "persoonsgegeven"
-      - "gewoon_persoonsgegeven"
-    category: "DPIA - 02. Persoonsgegevens"
 
-term_references:
-  task_mapping:
-    - task_urn: "urn:nl:aivt:tr:dpia:3.0:personal_data"
-      terms:
-        - "persoonsgegeven"
-        - "bijzonder_persoonsgegeven"
-        - "gevoelig_persoonsgegeven"
-        - "gewoon_persoonsgegeven"
+  - id: "gewoon_persoonsgegeven"
+    name: "Gewoon persoonsgegeven"
+    category: "02. Persoonsgegevens"
+    definition: "Een persoonsgegeven dat niet expliciet in de AVG is benoemd als aparte categorie en geen grote impact heeft op iemands privacy."
 
-    - task_urn: "urn:nl:aivt:tr:dpia:3.0:data_processing"
-      terms:
-        - "gegevensverwerking"
-        - "persoonsgegeven"
-        - "betrokkene"
+  - id: "identificeerbare_natuurlijke_persoon"
+    name: "Identificeerbare natuurlijke persoon"
+    category: "02. Persoonsgegevens"
+    definition: "Een natuurlijke persoon die direct of indirect kan worden geïdentificeerd."
 
-    - task_urn: "urn:nl:aivt:tr:dpia:3.0:risks"
-      terms:
-        - "risico_voor_betrokkenen"
-        - "impact"
-        - "kans"
-        - "risiconiveau"
+  - id: "kwetsbaarheid"
+    name: "Kwetsbaarheid"
+    category: "02. Persoonsgegevens"
+    definition: "Een classificatie die aangeeft of een categorie betrokkenen een kwetsbare groep is."
+
+  - id: "kwetsbaar"
+    name: "Kwetsbaarheid: kwetsbaar"
+    category: "02. Persoonsgegevens"
+    definition: "Een aanduiding van kwetsbaarheid die aangeeft dat een categorie betrokkenen een kwetsbare groep is."
+
+  - id: "niet_kwetsbaar"
+    name: "Kwetsbaarheid: niet kwetsbaar"
+    category: "02. Persoonsgegevens"
+    definition: "Een aanduiding van kwetsbaarheid die aangeeft dat een categorie betrokkenen geen kwetsbare groep is."
+
+  - id: "kwetsbare_groep"
+    name: "Kwetsbare groep"
+    category: "02. Persoonsgegevens"
+    definition: "Een groep betrokkenen waarvoor de negatieve effecten van een gegevensverwerking groter kunnen zijn dan voor anderen, of waarbij er een machtsverhouding bestaat richting de verwerkingsverantwoordelijke."
+
+  - id: "nationaal_identificatienummer"
+    name: "Nationaal identificatienummer"
+    category: "02. Persoonsgegevens"
+    definition: "Een nummer dat ter identificatie van een persoon bij wet is voorgeschreven."
+
+  - id: "type_persoonsgegeven_gevoelig"
+    name: "Type persoonsgegeven: Gevoelig"
+    category: "02. Persoonsgegevens"
+    definition: "Een type persoonsgegeven dat aangeeft dat een persoonsgegeven een gevoelig persoonsgegeven is."
+
+  - id: "type_persoonsgegeven_gewoon"
+    name: "Type persoonsgegeven: Gewoon"
+    category: "02. Persoonsgegevens"
+    definition: "Een type persoonsgegeven dat aangeeft dat een persoonsgegeven een gewoon persoonsgegeven is."
+
+  - id: "type_persoonsgegeven_identificatienummer"
+    name: "Type persoonsgegeven: Identificatienummer"
+    category: "02. Persoonsgegevens"
+    definition: "Een type persoonsgegeven dat aangeeft dat een persoonsgegeven een nationaal identificatienummer is."
+
+  - id: "type_persoonsgegeven_strafrechtelijk"
+    name: "Type persoonsgegeven: Strafrechtelijk"
+    category: "02. Persoonsgegevens"
+    definition: "Een type persoonsgegeven dat aangeeft dat een persoonsgegeven een strafrechtelijk persoonsgegeven is."
+
+  - id: "dpia_onderwerp_gegevensverwerkingen"
+    name: "DPIA onderwerp: gegevensverwerkingen"
+    category: "03. Gegevensverwerkingen"
+    definition: "Een DPIA onderwerp dat de gegevensverwerkingen beschrijft waar de DPIA betrekking op heeft."
+
+  - id: "gegevensverwerking"
+    name: "Gegevensverwerking"
+    category: "03. Gegevensverwerkingen"
+    definition: "Een bewerking of een geheel van bewerkingen met betrekking tot persoonsgegevens of een geheel van persoonsgegevens."
+
+  - id: "stroomschema"
+    name: "Stroomschema"
+    category: "03. Gegevensverwerkingen"
+    definition: "Een visualisatie van gegevensverwerkingen."
+
+  - id: "ai_systeem"
+    name: "AI-systeem"
+    category: "04. Technieken en methoden"
+    definition: "Een op een machine gebaseerd systeem dat is ontworpen om met verschillende niveaus van autonomie te werken en dat na het inzetten ervan aanpassingsvermogen kan vertonen, en dat, voor expliciete of impliciete doelstellingen, uit de ontvangen input afleidt hoe output te genereren."
+
+  - id: "ai_systeem_geen_sprake"
+    name: "AI-systeem: geen sprake van een algoritme dat kwalificeert als een AI-systeem"
+    category: "04. Technieken en methoden"
+    definition: "Een aanduiding van een classificatie van AI-systeem die aangeeft dat er geen sprake is van een algoritme dat kwalificeert als een AI-systeem."
+
+  - id: "ai_systeem_sprake"
+    name: "AI-systeem: sprake van een algoritme dat kwalificeert als een AI-systeem"
+    category: "04. Technieken en methoden"
+    definition: "Een aanduiding van een classificatie van AI-systeem die aangeeft dat er sprake is van een algoritme dat kwalificeert als een AI-systeem."
+
+  - id: "algoritme"
+    name: "Algoritme"
+    category: "04. Technieken en methoden"
+    definition: "Een set van regels en instructies die een computer geautomatiseerd volgt bij het maken van berekeningen om een probleem op te lossen of een vraag te beantwoorden."
+
+  - id: "algoritme_geen_sprake"
+    name: "Algoritme: geen sprake van een algoritme"
+    category: "04. Technieken en methoden"
+    definition: "Een aanduiding van een classificatie van algoritme die aangeeft dat er geen sprake is van een algoritme."
+
+  - id: "algoritme_sprake"
+    name: "Algoritme: sprake van een algoritme"
+    category: "04. Technieken en methoden"
+    definition: "Een aanduiding van een classificatie van algoritme die aangeeft dat er sprake is van een algoritme."
+
+  - id: "big_data_verwerking"
+    name: "Big data-verwerking"
+    category: "04. Technieken en methoden"
+    definition: "Een gegevensverwerking waarbij grote hoeveelheden gestructureerde en ongestructureerde data uit verschillende bronnen worden verwerkt."
+
+  - id: "cloudoplossing"
+    name: "Cloudoplossing"
+    category: "04. Technieken en methoden"
+    definition: "Een toepassing of dienst die gebruikmaakt van een groot netwerk van aan elkaar gekoppelde servers om alomtegenwoordige, gemakkelijke, on-demand netwerktoegang te bieden tot een gedeelde pool van configureerbare computerbronnen."
+
+  - id: "geautomatiseerde_besluitvorming"
+    name: "Geautomatiseerde besluitvorming"
+    category: "04. Technieken en methoden"
+    definition: "Het nemen van besluiten met technologische middelen."
+
+  - id: "profilering"
+    name: "Profilering"
+    category: "04. Technieken en methoden"
+    definition: "Elke vorm van geautomatiseerde verwerking van persoonsgegevens waarbij aan de hand van persoonsgegevens bepaalde persoonlijke aspecten van een natuurlijke persoon worden geëvalueerd, met name met de bedoeling de beroepsprestaties, economische situatie, gezondheid, persoonlijke voorkeuren, interesses, betrouwbaarheid, gedrag, locatie of verplaatsingen te analyseren of te voorspellen."
+
+  - id: "semi_geautomatiseerde_besluitvorming"
+    name: "Semi-geautomatiseerde besluitvorming"
+    category: "04. Technieken en methoden"
+    definition: "Geautomatiseerde besluitvorming met menselijke tussenkomst, maar zonder betekenisvolle menselijke tussenkomst."
+
+  - id: "technieken_en_methoden"
+    name: "Technieken en methoden van gegevensverwerking"
+    category: "04. Technieken en methoden"
+    definition: "De middelen en processen waarmee persoonsgegevens worden verwerkt."
+
+  - id: "dpia_onderwerp_verwerkingsdoeleinden"
+    name: "DPIA onderwerp: verwerkingsdoeleinden"
+    category: "05. Verwerkingsdoeleinden"
+    definition: "Een DPIA onderwerp dat de verwerkingsdoeleinden beschrijft van de gegevensverwerkingen waar de DPIA betrekking op heeft."
+
+  - id: "verwerkingsdoeleinde"
+    name: "Verwerkingsdoeleinde"
+    category: "05. Verwerkingsdoeleinden"
+    definition: "Het resultaat dat wordt beoogd met een gegevensverwerking. Een verwerkingsdoeleinde is altijd welbepaald, uitdrukkelijk omschreven en gerechtvaardigd."
+
+  - id: "avg_rol"
+    name: "AVG-rol"
+    category: "06. Betrokken partijen"
+    definition: "Een hoedanigheid waarin een partij betrokken kan zijn bij een gegevensverwerking."
+
+  - id: "betrokken_partij"
+    name: "Betrokken partij"
+    category: "06. Betrokken partijen"
+    definition: "Een partij die in een AVG-rol betrokken is bij een gegevensverwerking."
+
+  - id: "betrokkene"
+    name: "Betrokkene"
+    category: "06. Betrokken partijen"
+    definition: "Een geïdentificeerde natuurlijke persoon of identificeerbare natuurlijke persoon binnen de gegevensverwerkingen."
+
+  - id: "derde"
+    name: "Derde"
+    category: "06. Betrokken partijen"
+    definition: "Een partij die geen betrokkene, verwerkingsverantwoordelijke, verwerker, sub-verwerker of een persoon is die rechtstreeks onder gezag van de verwerkingsverantwoordelijke of de verwerker gemachtigd is om de persoonsgegevens te verwerken."
+
+  - id: "dpia_onderwerp_betrokken_partijen"
+    name: "DPIA onderwerp: betrokken partijen"
+    category: "06. Betrokken partijen"
+    definition: "Een DPIA onderwerp dat de betrokken partijen beschrijft die betrokken zijn bij de gegevensverwerkingen waar de DPIA betrekking op heeft."
+
+  - id: "functie_afdeling_bekend"
+    name: "Functie/afdeling met toegang tot persoonsgegevens bekend"
+    category: "06. Betrokken partijen"
+    definition: "Een classificatie of het bekend is welke functies of afdelingen van een partij toegang krijgen tot welke persoonsgegevens in de gegevensverwerking."
+
+  - id: "functie_afdeling_bekend_ja"
+    name: "Functie/afdeling met toegang tot persoonsgegevens bekend: bekend"
+    category: "06. Betrokken partijen"
+    definition: "Een aanduiding van Functie/afdeling met toegang tot persoonsgegevens bekend die aangeeft dat het bekend is welke functies of afdelingen van een partij toegang krijgen tot welke persoonsgegevens in de gegevensverwerking."
+
+  - id: "functie_afdeling_bekend_nee"
+    name: "Functie/afdeling met toegang tot persoonsgegevens bekend: onbekend"
+    category: "06. Betrokken partijen"
+    definition: "Een aanduiding van Functie/afdeling met toegang tot persoonsgegevens bekend die aangeeft dat het niet bekend is welke functies of afdelingen van een partij toegang krijgen tot welke persoonsgegevens in de gegevensverwerking."
+
+  - id: "gezamenlijke_verwerkingsverantwoordelijke"
+    name: "Gezamenlijke verwerkingsverantwoordelijke"
+    category: "06. Betrokken partijen"
+    definition: "Een verwerkingsverantwoordelijke die met één of meer andere verwerkingsverantwoordelijken gezamenlijk de verwerkingsdoeleinden en middelen van de gegevensverwerking bepaalt."
+
+  - id: "ontvanger"
+    name: "Ontvanger"
+    category: "06. Betrokken partijen"
+    definition: "Een partij aan wie/waaraan de persoonsgegevens worden verstrekt."
+
+  - id: "sub_verwerker"
+    name: "Sub-verwerker"
+    category: "06. Betrokken partijen"
+    definition: "De partij die primair de opdracht krijgt van de verwerker of een andere sub-verwerker om persoonsgegevens te verwerken."
+
+  - id: "verstrekker"
+    name: "Verstrekker"
+    category: "06. Betrokken partijen"
+    definition: "Een partij die/dat persoonsgegevens verstrekt aan een andere partij."
+
+  - id: "verwerker"
+    name: "Verwerker"
+    category: "06. Betrokken partijen"
+    definition: "Een partij die/dat ten behoeve van de verwerkingsverantwoordelijke persoonsgegevens verwerkt."
+
+  - id: "verwerkingsverantwoordelijke"
+    name: "Verwerkingsverantwoordelijke"
+    category: "06. Betrokken partijen"
+    definition: "Een partij die/dat het verwerkingsdoeleinde van en de middelen voor de gegevensverwerking vaststelt."
+
+  - id: "belang"
+    name: "Belang"
+    category: "07. Belangen"
+    definition: "Hetgeen waaraan een partij waarde hecht met betrekking tot een gegevensverwerking."
+
+  - id: "belangenafweging"
+    name: "Belangenafweging"
+    category: "07. Belangen"
+    definition: "Het op waarde schatten van twee vaak tegenstrijdige belangen en bepalen welk belang het zwaarst weegt."
+
+  - id: "consultatie_betrokkenen"
+    name: "Consultatie van betrokkenen"
+    category: "07. Belangen"
+    definition: "Het vragen van betrokkenen of hun vertegenwoordigers naar hun mening over de gegevensverwerking."
+
+  - id: "dpia_onderwerp_belangen"
+    name: "DPIA onderwerp: belangen"
+    category: "07. Belangen"
+    definition: "Een DPIA onderwerp dat de belangen beschrijft van de betrokken partijen bij de gegevensverwerkingen waar de DPIA betrekking op heeft."
+
+  - id: "toelichting_consultatie"
+    name: "Toelichting consultatie betrokkenen DPIA"
+    category: "07. Belangen"
+    definition: "Een beschrijving van consultatie van betrokkenen en/of motivatie waarom consultatie van betrokkenen niet plaats vindt."
+
+  - id: "derde_land"
+    name: "Derde land"
+    category: "08. Verwerkingslocaties"
+    definition: "Een land buiten de EER."
+
+  - id: "doorgifte_mechanisme"
+    name: "Doorgiftemechanisme"
+    category: "08. Verwerkingslocaties"
+    definition: "Een voorwaarde voor internationale doorgifte."
+
+  - id: "dpia_onderwerp_verwerkingslocaties"
+    name: "DPIA onderwerp: verwerkingslocaties"
+    category: "08. Verwerkingslocaties"
+    definition: "Een DPIA onderwerp dat de verwerkingslocaties beschrijft van de gegevensverwerkingen waar de DPIA betrekking op heeft."
+
+  - id: "europese_economische_ruimte"
+    name: "Europese Economische Ruimte"
+    category: "08. Verwerkingslocaties"
+    definition: "Een internationale overeenkomst en bestaat uit alle landen die lid zijn van de Europese Unie plus de landen IJsland, Liechtenstein en Noorwegen."
+
+  - id: "internationale_doorgifte"
+    name: "Internationale doorgifte"
+    category: "08. Verwerkingslocaties"
+    definition: "Het doorgeven van persoonsgegevens aan een derde land of internationale organisatie."
+
+  - id: "internationale_doorgifte_buiten_eer"
+    name: "Internationale doorgifte buiten de EER"
+    category: "08. Verwerkingslocaties"
+    definition: "Internationale doorgifte naar een derde land of internationale organisatie buiten de EER."
+
+  - id: "risico_doorgifte"
+    name: "Risico op basis van doorgifte"
+    category: "08. Verwerkingslocaties"
+    definition: "Een risico voor betrokkenen dat ontstaat door een internationale doorgifte buiten de EER."
+
+  - id: "risico_doorgifte_maatregel"
+    name: "Risico op basis van doorgifte maatregel"
+    category: "08. Verwerkingslocaties"
+    definition: "Een maatregel op een risico op basis van doorgifte."
+
+  - id: "verwerkingslocatie"
+    name: "Verwerkingslocatie"
+    category: "08. Verwerkingslocaties"
+    definition: "Een land waarin een gegevensverwerking plaatsvindt."
+
+  - id: "beleid"
+    name: "Beleid"
+    category: "09. Juridisch en beleidsmatig kader"
+    definition: "Het geheel van regels en inzichten over de uitvoering van wettelijke taken van een bestuursorgaan."
+
+  - id: "beleidsmatig_kader"
+    name: "Beleidsmatig kader"
+    category: "09. Juridisch en beleidsmatig kader"
+    definition: "Al het beleid met mogelijke gevolgen voor de gegevensverwerking."
+
+  - id: "dpia_onderwerp_juridisch_beleidsmatig"
+    name: "DPIA onderwerp: juridisch en beleidsmatig kader"
+    category: "09. Juridisch en beleidsmatig kader"
+    definition: "Een DPIA onderwerp dat het juridisch kader en beleidsmatig kader beschrijft van de gegevensverwerkingen waar de DPIA betrekking op heeft."
+
+  - id: "juridisch_kader"
+    name: "Juridisch kader"
+    category: "09. Juridisch en beleidsmatig kader"
+    definition: "Alle wetgeving en regelgeving met mogelijke gevolgen voor de gegevensverwerking."
+
+  - id: "regelgeving"
+    name: "Regelgeving"
+    category: "09. Juridisch en beleidsmatig kader"
+    definition: "Alle regels en voorschriften die door verschillende overheidsinstanties zijn vastgesteld om de uitvoering van wetgeving te specificeren en te operationaliseren."
+
+  - id: "wetgeving"
+    name: "Wetgeving"
+    category: "09. Juridisch en beleidsmatig kader"
+    definition: "Alle wetten die door een bevoegde wetgevende instantie zijn vastgesteld."
+
+  - id: "archivering"
+    name: "Archivering"
+    category: "10. Bewaartermijnen"
+    definition: "Het bewaren van en duurzaam toegankelijk maken en houden van informatieobjecten nadat deze voor hun doel zijn gebruikt."
+
+  - id: "bewaartermijn"
+    name: "Bewaartermijn"
+    category: "10. Bewaartermijnen"
+    definition: "De periode waarin persoonsgegevens bewaard moeten worden."
+
+  - id: "dpia_onderwerp_bewaartermijnen"
+    name: "DPIA onderwerp: bewaartermijnen"
+    category: "10. Bewaartermijnen"
+    definition: "Een DPIA onderwerp dat de bewaartermijnen beschrijft van de persoonsgegevens waar de DPIA betrekking op heeft."
+
+  - id: "motivatie_bewaartermijn"
+    name: "Motivatie bewaartermijn"
+    category: "10. Bewaartermijnen"
+    definition: "Een beschrijving waarom de bewaartermijn niet langer is dan strikt noodzakelijk ten opzichte van de verwerkingsdoeleinden."
+    
+  - id: "toezichthouder_bewaartermijn"
+    name: "Toezichthouder bewaartermijn"
+    category: "10. Bewaartermijnen"
+    definition: "Een afdeling binnen een partij die toeziet op de bewaartermijn en de mogelijke vernietiging of archivering aan het einde van de bewaartermijn."
+
+  - id: "dpia_onderwerp_rechtsgronden"
+    name: "DPIA onderwerp: rechtsgronden"
+    category: "11. Rechtsgronden"
+    definition: "Een DPIA onderwerp dat de rechtsgronden beschrijft van de gegevensverwerkingen waar de DPIA betrekking op heeft."
+
+  - id: "maatschappelijk_belang"
+    name: "Maatschappelijk belang"
+    category: "11. Rechtsgronden"
+    definition: "Een belang waarvan de behartiging voor de samenleving als geheel gewenst is."
+
+  - id: "publiek_belang"
+    name: "Publiek belang"
+    category: "11. Rechtsgronden"
+    definition: "Een belang. Er is eerst sprake van een publiek belang indien de overheid zich de behartiging van een maatschappelijk belang aantrekt op grond van de overtuiging dat dit belang anders niet goed tot zijn recht komt."
+
+  - id: "rechtsgrond"
+    name: "Rechtsgrond"
+    category: "11. Rechtsgronden"
+    definition: "Een voorwaarde waaraan moet zijn voldaan voordat een gegevensverwerking als rechtmatig kan worden beschouwd."
+
+  - id: "rechtsgrond_gerechtvaardigd_belang"
+    name: "Rechtsgrond gerechtvaardigd belang"
+    category: "11. Rechtsgronden"
+    definition: "Een rechtsgrond waarbij de gegevensverwerking noodzakelijk is voor de behartiging van de gerechtvaardigde belangen van de verwerkingsverantwoordelijke of van een derde, behalve wanneer de belangen of de grondrechten en de fundamentele vrijheden van de betrokkene die tot bescherming van persoonsgegevens nopen, zwaarder wegen dan die belangen, met name wanneer de betrokkene een kind is."
 
 metadata:
   version: "1.0.0"
