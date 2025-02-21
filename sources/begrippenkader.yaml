@@ -591,6 +591,122 @@ glossary:
     category: "02. Persoonsgegevens"
     definition: "Een identificeerbare natuurlijke persoon wiens identiteit al is vastgesteld."
 
+  - id: "gezamenlijke_verwerkingsverantwoordelijke"
+    name: "Gezamenlijke verwerkingsverantwoordelijke"
+    category: "06. Betrokken partijen"
+    definition: "Een verwerkingsverantwoordelijke die met één of meer andere verwerkingsverantwoordelijken gezamenlijk de verwerkingsdoeleinden en middelen van de gegevensverwerking bepaalt."
+
+  - id: "gevoelig_persoonsgegeven"
+    name: "Gevoelig persoonsgegeven"
+    category: "02. Persoonsgegevens"
+    definition: "Een persoonsgegeven dat niet expliciet in de AVG is benoemd als aparte categorie, maar dat wel een grotere impact heeft op iemands privacy dan een gewoon persoonsgegeven."
+
+  - id: "gewoon_persoonsgegeven"
+    name: "Gewoon persoonsgegeven"
+    category: "02. Persoonsgegevens"
+    definition: "Een persoonsgegeven dat niet expliciet in de AVG is benoemd als aparte categorie en geen grote impact heeft op iemands privacy."
+
+- id: "internationale_doorgifte"
+    name: "Internationale doorgifte"
+    category: "08. Verwerkingslocaties"
+    definition: "Het doorgeven van persoonsgegevens aan een derde land of internationale organisatie."
+
+  - id: "internationale_doorgifte_buiten_eer"
+    name: "Internationale doorgifte buiten de EER"
+    category: "08. Verwerkingslocaties"
+    definition: "Internationale doorgifte naar een derde land of internationale organisatie buiten de Europese Economische Ruimte."
+
+  - id: "juridisch_kader"
+    name: "Juridisch kader"
+    category: "09. Juridisch en beleidsmatig kader"
+    definition: "Alle wetgeving en regelgeving met mogelijke gevolgen voor de gegevensverwerking."
+
+  - id: "kinderrechten"
+    name: "Kinderrechten"
+    category: "Pre-scan DPIA - J. Kinderrechten"
+    definition: "De rechten en bescherming van minderjarigen met betrekking tot gegevensverwerking."
+
+  - id: "locatie_monitoring"
+    name: "Locatie monitoring en evaluatie maatregelen"
+    category: "17. Maatregelen"
+    definition: "Beschrijft waar de effectiviteit van de maatregelen t.b.v. een DPIA wordt gemonitord en geëvalueerd."
+
+  - id: "maatregelen"
+    name: "Maatregelen"
+    category: "17. Maatregelen"
+    definition: "Bestaande of voorgenomen, passende maatregelen om de beschreven risico's voor betrokkenen van de gegevensverwerkingen aan te pakken."
+
+  - id: "nationale_identificatienummer"
+    name: "Nationaal identificatienummer"
+    category: "02. Persoonsgegevens"
+    definition: "Een nummer dat ter identificatie van een persoon bij wet is voorgeschreven."
+
+  - id: "ontvanger"
+    name: "Ontvanger"
+    category: "06. Betrokken partijen"
+    definition: "Een partij aan wie/waaraan de persoonsgegevens worden verstrekt."
+
+  - id: "openbare_ruimte"
+    name: "Openbare ruimte"
+    category: "08. Verwerkingslocaties"
+    definition: "Een publiek toegankelijke ruimte waar gegevensverwerking kan plaatsvinden."
+
+  - id: "persoonsgegevens"
+    name: "Persoonsgegevens"
+    category: "02. Persoonsgegevens"
+    definition: "Gegevens over een geïdentificeerde natuurlijke persoon of identificeerbare natuurlijke persoon."
+
+  - id: "profilering"
+    name: "Profilering"
+    category: "04. Technieken en methoden"
+    definition: "Elke vorm van geautomatiseerde verwerking van persoonsgegevens waarbij aan de hand van persoonsgegevens bepaalde persoonlijke aspecten van een natuurlijke persoon worden geëvalueerd."
+
+  - id: "rechten_betrokkene"
+    name: "Rechten van de betrokkene"
+    category: "15. Rechten van de betrokkene"
+    definition: "De rechten die een betrokkene heeft met betrekking tot de verwerking van zijn/haar persoonsgegevens."
+
+  - id: "rechtsgrond"
+    name: "Rechtsgrond"
+    category: "11. Rechtsgronden"
+    definition: "Een voorwaarde waaraan moet zijn voldaan voordat een gegevensverwerking als rechtmatig kan worden beschouwd."
+
+  - id: "risiconiveau"
+    name: "Risiconiveau"
+    category: "16. Risico's voor betrokkenen"
+    definition: "De zwaarte van een specifiek risico voor betrokkenen, bepaald op basis van de kans en de impact."
+
+  - id: "sub_verwerker"
+    name: "Sub-verwerker"
+    category: "06. Betrokken partijen"
+    definition: "De partij die primair de opdracht krijgt van de verwerker of een andere sub-verwerker om persoonsgegevens te verwerken."
+
+  - id: "toestemming"
+    name: "Toestemming"
+    category: "11. Rechtsgronden"
+    definition: "Vrije, specifieke, geïnformeerde en ondubbelzinnige wilsuiting waarmee de betrokkene aanvaardt dat persoonsgegevens worden verwerkt."
+
+  - id: "verwerker"
+    name: "Verwerker"
+    category: "06. Betrokken partijen"
+    definition: "Een partij die ten behoeve van de verwerkingsverantwoordelijke persoonsgegevens verwerkt."
+
+  - id: "verwerkingslocatie"
+    name: "Verwerkingslocatie"
+    category: "08. Verwerkingslocaties"
+    definition: "Een land waarin een gegevensverwerking plaatsvindt."
+
+  - id: "verwerkingsverantwoordelijke"
+    name: "Verwerkingsverantwoordelijke"
+    category: "06. Betrokken partijen"
+    definition: "Een partij die het verwerkingsdoeleinde van en de middelen voor de gegevensverwerking vaststelt."
+
+  - id: "wettelijke_verplichting"
+    name: "Wettelijke verplichting"
+    category: "11. Rechtsgronden"
+    definition: "Een verplichting die voortvloeit uit wetgeving en waarbij persoonsgegevens moeten worden verwerkt."
+ 
+
 metadata:
   version: "1.0.0"
   last_updated: "2025-02-06T12:00:00Z"
