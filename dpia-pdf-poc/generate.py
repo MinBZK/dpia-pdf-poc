@@ -43,12 +43,12 @@ class InteractivePDFGenerator:
         title_para = self._create_paragraph("<b>DPIA Form</b>", self.styles["Title"])
         current_y = self._draw_paragraph(c, title_para, self.margin, current_y) - 20
 
-        def process_component(component: FormComponent) -> None:
+        def process_component(component: FormComponent, section: int) -> None:
             nonlocal current_y
 
             # Label paragraph
             if component.type == "fieldset":
-                label_para = self._create_paragraph(f"<b>{component.label}</b>", self.styles["Heading2"])
+                label_para = self._create_paragraph(f"<b>{section} - {component.label}</b>", self.styles["Heading2"])
             else:
                 label_para = self._create_paragraph(f"<b>{component.label}</b>")
 
@@ -79,7 +79,7 @@ class InteractivePDFGenerator:
                 current_y -= 50
             elif component.type == "fieldset" and component.components:
                 for sub_component in component.components:
-                    process_component(sub_component)
+                    process_component(sub_component, section)
                 current_y -= 20  # Add spacing between fieldsets
 
             # Start new page if running out of space
@@ -88,8 +88,8 @@ class InteractivePDFGenerator:
                 current_y = self.height - self.margin
 
         # Process all components
-        for component in components:
-            process_component(component)
+        for section, component in enumerate(components):
+            process_component(component, section)
 
         c.save()
 
@@ -137,6 +137,28 @@ class PDFJavaScriptManager:
         PdfWriter(output_pdf, trailer=pdf).write()
 
 
+def generate_form(components: list[FormComponent], output_path: str) -> None:
+    # Generate form.
+    temp_pfd_name = "temp_output.pdf"
+    generator = InteractivePDFGenerator()
+    generator.generate_form(components, temp_pfd_name)
+
+    # Add JavaScript.
+    js_manager = PDFJavaScriptManager()
+    js_manager.add_javascript(
+        temp_pfd_name,
+        output_path,
+        [
+            ("categoriePersoonsgegevens21", "categoriePersoonsgegevens31"),
+            ("categoriePersoonsgegevens22", "categoriePersoonsgegevens32"),
+            ("categoriePersoonsgegevens23", "categoriePersoonsgegevens33"),
+        ],
+    )
+
+    # Cleanup temporary file.
+    os.remove(temp_pfd_name)
+
+
 def create_interactive_form(
     form_definitions: list[dict[str, Any]],
     form_steps: list[dict[str, Any]],
@@ -154,22 +176,4 @@ def create_interactive_form(
         if (step_comp.id in (components_dict := {comp.id: comp for comp in components}))
     ]
 
-    # Generate form.
-    temp_pfd_name = "temp_output.pdf"
-    generator = InteractivePDFGenerator()
-    generator.generate_form(ordered_components, temp_pfd_name)
-
-    # Add JavaScript.
-    js_manager = PDFJavaScriptManager()
-    js_manager.add_javascript(
-        temp_pfd_name,
-        output_path,
-        [
-            ("categoriePersoonsgegevens21", "categoriePersoonsgegevens31"),
-            ("categoriePersoonsgegevens22", "categoriePersoonsgegevens32"),
-            ("categoriePersoonsgegevens23", "categoriePersoonsgegevens33"),
-        ],
-    )
-
-    # Cleanup temporary file.
-    os.remove(temp_pfd_name)
+    generate_form(ordered_components, output_path)
