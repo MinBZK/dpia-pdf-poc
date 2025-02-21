@@ -24,10 +24,6 @@
             "type": "string",
             "description": "IDs of related terms"
           }
-        },
-        "category": {
-          "type": "string",
-          "description": "DPIA section category"
         }
       },
       "required": ["id", "name", "definition", "category"]
@@ -37,7 +33,11 @@
       "properties": {
         "task": {
           "type": "string",
-          "description": "The task description or question"
+          "description": "The task"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description"
         },
         "urn": {
           "type": "string",
@@ -52,9 +52,6 @@
               "sign_task",
               "select_option",
               "upload_document",
-              "statement",
-              "requirement",
-              "measure",
               "task_group", 
               "date"
             ]
@@ -72,36 +69,6 @@
         "repeatable": {
           "type": "boolean"
         },
-        "template": {
-          "type": "object",
-          "properties": {
-            "authors": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "const": "$AUTHOR.NAME"
-                  },
-                  "email": {
-                    "type": "string",
-                    "const": "$AUTHOR.EMAIL"
-                  },
-                  "role": {
-                    "type": "string",
-                    "const": "$AUTHOR.ROLE"
-                  }
-                },
-                "required": [
-                  "name",
-                  "email",
-                  "role"
-                ]
-              }
-            }
-          }
-        },
         "links": {
           "type": "array",
           "items": {
@@ -117,13 +84,6 @@
                 "type": "string"
               }
             }
-          }
-        },
-        "glossary_references": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "IDs of referenced glossary terms"
           }
         },
         "tasks": {

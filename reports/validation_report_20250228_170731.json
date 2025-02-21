@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-02-28T17:07:31.335541",
+  "summary": {
+    "total_files": 2,
+    "successful": 2,
+    "failed": 0
+  },
+  "results": [
+    {
+      "file": "DPIA.yaml",
+      "schema": "schema_DPIA.json",
+      "success": true,
+      "errors": []
+    },
+    {
+      "file": "begrippenkader.yaml",
+      "schema": "schema_begrippenkader.json",
+      "success": true,
+      "errors": []
+    }
+  ]
+}
