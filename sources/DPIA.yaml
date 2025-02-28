@@ -42,48 +42,89 @@ tasks:
         - bijzonder_persoonsgegeven
         - gevoelig_persoonsgegeven
     tasks:
-        - task: Categorie betrokkene
+        - task: Algemene persoonsgegevens
           urn: urn:nl:dpia:3.0:2.0:1.0
-          type: 
-            - open_text
-          glossary_references:
-            - categorie_betrokkene
+          type:
+            - task_group
+          tasks:
+            - task: Categorie betrokkene
+              urn: urn:nl:dpia:3.0:2.0:1.0:1.0
+              type: 
+                - open_text
+              glossary_references:
+                - categorie_betrokkene
+              repeatable: true
+            - task: Categorie persoonsgegevens
+              urn: urn:nl:dpia:3.0:2.0:1.0:2.0
+              type: 
+                - open_text
+              glossary_references:
+                - categorie_persoonsgegevens
+              repeatable: true
+            - task: Persoonsgegeven
+              urn: urn:nl:dpia:3.0:2.0:1.0:3.0
+              type: 
+                - open_text
+              repeatable: true
+            - task: Type persoonsgegeven
+              urn: urn:nl:dpia:3.0:2.0:1.0:4.0
+              type: 
+                - select_option
+              options:
+                - gewoon
+                - gevoelig
+                - bijzonder
+                - strafrechtelijk
+                - identificatie-nummer
+              repeatable: true
+            - task: Bron
+              urn: urn:nl:dpia:3.0:2.0:1.0:5.0
+              type: 
+                - select_option
+              options:
+                - rechtstreeks bij betrokkene
+                - via betrokken partij
+              repeatable: true
+            - task: Oorspronkelijke verwerkingsdoeleinde
+              urn: urn:nl:dpia:3.0:2.0:1.0:6.0
+              type: 
+                - open_text
+              repeatable: true
           repeatable: true
-        - task: Categorie persoonsgegevens
-          urn: urn:nl:dpia:3.0:2.0:2.0
-          type: 
-            - open_text
-          glossary_references:
-            - categorie_persoonsgegevens
-          repeatable: true
-        - task: Persoonsgegeven
-          urn: urn:nl:dpia:3.0:2.0:3.0
-          type: 
-            - open_text
-          repeatable: true
-        - task: Type persoonsgegeven
-          urn: urn:nl:dpia:3.0:2.0:4.0
-          type: 
-            - select_option
-          options:
-            - gewoon
-            - gevoelig
-            - bijzonder
-            - strafrechtelijk
-            - identificatie-nummer
-          repeatable: true
-        - task: Bron
-          urn: urn:nl:dpia:3.0:2.0:5.0
-          type: 
-            - select_option
-          options:
-            - rechtstreeks bij betrokkene
-            - via betrokken partij
-          repeatable: true
-        - task: Oorspronkelijke verwerkingsdoeleinde
-          urn: urn:nl:dpia:3.0:2.0:6.0
-          type: 
-            - open_text
+        - task: Bronnen via betrokken partij
+          urn: urn:nl:dpia:3.0:2.0:2:0
+          type:
+            - task_group
+          description: >-
+            Geef in deze tabel extra informatie over de bron van persoonsgegevens die via 
+            een betrokken partij komen.
+          tasks:
+            - task: Categorie betrokkenen
+              urn: urn:nl:dpia:3.0:2.0:2.0:1.0
+              type: 
+                - open_text
+              repeatable: true
+            - task: Categorie persoonsgegevens
+              urn: urn:nl:dpia:3.0:2.0:2.0:2.0
+              type: 
+                - open_text
+              repeatable: true
+            - task: Naam partij
+              urn: urn:nl:dpia:3.0:2.0:2.0:3.0
+              type: 
+                - open_text
+              repeatable: true
+            - task: Middel van bron
+              urn: urn:nl:dpia:3.0:2.0:2.0:4.0
+              type: 
+                - open_text
+              description: Tool/platform
+              repeatable: true
+            - task: Verstrekkingsgrond
+              urn: urn:nl:dpia:3.0:2.0:2.0:5.0
+              type: 
+                - open_text
+              repeatable: true
           repeatable: true
     links: []
     repeatable: true
@@ -110,15 +151,38 @@ tasks:
           glossary_references:
             - gegevensverwerking
           repeatable: true
-        - task: Categorie persoonsgegeven
+
+        - task: Categorieën betrokkenen & persoonsgegevens
           urn: urn:nl:dpia:3.0:3.0:2.0
           type: 
-            - open_text
-          glossary_references:
-            - categorie_gegevensverwerking
+            - task_group
+          tasks:
+            - task: Categorie betrokkene
+              urn: urn:nl:dpia:3.0:3.0:2.0:1.0
+              type:
+                - open_text
+              repeatable: true
+            - task: Persoonsgegeven
+              urn: urn:nl:dpia:3.0:3.0:2.0:2.0
+              type:
+                - open_text
+              repeatable: true
+            - task: Type persoonsgegeven
+              urn: urn:nl:dpia:3.0:3.0:2.0:3.0
+              type:
+                - select_option
+              options:
+                - gewoon
+                - gevoelig
+                - bijzonder
+                - strafrechtelijk
+                - identificatie-nummer
+              repeatable: true
           repeatable: true
+          glossary_references:
+            - categorie_betrokkene
+            - persoonsgegeven
     links: []
-    
     repeatable: true
     template:
       authors:
