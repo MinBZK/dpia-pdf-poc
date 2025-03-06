@@ -1,4 +1,3 @@
-import os
 
 def generate_mermaid_html(mermaid_code):
     html_template = """
@@ -19,17 +18,17 @@ def generate_mermaid_html(mermaid_code):
 </body>
 </html>
 """
-    
+
     # Clean the mermaid code - remove any extra whitespace
     mermaid_code = mermaid_code.strip()
-    
+
     # Generate the HTML content
     html_content = html_template.format(mermaid_code=mermaid_code)
-    
+
     # Write to file
     with open('mermaid_diagram.html', 'w', encoding='utf-8') as f:
         f.write(html_content)
-    
+
     print("HTML file generated as 'mermaid_diagram.html'")
 
 # Your mermaid code
