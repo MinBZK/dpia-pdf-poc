@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Previous styles remain the same -->
+    <title>DPIA</title>
+    <style>
+        /* Previous styles remain the same */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+
+        .field-group {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .description {
+            margin: 5px 0 15px;
+            color: #666;
+            font-style: italic;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .remove-btn {
+            background-color: #f44336;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .remove-btn:hover {
+            background-color: #da190b;
+        }
+
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        select[multiple] {
+            height: 120px;
+        }
+
+        .section-footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .selection-container {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0;
+        }
+
+        .selection-box {
+            flex: 1;
+        }
+
+        .selection-actions {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .selected-categories {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .selected-category {
+            display: inline-flex;
+            align-items: center;
+            margin: 4px;
+            padding: 4px 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+        }
+
+        .image-upload {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+        }
+
+        .image-preview {
+            max-width: 300px;
+            margin-top: 10px;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DPIA</h1>
+    <form id="dpiaForm">
+        <!-- Section 1: Voorstel -->
+        <div class="section">
+            <label for="voorstel" class="required">Voorstel</label>
+            <div class="description">
+                Beschrijf het voorstel waar de DPIA op toeziet op hoofdlijnen en benoem hoe het voorstel tot stand is
+                gekomen en wat de beweegredenen zijn achter de totstandkoming van het voorstel.
+            </div>
+            <textarea id="voorstel" name="voorstel" required></textarea>
+        </div>
+
+        <!-- Section 2: Beschrijving persoonsgegeven -->
+        <div class="section">
+            <h2>Beschrijving persoonsgegeven</h2>
+            <div id="persoonsgegevensGroups"></div>
+            <button type="button" id="addPersoonsgegevensBtn">Voeg beschrijving toe</button>
+
+            <div class="section-footer">
+                <label>Aanvullende gegevens</label>
+                <textarea class="aanvullende-gegevens"></textarea>
+            </div>
+        </div>
+
+        <!-- Section 3: Gegevensverwerking -->
+        <div class="section">
+            <h2>Gegevensverwerking</h2>
+            <div id="gegevensverwerkingGroups"></div>
+            <button type="button" id="addGegevensverwerkingBtn">Voeg gegevensverwerking toe</button>
+
+            <div class="section-footer">
+                <label>Aanvullende gegevens</label>
+                <textarea class="aanvullende-gegevens"></textarea>
+
+                <div class="image-upload">
+                    <label for="stroomschema">Stroomschema gegevensverwerking</label>
+                    <input type="file" id="stroomschema" accept="image/*">
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        // Variables
+        let persoonsgegevensCounter = 0;
+        let gegevensverwerkingCounter = 0;
+
+        // Helper Functions
+        function getUniqueCategories() {
+            const categorieInputs = document.querySelectorAll('.categorie-persoonsgegevens');
+            return Array.from(categorieInputs)
+                .map(input => input.value.trim())
+                .filter(Boolean)
+                .filter((value, index, self) => self.indexOf(value) === index)
+                .sort();
+        }
+
+        function createPersoonsgegevensGroup(index) {
+            const div = document.createElement('div');
+            div.className = 'field-group';
+            div.dataset.index = index;
+            div.innerHTML = `
+                <h3>Beschrijving persoonsgegevens ${index}</h3>
+                <button type="button" class="remove-btn">Verwijder</button>
+                
+                <label class="required">Categorie betrokkene</label>
+                <input type="text" class="categorie-betrokkene" required>
+                
+                <label class="required">Categorie persoonsgegevens</label>
+                <input type="text" class="categorie-persoonsgegevens" required>
+                
+                <label class="required">Persoonsgegevens</label>
+                <input type="text" class="persoonsgegevens" required>
+                
+                <label class="required">Type persoonsgegevens</label>
+                <select class="type-persoonsgegevens" required>
+                    <option value="gewoon">Gewoon</option>
+                    <option value="gevoelig">Gevoelig</option>
+                    <option value="bijzonder">Bijzonder</option>
+                    <option value="strafrechtelijk">Strafrechtelijk</option>
+                </select>
+                
+                <label class="required">Bron</label>
+                <input type="text" class="bron" required>
+            `;
+
+            // Add event listener to remove button
+            div.querySelector('.remove-btn').addEventListener('click', function () {
+                removePersoonsgegevensGroup(this);
+            });
+
+            return div;
+        }
+
+        function createGegevensverwerkingGroup(index) {
+            const div = document.createElement('div');
+            div.className = 'field-group';
+            div.dataset.index = index;
+
+            const categories = getUniqueCategories();
+
+            div.innerHTML = `
+                <h3>Gegevensverwerking ${index}</h3>
+                <button type="button" class="remove-btn">Verwijder</button>
+                
+                <label class="required">Gegevensverwerking</label>
+                <input type="text" class="gegevensverwerking" required>
+                
+                <label class="required">Categorie persoonsgegevens</label>
+                <div class="selection-container">
+                    <div class="selection-box">
+                        <select class="categorie-persoonsgegevens-select" multiple>
+                            ${categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="selection-actions">
+                        <button type="button" class="action-btn add-categories">
+                            Voeg selectie toe →
+                        </button>
+                    </div>
+                </div>
+                <div class="selected-categories"></div>
+            `;
+
+            // Add event listeners
+            div.querySelector('.remove-btn').addEventListener('click', function () {
+                removeGegevensverwerkingGroup(this);
+            });
+
+            div.querySelector('.add-categories').addEventListener('click', function () {
+                addSelectedCategories(this);
+            });
+
+            return div;
+        }
+
+        function addSelectedCategories(button) {
+            const fieldGroup = button.closest('.field-group');
+            const select = fieldGroup.querySelector('.categorie-persoonsgegevens-select');
+            const selectedContainer = fieldGroup.querySelector('.selected-categories');
+
+            Array.from(select.selectedOptions).forEach(option => {
+                if (!selectedContainer.querySelector(`[data-value="${option.value}"]`)) {
+                    const categorySpan = document.createElement('div');
+                    categorySpan.className = 'selected-category';
+                    categorySpan.dataset.value = option.value;
+                    categorySpan.innerHTML = `
+                        ${option.value}
+                        <button type="button" class="remove-category">×</button>
+                    `;
+
+                    categorySpan.querySelector('.remove-category').addEventListener('click', function () {
+                        categorySpan.remove();
+                    });
+
+                    selectedContainer.appendChild(categorySpan);
+                }
+            });
+        }
+
+        function removePersoonsgegevensGroup(button) {
+            const groupToRemove = button.closest('.field-group');
+            groupToRemove.remove();
+
+            const groups = document.querySelectorAll('#persoonsgegevensGroups .field-group');
+            groups.forEach((group, index) => {
+                group.querySelector('h3').textContent = `Beschrijving persoonsgegevens ${index + 1}`;
+                group.dataset.index = index + 1;
+            });
+            persoonsgegevensCounter = groups.length;
+
+            updateAllGegevensverwerkingDropdowns();
+        }
+
+        function removeGegevensverwerkingGroup(button) {
+            const groupToRemove = button.closest('.field-group');
+            groupToRemove.remove();
+
+            const groups = document.querySelectorAll('#gegevensverwerkingGroups .field-group');
+            groups.forEach((group, index) => {
+                group.querySelector('h3').textContent = `Gegevensverwerking ${index + 1}`;
+                group.dataset.index = index + 1;
+            });
+            gegevensverwerkingCounter = groups.length;
+        }
+
+        function updateAllGegevensverwerkingDropdowns() {
+            const categories = getUniqueCategories();
+            const selects = document.querySelectorAll('.categorie-persoonsgegevens-select');
+
+            selects.forEach(select => {
+                const fieldGroup = select.closest('.field-group');
+                const selectedContainer = fieldGroup.querySelector('.selected-categories');
+                const selectedValues = Array.from(selectedContainer.children).map(child => child.dataset.value);
+
+                select.innerHTML = categories.map(cat =>
+                    `<option value="${cat}">${cat}</option>`
+                ).join('');
+
+                selectedContainer.innerHTML = '';
+                selectedValues.forEach(value => {
+                    if (categories.includes(value)) {
+                        const categorySpan = document.createElement('div');
+                        categorySpan.className = 'selected-category';
+                        categorySpan.dataset.value = value;
+                        categorySpan.innerHTML = `
+                            ${value}
+                            <button type="button" class="remove-category">×</button>
+                        `;
+
+                        categorySpan.querySelector('.remove-category').addEventListener('click', function () {
+                            categorySpan.remove();
+                        });
+
+                        selectedContainer.appendChild(categorySpan);
+                    }
+                });
+            });
+        }
+
+        // Initialize everything after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add initial groups
+            document.getElementById('addPersoonsgegevensBtn').addEventListener('click', function () {
+                persoonsgegevensCounter++;
+                const container = document.getElementById('persoonsgegevensGroups');
+                container.appendChild(createPersoonsgegevensGroup(persoonsgegevensCounter));
+            });
+
+            document.getElementById('addGegevensverwerkingBtn').addEventListener('click', function () {
+                gegevensverwerkingCounter++;
+                const container = document.getElementById('gegevensverwerkingGroups');
+                container.appendChild(createGegevensverwerkingGroup(gegevensverwerkingCounter));
+            });
+
+            // Add image upload handler
+            document.getElementById('stroomschema').addEventListener('change', function () {
+                const preview = document.getElementById('imagePreview');
+                preview.innerHTML = '';
+
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        preview.appendChild(img);
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+
+            // Add event listener for category changes
+            document.getElementById('persoonsgegevensGroups').addEventListener('input', function (e) {
+                if (e.target.classList.contains('categorie-persoonsgegevens')) {
+                    setTimeout(updateAllGegevensverwerkingDropdowns, 100);
+                }
+            });
+
+            // Create initial groups
+            document.getElementById('addPersoonsgegevensBtn').click();
+            document.getElementById('addGegevensverwerkingBtn').click();
+        });
+        // Initialize YAML export functionality
+        function initializeYAMLExport() {
+            // Add export button to the form (initially disabled)
+            const exportButton = document.createElement('button');
+            exportButton.type = 'button';
+            exportButton.id = 'exportButton';
+            exportButton.textContent = 'Exporteer naar YAML';
+            exportButton.style.backgroundColor = '#2196F3';
+            exportButton.style.marginTop = '20px';
+            exportButton.disabled = true; // Initially disabled until YAML.js loads
+            document.getElementById('dpiaForm').appendChild(exportButton);
+
+            // Function to safely get element value
+            function getElementValue(selector, parent = document) {
+                const element = parent.querySelector(selector);
+                return element ? element.value : '';
+            }
+
+            // Function to collect form data
+            function collectFormData() {
+                const formData = {
+                    voorstel: getElementValue('#voorstel'),
+                    persoonsgegevens: [],
+                    gegevensverwerking: [],
+                    aanvullende_gegevens: {}
+                };
+
+                try {
+                    // Collect persoonsgegevens data
+                    const persoonsgegevensGroups = document.querySelectorAll('#persoonsgegevensGroups .field-group');
+                    persoonsgegevensGroups.forEach(group => {
+                        formData.persoonsgegevens.push({
+                            categorie_betrokkene: getElementValue('.categorie-betrokkene', group),
+                            categorie_persoonsgegevens: getElementValue('.categorie-persoonsgegevens', group),
+                            persoonsgegevens: getElementValue('.persoonsgegevens', group),
+                            type_persoonsgegevens: getElementValue('.type-persoonsgegevens', group),
+                            bron: getElementValue('.bron', group)
+                        });
+                    });
+
+                    // Collect gegevensverwerking data
+                    const gegevensverwerkingGroups = document.querySelectorAll('#gegevensverwerkingGroups .field-group');
+                    gegevensverwerkingGroups.forEach(group => {
+                        const selectedCategories = Array.from(group.querySelectorAll('.selected-category'))
+                            .map(cat => cat.dataset.value);
+
+                        formData.gegevensverwerking.push({
+                            gegevensverwerking: getElementValue('.gegevensverwerking', group),
+                            categorie_persoonsgegevens: selectedCategories
+                        });
+                    });
+
+                    // Add aanvullende gegevens
+                    const persoonsgegevensSection = document.querySelector('.section:nth-child(2)');
+                    const gegevensverwerkingSection = document.querySelector('.section:nth-child(3)');
+
+                    formData.aanvullende_gegevens = {
+                        persoonsgegevens: persoonsgegevensSection ? getElementValue('.aanvullende-gegevens', persoonsgegevensSection) : '',
+                        gegevensverwerking: gegevensverwerkingSection ? getElementValue('.aanvullende-gegevens', gegevensverwerkingSection) : ''
+                    };
+
+                    return formData;
+                } catch (error) {
+                    console.error('Error collecting form data:', error);
+                    alert('Er is een fout opgetreden bij het verzamelen van de formuliergegevens.');
+                    return null;
+                }
+            }
+
+            // Function to export data as YAML file
+            function exportToYAML() {
+                const formData = collectFormData();
+                if (!formData) return;
+
+                try {
+                    if (typeof YAML === 'undefined') {
+                        throw new Error('YAML library is not loaded');
+                    }
+
+                    const yamlStr = YAML.stringify(formData, 4, 2);
+                    const blob = new Blob([yamlStr], {type: 'text/yaml;charset=utf-8'});
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'dpia_export.yaml';
+
+                    document.body.appendChild(link);
+                    link.click();
+
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                } catch (error) {
+                    console.error('Error exporting to YAML:', error);
+                    alert('Er is een fout opgetreden bij het exporteren naar YAML.');
+                }
+            }
+
+            // Load YAML.js library
+            return new Promise((resolve, reject) => {
+                const yamlScript = document.createElement('script');
+                yamlScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/yamljs/0.3.0/yaml.min.js';
+                yamlScript.onload = () => {
+                    const exportButton = document.getElementById('exportButton');
+                    if (exportButton) {
+                        exportButton.disabled = false;
+                        exportButton.addEventListener('click', exportToYAML);
+                    }
+                    resolve();
+                };
+                yamlScript.onerror = () => {
+                    console.error('Failed to load YAML.js');
+                    alert('Er is een fout opgetreden bij het laden van de YAML bibliotheek.');
+                    reject();
+                };
+                document.head.appendChild(yamlScript);
+            });
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => initializeYAMLExport());
+        } else {
+            initializeYAMLExport();
+        }
+    </script>
+
+</body>
+
+</html>
