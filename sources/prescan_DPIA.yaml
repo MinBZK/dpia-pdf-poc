@@ -1,0 +1,35 @@
+schema_version: 1.0.0
+name: pre-scan DPIA 
+description: >-
+  
+urn: 'urn:nl:ps_dpia:'
+version: 0
+language: nl
+owners:
+  - organization: Ministerie van BZK
+    name: CIO Rijk
+    email: privacy-ciorijk@minbzk.nl
+    role: Privacy Officer
+date: '2023-07-25'
+url: ''
+tasks:
+ - task: >-
+    Geef een uitvoerige beschrijving van de verwerking of het geheel van verwerkingen: om welk proces/systeem/applitcatie gaat het. 
+    Besteed daarbij aandacht aan de context waarind e verwerking plaatsvindt, door wie, waar, waarom en hoe. 
+    Om wat voor bedrijfsproces(sen) gaat het en om hoebeel gegevens over wie. 
+    Deze input kun je hergebruikken voor paragraaf 1 van het Model DPIA Rijksdienst. 
+   category: A. Inleiding 
+   urn: urn:nl:dpia:A.1
+   type:
+     - open_text
+   repeatable: false
+ - task: >-
+    Welk doel wil de organisatie bereiken met de gegevensverwerking? 
+    Dit kan hergebruikt worden in paragraaf 5 van het Model DPIA Rijksdienst. 
+   category: A. Inleiding 
+   urn: urn:nl:dpia:A.2
+   type: 
+    - open_text
+   repeatable: false
+
+
